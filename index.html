@@ -7,85 +7,51 @@
   <style>
     :root{
       --bg:#0e1116;--panel:#161a22;--text:#e6eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#232837;
-      --chip:#1f2532;--chip-text:#dbe4ff;--ok:#46d37a;--warn:#f8c35e;
+      --chip:#1f2532;--chip-text:#dbe4ff;
     }
-    .light{
-      --bg:#ffffff;--panel:#f7f9fc;--text:#0c1321;--muted:#5a667a;--accent:#2563eb;--line:#e5e9f2;
-      --chip:#eef2f8;--chip-text:#0c1321;--ok:#0ea965;--warn:#b7791f;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; background:var(--bg); color:var(--text); display:flex; flex-direction:column; font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial}
-    header{display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--panel)}
-    header .brand{display:flex; gap:10px; align-items:center; font-weight:700}
-    header .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
-    header .actions{display:flex; gap:10px; align-items:center}
-    .btn{border:1px solid var(--line); background:transparent; color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer}
+    .light{ --bg:#fff;--panel:#f7f9fc;--text:#0c1321;--muted:#5a667a;--accent:#2563eb;--line:#e5e9f2;--chip:#eef2f8;--chip-text:#0c1321; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);display:flex;flex-direction:column;font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}.dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    .btn{border:1px solid var(--line);background:#0000;color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer}
     .btn:hover{border-color:var(--accent)}
-    main{flex:1; display:grid; grid-template-columns:320px 1fr; min-height:0}
-    aside{border-right:1px solid var(--line); background:var(--panel); padding:14px; overflow:auto}
-    .field{margin-bottom:12px}
-    label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px}
-    select,input[type="text"]{width:100%; padding:8px 10px; background:#0000; border:1px solid var(--line); color:var(--text); border-radius:8px; outline:none}
+    main{flex:1;display:grid;grid-template-columns:320px 1fr;min-height:0}
+    aside{border-right:1px solid var(--line);background:var(--panel);padding:14px;overflow:auto}
+    .field{margin-bottom:12px} label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    select,input{width:100%;padding:8px 10px;background:#0000;border:1px solid var(--line);color:var(--text);border-radius:8px;outline:none}
     select:focus,input:focus{border-color:var(--accent)}
-    .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px}
-    .chip{background:var(--chip); color:var(--chip-text); padding:4px 8px; border-radius:999px; font-size:12px}
-    .note{color:var(--muted); font-size:12px; margin-top:6px}
-
-    .viewer-wrap{position:relative}
-    canvas#viewer{position:absolute; inset:0; width:100%; height:100%}
-    .overlay{position:absolute; top:10px; right:10px; display:flex; gap:10px}
-    .tag{padding:4px 8px; border-radius:8px; background:var(--chip); font-size:12px; color:var(--chip-text); border:1px solid var(--line)}
-    .card{position:absolute; left:10px; bottom:10px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:10px; max-width:420px}
-    .card h3{margin:0 0 6px 0; font-size:14px}
-    .kv{display:grid; grid-template-columns:110px 1fr; gap:6px; font-size:13px}
-    .row{display:flex; gap:8px; margin-top:8px}
-    .link{color:var(--accent); text-decoration:none; border:1px solid var(--line); padding:6px 10px; border-radius:8px}
-    .link:hover{border-color:var(--accent)}
-    .spinner{position:absolute; inset:0; display:grid; place-items:center; pointer-events:none}
-    .spinner .s{width:32px; height:32px; border:3px solid var(--line); border-top-color:var(--accent); border-radius:50%; animation:spin 0.9s linear infinite}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .chip{background:var(--chip);color:var(--chip-text);padding:4px 8px;border-radius:999px;font-size:12px}
+    .note{color:var(--muted);font-size:12px;margin-top:6px}
+    .viewer-wrap{position:relative} canvas#viewer{position:absolute;inset:0;width:100%;height:100%}
+    .overlay{position:absolute;top:10px;right:10px;display:flex;gap:10px}
+    .tag{padding:4px 8px;border-radius:8px;background:var(--chip);font-size:12px;border:1px solid var(--line)}
+    .card{position:absolute;left:10px;bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;max-width:420px}
+    .card h3{margin:0 0 6px;font-size:14px} .kv{display:grid;grid-template-columns:110px 1fr;gap:6px;font-size:13px}
+    .row{display:flex;gap:8px;margin-top:8px}.link{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:8px}
+    .spinner{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+    .s{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
-    @media (max-width: 900px){main{grid-template-columns:1fr; grid-template-rows:auto 1fr} aside{border-right:none; border-bottom:1px solid var(--line)}}
+    @media (max-width:900px){main{grid-template-columns:1fr;grid-template-rows:auto 1fr}aside{border-right:none;border-bottom:1px solid var(--line)}}
   </style>
 </head>
 <body class="light">
   <header>
     <div class="brand"><div class="dot"></div> Fasteners Viewer</div>
-    <div class="actions">
-      <button id="theme" class="btn" title="Toggle theme">🌗 Theme</button>
-      <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-    </div>
+    <button id="theme" class="btn">🌗 Theme</button>
   </header>
 
   <main>
     <aside>
-      <div class="field">
-        <label>Search</label>
-        <input id="search" type="text" placeholder="Type to filter (e.g. M8, ISO4035, nut)…">
-      </div>
-
-      <div class="field">
-        <label>Family</label>
-        <select id="family"></select>
-      </div>
-
-      <div class="field">
-        <label>Type</label>
-        <select id="subtype"></select>
-      </div>
-
-      <div class="field">
-        <label>Standard</label>
-        <select id="standard"></select>
-      </div>
-
-      <div class="field">
-        <label>Diameter</label>
-        <select id="diameter"></select>
-      </div>
-
+      <div class="field"><label>Search</label><input id="search" placeholder="M8, ISO4035, nut…"></div>
+      <div class="field"><label>Family</label><select id="family"></select></div>
+      <div class="field"><label>Type</label><select id="subtype"></select></div>
+      <div class="field"><label>Standard</label><select id="standard"></select></div>
+      <div class="field"><label>Diameter</label><select id="diameter"></select></div>
       <div class="chips" id="chips"></div>
       <div class="note">Drag = rotate · Wheel = zoom · Right-drag = pan</div>
+      <div class="note" id="hint"></div>
     </aside>
 
     <section class="viewer-wrap">
@@ -95,7 +61,6 @@
         <div class="tag" id="tagSize">—</div>
       </div>
       <canvas id="viewer"></canvas>
-
       <div class="card" id="info">
         <h3 id="title">—</h3>
         <div class="kv">
@@ -115,23 +80,21 @@
 
   <!-- CSV parser -->
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-
-  <!-- Three.js + STLLoader -->
+  <!-- Three.js + loaders (globals on window.THREE) -->
   <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
 
-  <script type="module">
-    // ====== EDIT THIS LIST: add your manifest CSVs here (relative paths in your repo) ======
+  <script>
+    // 1) Add your manifest CSVs here (relative to repo root)
     const MANIFESTS = [
-      // example: Hex Thin nuts (your successful run)
+      // Nuts (working in your logs)
       "FastenersLib/Nuts/Hex_Thin/ISO4035/manifest_Hex_Thin_ISO4035.csv",
-      // add more as you generate them:
-      // "FastenersLib/Nuts/Hex/DIN934/manifest_Hex_DIN934.csv",
-      // "FastenersLib/Nuts/Flange/ISO4161/manifest_Flange_ISO4161.csv",
+      // TODO: add bolts manifests when you export them, e.g.:
       // "FastenersLib/Bolts/Socket_Head/ISO4762/manifest_Socket_Head_ISO4762.csv",
     ];
 
-    // ====== UI elements ======
+    // Elements
     const el = {
       theme:  document.getElementById('theme'),
       search: document.getElementById('search'),
@@ -152,11 +115,13 @@
       dlSTEP:  document.getElementById('dlSTEP'),
       spin:    document.getElementById('spin'),
       canvas:  document.getElementById('viewer'),
+      hint:    document.getElementById('hint'),
     };
 
-    // ====== Three.js scene ======
+    // ---------- Three.js ----------
     const renderer = new THREE.WebGLRenderer({ canvas: el.canvas, antialias:true });
     let scene, camera, controls, current;
+
     function init3D(){
       resize();
       scene = new THREE.Scene();
@@ -165,7 +130,7 @@
       camera = new THREE.PerspectiveCamera(45, el.canvas.clientWidth/el.canvas.clientHeight, 0.1, 5000);
       camera.position.set(140,110,160);
 
-      controls = new (await import('https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js')).OrbitControls(camera, renderer.domElement);
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
 
       scene.add(new THREE.HemisphereLight(0xffffff,0x303030,0.9));
@@ -175,8 +140,8 @@
       window.addEventListener('resize', resize);
     }
     function resize(){
-      const w = el.canvas.clientWidth || el.canvas.parentElement.clientWidth;
-      const h = el.canvas.clientHeight || el.canvas.parentElement.clientHeight;
+      const w = el.canvas.parentElement.clientWidth;
+      const h = el.canvas.parentElement.clientHeight;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
       renderer.setSize(w,h,false);
       if(camera){ camera.aspect = w/h; camera.updateProjectionMatrix(); }
@@ -186,7 +151,6 @@
     const loader = new THREE.STLLoader();
     async function showSTL(url){
       el.spin.hidden = false;
-      // clean old
       if(current){ scene.remove(current); current.geometry.dispose(); current.material.dispose(); current=null; }
       const geo = await new Promise((res,rej)=> loader.load(url, res, undefined, rej));
       geo.computeVertexNormals();
@@ -196,10 +160,8 @@
       const bb = geo.boundingBox;
       const center = new THREE.Vector3().addVectors(bb.min, bb.max).multiplyScalar(0.5);
       geo.translate(-center.x, -center.y, -center.z);
-      scene.add(mesh);
-      current = mesh;
+      scene.add(mesh); current = mesh;
 
-      // fit camera
       const size = new THREE.Vector3().subVectors(bb.max, bb.min);
       const maxDim = Math.max(size.x,size.y,size.z);
       el.tagSize.textContent = `${maxDim.toFixed(1)} mm max span`;
@@ -209,47 +171,41 @@
       el.spin.hidden = true;
     }
 
-    // ====== Data loading & mapping ======
+    // ---------- Data / UI ----------
     function windowsPathToRepo(path){
-      // If already relative, return as-is.
+      if(!path) return "";
       if(/^\.{0,2}\//.test(path) || path.startsWith('FastenersLib/')) return path;
       const m = path.match(/(Nuts|Bolts|Washers|Screws|Rivets|Pins)[\\\/].*$/i);
-      if(!m) return path;
-      return "FastenersLib/" + m[0].replace(/\\/g,'/');
+      return m ? ("FastenersLib/" + m[0].replace(/\\/g,'/')) : path;
     }
 
     async function loadCSVs(){
       const rows = [];
       for(const url of MANIFESTS){
-        const res = await fetch(url);
-        const txt = await res.text();
-        const parsed = Papa.parse(txt, {header:true, skipEmptyLines:true});
-        for(const r of parsed.data){
-          if(!r.family || !r.subtype || !r.standard || !r.diameter) continue;
-          r.path_stl  = r.path_stl  ? windowsPathToRepo(r.path_stl)  : "";
-          r.path_step = r.path_step ? windowsPathToRepo(r.path_step) : "";
-          rows.push(r);
-        }
+        try{
+          const res = await fetch(url);
+          if(!res.ok) { console.warn('Missing CSV:', url); continue; }
+          const txt = await res.text();
+          const parsed = Papa.parse(txt, {header:true, skipEmptyLines:true});
+          for(const r of parsed.data){
+            if(!r.family || !r.subtype || !r.standard || !r.diameter) continue;
+            r.path_stl  = windowsPathToRepo(r.path_stl);
+            r.path_step = windowsPathToRepo(r.path_step);
+            rows.push(r);
+          }
+        }catch(e){ console.error('CSV load error:', url, e); }
       }
       return rows;
     }
 
-    // build → Family → Subtype → Standard → Diameter → [rows]
     function buildIndex(rows){
       const idx = new Map();
       for(const r of rows){
-        const fam = r.family.trim();
-        const sub = r.subtype.trim();
-        const std = r.standard.trim();
-        const dia = r.diameter.trim();
-
+        const fam = r.family.trim(), sub = r.subtype.trim(), std = r.standard.trim(), dia = r.diameter.trim();
         if(!idx.has(fam)) idx.set(fam, new Map());
-        const m1 = idx.get(fam);
-        if(!m1.has(sub)) m1.set(sub, new Map());
-        const m2 = m1.get(sub);
-        if(!m2.has(std)) m2.set(std, new Map());
-        const m3 = m2.get(std);
-        if(!m3.has(dia)) m3.set(dia, []);
+        const m1 = idx.get(fam); if(!m1.has(sub)) m1.set(sub, new Map());
+        const m2 = m1.get(sub);  if(!m2.has(std)) m2.set(std, new Map());
+        const m3 = m2.get(std);  if(!m3.has(dia)) m3.set(dia, []);
         m3.get(dia).push(r);
       }
       return idx;
@@ -257,21 +213,14 @@
 
     function fillSelect(sel, items){
       sel.innerHTML = "";
-      for(const it of items){
-        const opt=document.createElement('option');
-        opt.value=it; opt.textContent=it; sel.appendChild(opt);
-      }
+      for(const it of items){ const o=document.createElement('option'); o.value=it;o.textContent=it; sel.appendChild(o); }
     }
-
     function updateChips(){
       el.chips.innerHTML="";
-      const add = t=>{const c=document.createElement('div'); c.className='chip'; c.textContent=t; el.chips.appendChild(c);}
-      add(el.family.value||"—");
-      add(el.subtype.value||"—");
-      add(el.standard.value||"—");
-      add(el.diameter.value||"—");
+      [el.family.value, el.subtype.value, el.standard.value, el.diameter.value].forEach(t=>{
+        const c=document.createElement('div'); c.className='chip'; c.textContent=t||"—"; el.chips.appendChild(c);
+      });
     }
-
     function updateInfo(row){
       const title = row.name_stem || `${row.family} ${row.subtype} ${row.standard} ${row.diameter}`;
       el.title.textContent = title;
@@ -284,9 +233,9 @@
       el.dlSTEP.href = row.path_step || "#";
     }
 
-    function filterRows(rows, query){
-      if(!query) return rows;
-      const q = query.toLowerCase();
+    function filterRows(rows, q){
+      if(!q) return rows;
+      q = q.toLowerCase();
       return rows.filter(r =>
         (r.family||"").toLowerCase().includes(q) ||
         (r.subtype||"").toLowerCase().includes(q) ||
@@ -296,12 +245,13 @@
       );
     }
 
-    // ====== Boot ======
-    let ALL = [], INDEX = null;
+    let ALL=[], INDEX=null;
 
     function refreshSelectors(){
       const fams = [...INDEX.keys()].sort();
       fillSelect(el.family, fams);
+      if(!fams.length){ el.hint.textContent="No data loaded. Add your CSVs to MANIFESTS."; return; }
+      el.hint.textContent="";
       refreshSubtype();
     }
     function refreshSubtype(){
@@ -310,7 +260,7 @@
       refreshStandard();
     }
     function refreshStandard(){
-      const m2 = (INDEX.get(el.family.value) || new Map()).get(el.subtype.value) || new Map();
+      const m2 = (INDEX.get(el.family.value)||new Map()).get(el.subtype.value) || new Map();
       fillSelect(el.standard, [...m2.keys()].sort());
       refreshDiameter();
     }
@@ -320,49 +270,37 @@
       updateChips();
       showCurrent();
     }
-
     function showCurrent(){
-      // rows at the chosen leaf
-      const rows = ((INDEX.get(el.family.value)||new Map())
-                   .get(el.subtype.value)||new Map())
-                   .get(el.standard.value) || new Map();
-
+      const rows = ((INDEX.get(el.family.value)||new Map()).get(el.subtype.value)||new Map()).get(el.standard.value) || new Map();
       const list = rows.get(el.diameter.value) || [];
       el.tagCount.textContent = `${list.length} items`;
-
       if(!list.length) return;
-
-      // pick the first row (you can expand to list multiple variants later)
       const row = list[0];
       updateInfo(row);
       if(row.path_stl){
-        showSTL(row.path_stl).catch(err=>{
-          console.error(err);
-          alert("Failed to load STL. Check that the path exists in the repo.");
+        showSTL(row.path_stl).catch(e=>{
+          console.error(e);
+          alert("Failed to load STL. Check path in CSV and repo structure.");
         });
       }
     }
 
-    // events
+    // Events
     el.family.addEventListener('change', refreshSubtype);
     el.subtype.addEventListener('change', refreshStandard);
     el.standard.addEventListener('change', refreshDiameter);
     el.diameter.addEventListener('change', showCurrent);
     el.search.addEventListener('input', ()=>{
-      const filtered = filterRows(ALL, el.search.value);
-      INDEX = buildIndex(filtered);
+      INDEX = buildIndex( filterRows(ALL, el.search.value) );
       refreshSelectors();
     });
-    el.theme.addEventListener('click', ()=>{
-      document.body.classList.toggle('light');
-      resize();
-    });
+    el.theme.addEventListener('click', ()=>{ document.body.classList.toggle('light'); resize(); });
 
-    // Go
+    // Start
     (async function start(){
-      await init3D();
+      init3D();
       ALL = await loadCSVs();
-      if(!ALL.length){ alert("No data rows found. Check MANIFESTS paths."); return; }
+      if(!ALL.length){ el.hint.textContent="No rows found. Check MANIFESTS paths."; return; }
       INDEX = buildIndex(ALL);
       refreshSelectors();
     })();
