@@ -1,704 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fastener Viewer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        .container {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            height: 100vh;
-            gap: 0;
-        }
-        
-        .sidebar {
-            background: white;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            overflow-y: auto;
-            padding: 20px;
-        }
-        
-        .viewer-area {
-            background: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        
-        h1 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 24px;
-            text-align: center;
-        }
-        
-        .category {
-            margin-bottom: 15px;
-        }
-        
-        .category-header {
-            background: #667eea;
-            color: white;
-            padding: 12px 15px;
-            cursor: pointer;
-            border-radius: 8px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-        
-        .category-header:hover {
-            background: #5568d3;
-        }
-        
-        .category-header.active {
-            background: #764ba2;
-        }
-        
-        .subcategory {
-            margin-left: 15px;
-            margin-top: 8px;
-        }
-        
-        .subcategory-header {
-            background: #e0e7ff;
-            padding: 10px 12px;
-            cursor: pointer;
-            border-radius: 6px;
-            font-weight: 500;
-            margin-bottom: 5px;
-            transition: background 0.3s;
-        }
-        
-        .subcategory-header:hover {
-            background: #c7d2fe;
-        }
-        
-        .subcategory-header.active {
-            background: #a5b4fc;
-        }
-        
-        .fastener-list {
-            display: none;
-            margin: 8px 0 0 15px;
-        }
-        
-        .fastener-list.show {
-            display: block;
-        }
-        
-        .fastener-item {
-            padding: 8px 12px;
-            margin: 3px 0;
-            background: #f9fafb;
-            border-left: 3px solid #667eea;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-        
-        .fastener-item:hover {
-            background: #f3f4f6;
-            transform: translateX(5px);
-        }
-        
-        .fastener-item.selected {
-            background: #ddd6fe;
-            border-left-color: #764ba2;
-            font-weight: 600;
-        }
-        
-        #viewer {
-            flex: 1;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            position: relative;
-        }
-        
-        #viewerCanvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        
-        .info-panel {
-            background: white;
-            padding: 20px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .info-panel h2 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-        
-        .info-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .info-item {
-            background: #f9fafb;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .info-item label {
-            font-weight: 600;
-            color: #555;
-            font-size: 12px;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .info-item value {
-            font-size: 16px;
-            color: #333;
-        }
-        
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            z-index: 10;
-        }
-        
-        .spinner {
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .instructions {
-            background: #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #f59e0b;
-        }
-        
-        .instructions h3 {
-            color: #92400e;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .instructions p {
-            color: #78350f;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        
-        .search-box {
-            margin-bottom: 15px;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        
-        .search-box input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
+  <meta charset="utf-8"/>
+  <title>Fasteners Viewer — Nima</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    :root{
+      --bg:#0e1116;--panel:#161a22;--text:#e6eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#232837;
+      --chip:#1f2532;--chip-text:#dbe4ff;--ok:#46d37a;--warn:#f8c35e;
+    }
+    .light{
+      --bg:#ffffff;--panel:#f7f9fc;--text:#0c1321;--muted:#5a667a;--accent:#2563eb;--line:#e5e9f2;
+      --chip:#eef2f8;--chip-text:#0c1321;--ok:#0ea965;--warn:#b7791f;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:var(--bg); color:var(--text); display:flex; flex-direction:column; font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    header{display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--panel)}
+    header .brand{display:flex; gap:10px; align-items:center; font-weight:700}
+    header .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    header .actions{display:flex; gap:10px; align-items:center}
+    .btn{border:1px solid var(--line); background:transparent; color:var(--text); padding:6px 10px; border-radius:10px; cursor:pointer}
+    .btn:hover{border-color:var(--accent)}
+    main{flex:1; display:grid; grid-template-columns:320px 1fr; min-height:0}
+    aside{border-right:1px solid var(--line); background:var(--panel); padding:14px; overflow:auto}
+    .field{margin-bottom:12px}
+    label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px}
+    select,input[type="text"]{width:100%; padding:8px 10px; background:#0000; border:1px solid var(--line); color:var(--text); border-radius:8px; outline:none}
+    select:focus,input:focus{border-color:var(--accent)}
+    .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px}
+    .chip{background:var(--chip); color:var(--chip-text); padding:4px 8px; border-radius:999px; font-size:12px}
+    .note{color:var(--muted); font-size:12px; margin-top:6px}
 
-        .viewer-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #333;
-            z-index: 5;
-        }
-
-        .viewer-controls div {
-            margin: 3px 0;
-        }
-    </style>
+    .viewer-wrap{position:relative}
+    canvas#viewer{position:absolute; inset:0; width:100%; height:100%}
+    .overlay{position:absolute; top:10px; right:10px; display:flex; gap:10px}
+    .tag{padding:4px 8px; border-radius:8px; background:var(--chip); font-size:12px; color:var(--chip-text); border:1px solid var(--line)}
+    .card{position:absolute; left:10px; bottom:10px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:10px; max-width:420px}
+    .card h3{margin:0 0 6px 0; font-size:14px}
+    .kv{display:grid; grid-template-columns:110px 1fr; gap:6px; font-size:13px}
+    .row{display:flex; gap:8px; margin-top:8px}
+    .link{color:var(--accent); text-decoration:none; border:1px solid var(--line); padding:6px 10px; border-radius:8px}
+    .link:hover{border-color:var(--accent)}
+    .spinner{position:absolute; inset:0; display:grid; place-items:center; pointer-events:none}
+    .spinner .s{width:32px; height:32px; border:3px solid var(--line); border-top-color:var(--accent); border-radius:50%; animation:spin 0.9s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media (max-width: 900px){main{grid-template-columns:1fr; grid-template-rows:auto 1fr} aside{border-right:none; border-bottom:1px solid var(--line)}}
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <h1>🔩 Fastener Library</h1>
-            
-            <div class="instructions">
-                <h3>How to Use:</h3>
-                <p>1. Click a category (Bolts/Nuts)<br>
-                2. Select a type and standard<br>
-                3. Choose a size to view the 3D model<br>
-                4. Drag to rotate, scroll to zoom</p>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search fastener (e.g., M6x20)...">
-            </div>
-            
-            <div id="categoryList"></div>
-        </div>
-        
-        <div class="viewer-area">
-            <div id="viewer">
-                <canvas id="viewerCanvas"></canvas>
-                <div class="viewer-controls">
-                    <div>🖱️ Drag to rotate</div>
-                    <div>🔍 Scroll to zoom</div>
-                </div>
-            </div>
-            <div class="info-panel">
-                <h2 id="fastenerTitle">Select a fastener to view</h2>
-                <div class="info-details" id="infoDetails"></div>
-            </div>
-        </div>
+<body class="light">
+  <header>
+    <div class="brand"><div class="dot"></div> Fasteners Viewer</div>
+    <div class="actions">
+      <button id="theme" class="btn" title="Toggle theme">🌗 Theme</button>
+      <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
     </div>
+  </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Fastener database structure
-        const fastenerData = {
-            "Bolts": {
-                "Flat_Head": {
-                    "ISO10642": ["M4x10", "M4x12", "M4x16", "M4x20", "M4x25", "M4x30", "M5x12", "M5x16", "M5x20", "M5x25", "M5x30", "M5x35", "M5x40", "M6x12", "M6x16", "M6x20", "M6x25", "M6x30", "M6x35", "M6x40", "M6x50", "M6x60", "M8x16", "M8x20", "M8x25", "M8x30", "M8x35", "M8x40", "M8x50", "M8x60", "M8x80", "M10x20", "M10x25", "M10x30", "M10x35", "M10x40", "M10x50", "M10x60", "M10x70", "M10x80", "M10x100", "M12x25", "M12x30", "M12x35", "M12x40", "M12x50", "M12x60", "M12x70", "M12x80", "M12x100", "M16x30", "M16x35", "M16x40", "M16x50", "M16x60", "M16x70", "M16x80", "M16x100"]
-                },
-                "Hex_Head": {
-                    "ISO4014": ["M6x16", "M6x20", "M6x25", "M6x30", "M6x35", "M6x40", "M6x50", "M6x60", "M8x16", "M8x20", "M8x25", "M8x30", "M8x35", "M8x40", "M8x50", "M8x60", "M8x80", "M10x20", "M10x25", "M10x30", "M10x35", "M10x40", "M10x50", "M10x60", "M10x70", "M10x80", "M10x100", "M12x25", "M12x30", "M12x35", "M12x40", "M12x50", "M12x60", "M12x70", "M12x80", "M12x100", "M16x30", "M16x35", "M16x40", "M16x50", "M16x60", "M16x70", "M16x80", "M16x100", "M16x120", "M20x35", "M20x40", "M20x50", "M20x60", "M20x80", "M20x100", "M20x120"],
-                    "ISO4017": ["M6x16", "M6x20", "M6x25", "M6x30", "M6x35", "M6x40", "M6x50", "M6x60", "M8x16", "M8x20", "M8x25", "M8x30", "M8x35", "M8x40", "M8x50", "M8x60", "M8x80", "M10x20", "M10x25", "M10x30", "M10x35", "M10x40", "M10x50", "M10x60", "M10x70", "M10x80", "M10x100", "M12x25", "M12x30", "M12x35", "M12x40", "M12x50", "M12x60", "M12x70", "M12x80", "M12x100", "M16x30", "M16x35", "M16x40", "M16x50", "M16x60", "M16x70", "M16x80", "M16x100", "M16x120", "M20x35", "M20x40", "M20x50", "M20x60", "M20x80", "M20x100", "M20x120"]
-                },
-                "Socket_Head": {
-                    "ISO4762": ["M6x16", "M6x20", "M6x25", "M6x30", "M6x35", "M6x40", "M6x50", "M6x60", "M8x16", "M8x20", "M8x25", "M8x30", "M8x35", "M8x40", "M8x50", "M8x60", "M8x80", "M10x20", "M10x25", "M10x30", "M10x35", "M10x40", "M10x50", "M10x60", "M10x70", "M10x80", "M10x100", "M12x25", "M12x30", "M12x35", "M12x40", "M12x50", "M12x60", "M12x70", "M12x80", "M12x100", "M16x30", "M16x35", "M16x40", "M16x50", "M16x60", "M16x70", "M16x80", "M16x100", "M16x120", "M20x35", "M20x40", "M20x50", "M20x60", "M20x80", "M20x100", "M20x120"]
-                }
-            },
-            "Nuts": {
-                "Flange": {
-                    "ISO4161": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"]
-                },
-                "Hex": {
-                    "DIN934": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"]
-                },
-                "Hex_Thin": {
-                    "ISO4035": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"]
-                },
-                "Nyloc": {
-                    "DIN985": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"],
-                    "ISO10511": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"],
-                    "ISO10512": ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"]
-                }
-            }
-        };
+  <main>
+    <aside>
+      <div class="field">
+        <label>Search</label>
+        <input id="search" type="text" placeholder="Type to filter (e.g. M8, ISO4035, nut)…">
+      </div>
 
-        // Three.js setup
-        let scene, camera, renderer, currentModel;
-        let mouseDown = false;
-        let mouseX = 0, mouseY = 0;
-        
-        function initViewer() {
-            const canvas = document.getElementById('viewerCanvas');
-            const viewerEl = document.getElementById('viewer');
-            
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x1e293b);
-            
-            camera = new THREE.PerspectiveCamera(
-                50,
-                viewerEl.clientWidth / viewerEl.clientHeight,
-                0.1,
-                1000
-            );
-            camera.position.set(0, 0, 50);
-            camera.lookAt(0, 0, 0);
-            
-            renderer = new THREE.WebGLRenderer({ 
-                canvas: canvas,
-                antialias: true,
-                alpha: false
-            });
-            renderer.setSize(viewerEl.clientWidth, viewerEl.clientHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-            scene.add(ambientLight);
-            
-            const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
-            light1.position.set(1, 1, 1);
-            scene.add(light1);
-            
-            const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
-            light2.position.set(-1, -1, -1);
-            scene.add(light2);
-            
-            const light3 = new THREE.DirectionalLight(0xffffff, 0.3);
-            light3.position.set(0, 1, 0);
-            scene.add(light3);
-            
-            const gridHelper = new THREE.GridHelper(100, 20, 0x444444, 0x222222);
-            scene.add(gridHelper);
-            
-            setupControls();
-            animate();
-            
-            window.addEventListener('resize', onWindowResize);
+      <div class="field">
+        <label>Family</label>
+        <select id="family"></select>
+      </div>
+
+      <div class="field">
+        <label>Type</label>
+        <select id="subtype"></select>
+      </div>
+
+      <div class="field">
+        <label>Standard</label>
+        <select id="standard"></select>
+      </div>
+
+      <div class="field">
+        <label>Diameter</label>
+        <select id="diameter"></select>
+      </div>
+
+      <div class="chips" id="chips"></div>
+      <div class="note">Drag = rotate · Wheel = zoom · Right-drag = pan</div>
+    </aside>
+
+    <section class="viewer-wrap">
+      <div class="spinner" id="spin" hidden><div class="s"></div></div>
+      <div class="overlay">
+        <div class="tag" id="tagCount">0 items</div>
+        <div class="tag" id="tagSize">—</div>
+      </div>
+      <canvas id="viewer"></canvas>
+
+      <div class="card" id="info">
+        <h3 id="title">—</h3>
+        <div class="kv">
+          <div>Family</div><div id="iFamily">—</div>
+          <div>Type</div><div id="iSubtype">—</div>
+          <div>Standard</div><div id="iStandard">—</div>
+          <div>Diameter</div><div id="iDiameter">—</div>
+          <div>Span (mm)</div><div id="iSpan">—</div>
+        </div>
+        <div class="row">
+          <a id="dlSTL" class="link" download>⬇ STL</a>
+          <a id="dlSTEP" class="link" download>⬇ STEP</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CSV parser -->
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <!-- Three.js + STLLoader -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
+
+  <script type="module">
+    // ====== EDIT THIS LIST: add your manifest CSVs here (relative paths in your repo) ======
+    const MANIFESTS = [
+      // example: Hex Thin nuts (your successful run)
+      "FastenersLib/Nuts/Hex_Thin/ISO4035/manifest_Hex_Thin_ISO4035.csv",
+      // add more as you generate them:
+      // "FastenersLib/Nuts/Hex/DIN934/manifest_Hex_DIN934.csv",
+      // "FastenersLib/Nuts/Flange/ISO4161/manifest_Flange_ISO4161.csv",
+      // "FastenersLib/Bolts/Socket_Head/ISO4762/manifest_Socket_Head_ISO4762.csv",
+    ];
+
+    // ====== UI elements ======
+    const el = {
+      theme:  document.getElementById('theme'),
+      search: document.getElementById('search'),
+      family: document.getElementById('family'),
+      subtype:document.getElementById('subtype'),
+      standard:document.getElementById('standard'),
+      diameter:document.getElementById('diameter'),
+      chips:  document.getElementById('chips'),
+      tagCount:document.getElementById('tagCount'),
+      tagSize: document.getElementById('tagSize'),
+      title:  document.getElementById('title'),
+      iFamily:document.getElementById('iFamily'),
+      iSubtype:document.getElementById('iSubtype'),
+      iStandard:document.getElementById('iStandard'),
+      iDiameter:document.getElementById('iDiameter'),
+      iSpan:   document.getElementById('iSpan'),
+      dlSTL:   document.getElementById('dlSTL'),
+      dlSTEP:  document.getElementById('dlSTEP'),
+      spin:    document.getElementById('spin'),
+      canvas:  document.getElementById('viewer'),
+    };
+
+    // ====== Three.js scene ======
+    const renderer = new THREE.WebGLRenderer({ canvas: el.canvas, antialias:true });
+    let scene, camera, controls, current;
+    function init3D(){
+      resize();
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(getComputedStyle(document.body).getPropertyValue('--panel'));
+
+      camera = new THREE.PerspectiveCamera(45, el.canvas.clientWidth/el.canvas.clientHeight, 0.1, 5000);
+      camera.position.set(140,110,160);
+
+      controls = new (await import('https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js')).OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      scene.add(new THREE.HemisphereLight(0xffffff,0x303030,0.9));
+      const d = new THREE.DirectionalLight(0xffffff,0.9); d.position.set(100,120,80); scene.add(d);
+
+      requestAnimationFrame(tick);
+      window.addEventListener('resize', resize);
+    }
+    function resize(){
+      const w = el.canvas.clientWidth || el.canvas.parentElement.clientWidth;
+      const h = el.canvas.clientHeight || el.canvas.parentElement.clientHeight;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+      renderer.setSize(w,h,false);
+      if(camera){ camera.aspect = w/h; camera.updateProjectionMatrix(); }
+    }
+    function tick(){ controls && controls.update(); renderer.render(scene,camera); requestAnimationFrame(tick); }
+
+    const loader = new THREE.STLLoader();
+    async function showSTL(url){
+      el.spin.hidden = false;
+      // clean old
+      if(current){ scene.remove(current); current.geometry.dispose(); current.material.dispose(); current=null; }
+      const geo = await new Promise((res,rej)=> loader.load(url, res, undefined, rej));
+      geo.computeVertexNormals();
+      const mat = new THREE.MeshStandardMaterial({ color:0x7a7f86, metalness:.4, roughness:.6 });
+      const mesh = new THREE.Mesh(geo, mat);
+      geo.computeBoundingBox();
+      const bb = geo.boundingBox;
+      const center = new THREE.Vector3().addVectors(bb.min, bb.max).multiplyScalar(0.5);
+      geo.translate(-center.x, -center.y, -center.z);
+      scene.add(mesh);
+      current = mesh;
+
+      // fit camera
+      const size = new THREE.Vector3().subVectors(bb.max, bb.min);
+      const maxDim = Math.max(size.x,size.y,size.z);
+      el.tagSize.textContent = `${maxDim.toFixed(1)} mm max span`;
+      const dist = maxDim*2.0 + 20;
+      camera.position.set(dist, dist*0.75, dist);
+      controls.target.set(0,0,0); controls.update();
+      el.spin.hidden = true;
+    }
+
+    // ====== Data loading & mapping ======
+    function windowsPathToRepo(path){
+      // If already relative, return as-is.
+      if(/^\.{0,2}\//.test(path) || path.startsWith('FastenersLib/')) return path;
+      const m = path.match(/(Nuts|Bolts|Washers|Screws|Rivets|Pins)[\\\/].*$/i);
+      if(!m) return path;
+      return "FastenersLib/" + m[0].replace(/\\/g,'/');
+    }
+
+    async function loadCSVs(){
+      const rows = [];
+      for(const url of MANIFESTS){
+        const res = await fetch(url);
+        const txt = await res.text();
+        const parsed = Papa.parse(txt, {header:true, skipEmptyLines:true});
+        for(const r of parsed.data){
+          if(!r.family || !r.subtype || !r.standard || !r.diameter) continue;
+          r.path_stl  = r.path_stl  ? windowsPathToRepo(r.path_stl)  : "";
+          r.path_step = r.path_step ? windowsPathToRepo(r.path_step) : "";
+          rows.push(r);
         }
-        
-        function setupControls() {
-            const canvas = document.getElementById('viewerCanvas');
-            
-            canvas.addEventListener('mousedown', (e) => {
-                mouseDown = true;
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            canvas.addEventListener('mousemove', (e) => {
-                if (!mouseDown || !currentModel) return;
-                
-                const deltaX = e.clientX - mouseX;
-                const deltaY = e.clientY - mouseY;
-                
-                currentModel.rotation.y += deltaX * 0.01;
-                currentModel.rotation.x += deltaY * 0.01;
-                
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            canvas.addEventListener('mouseup', () => {
-                mouseDown = false;
-            });
-            
-            canvas.addEventListener('mouseleave', () => {
-                mouseDown = false;
-            });
-            
-            canvas.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                const zoomSpeed = 0.1;
-                camera.position.z += e.deltaY * zoomSpeed;
-                camera.position.z = Math.max(10, Math.min(200, camera.position.z));
-            });
-        }
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            if (!mouseDown && currentModel) {
-                currentModel.rotation.y += 0.003;
-            }
-            
-            renderer.render(scene, camera);
-        }
-        
-        function onWindowResize() {
-            const viewerEl = document.getElementById('viewer');
-            camera.aspect = viewerEl.clientWidth / viewerEl.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(viewerEl.clientWidth, viewerEl.clientHeight);
-        }
-        
-        THREE.STLLoader = function() {};
-        THREE.STLLoader.prototype = {
-            load: function(url, onLoad, onProgress, onError) {
-                const loader = new THREE.FileLoader();
-                loader.setResponseType('arraybuffer');
-                loader.load(url, (data) => {
-                    try {
-                        const geometry = this.parse(data);
-                        onLoad(geometry);
-                    } catch (e) {
-                        if (onError) onError(e);
-                    }
-                }, onProgress, onError);
-            },
-            parse: function(data) {
-                const view = new DataView(data);
-                const isASCII = this.isASCII(new Uint8Array(data));
-                
-                if (isASCII) {
-                    return this.parseASCII(new TextDecoder().decode(data));
-                } else {
-                    return this.parseBinary(view);
-                }
-            },
-            isASCII: function(data) {
-                const header = String.fromCharCode.apply(null, data.slice(0, 5));
-                return header === 'solid';
-            },
-            parseBinary: function(view) {
-                const faces = view.getUint32(80, true);
-                const geometry = new THREE.BufferGeometry();
-                const vertices = [];
-                const normals = [];
-                
-                for (let i = 0; i < faces; i++) {
-                    const offset = 84 + i * 50;
-                    
-                    const nx = view.getFloat32(offset, true);
-                    const ny = view.getFloat32(offset + 4, true);
-                    const nz = view.getFloat32(offset + 8, true);
-                    
-                    for (let j = 0; j < 3; j++) {
-                        const vOffset = offset + 12 + j * 12;
-                        vertices.push(
-                            view.getFloat32(vOffset, true),
-                            view.getFloat32(vOffset + 4, true),
-                            view.getFloat32(vOffset + 8, true)
-                        );
-                        normals.push(nx, ny, nz);
-                    }
-                }
-                
-                geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-                geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
-                
-                return geometry;
-            },
-            parseASCII: function(data) {
-                const geometry = new THREE.BufferGeometry();
-                const vertices = [];
-                const normals = [];
-                
-                const patternFace = /facet\s+normal\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+outer\s+loop\s+vertex\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+vertex\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+vertex\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)\s+([-+]?\d+\.?\d*([eE][-+]?\d+)?)/g;
-                
-                let result;
-                while ((result = patternFace.exec(data)) !== null) {
-                    const nx = parseFloat(result[1]);
-                    const ny = parseFloat(result[3]);
-                    const nz = parseFloat(result[5]);
-                    
-                    for (let i = 0; i < 3; i++) {
-                        vertices.push(
-                            parseFloat(result[7 + i * 6]),
-                            parseFloat(result[9 + i * 6]),
-                            parseFloat(result[11 + i * 6])
-                        );
-                        normals.push(nx, ny, nz);
-                    }
-                }
-                
-                geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-                geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
-                
-                return geometry;
-            }
-        };
-        
-        function loadSTL(path, name, standard, category, subcategory) {
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'loading';
-            loadingDiv.innerHTML = '<div class="spinner"></div>Loading model...';
-            document.getElementById('viewer').appendChild(loadingDiv);
-            
-            const loader = new THREE.STLLoader();
-            loader.load(path, (geometry) => {
-                loadingDiv.remove();
-                
-                if (currentModel) {
-                    scene.remove(currentModel);
-                }
-                
-                geometry.computeVertexNormals();
-                geometry.computeBoundingBox();
-                
-                const material = new THREE.MeshPhongMaterial({
-                    color: 0x00aaff,
-                    specular: 0x111111,
-                    shininess: 200,
-                    flatShading: false
-                });
-                
-                currentModel = new THREE.Mesh(geometry, material);
-                
-                const box = geometry.boundingBox;
-                const center = new THREE.Vector3();
-                box.getCenter(center);
-                geometry.translate(-center.x, -center.y, -center.z);
-                
-                const size = new THREE.Vector3();
-                box.getSize(size);
-                const maxDim = Math.max(size.x, size.y, size.z);
-                const scale = 30 / maxDim;
-                currentModel.scale.set(scale, scale, scale);
-                
-                scene.add(currentModel);
-                
-                updateInfo(name, standard, category, subcategory);
-            }, undefined, (error) => {
-                loadingDiv.remove();
-                console.error('Error loading STL:', error);
-                alert('Could not load model. Make sure the file path is correct:\n' + path);
-            });
-        }
-        
-        function updateInfo(name, standard, category, subcategory) {
-            document.getElementById('fastenerTitle').textContent = name;
-            
-            const details = document.getElementById('infoDetails');
-            const displaySubcategory = subcategory.replace('_', ' ');
-            details.innerHTML = `
-                <div class="info-item">
-                    <label>Category</label>
-                    <value>${category}</value>
-                </div>
-                <div class="info-item">
-                    <label>Type</label>
-                    <value>${displaySubcategory}</value>
-                </div>
-                <div class="info-item">
-                    <label>Standard</label>
-                    <value>${standard}</value>
-                </div>
-                <div class="info-item">
-                    <label>Size</label>
-                    <value>${name.match(/M\d+x?\d*/)?.[0] || name.match(/M\d+/)?.[0] || 'N/A'}</value>
-                </div>
-            `;
-        }
-        
-        function buildUI() {
-            const categoryList = document.getElementById('categoryList');
-            
-            Object.entries(fastenerData).forEach(([category, types]) => {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'category';
-                
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'category-header';
-                categoryHeader.innerHTML = `${category} <span>▼</span>`;
-                categoryDiv.appendChild(categoryHeader);
-                
-                const subcategoriesDiv = document.createElement('div');
-                subcategoriesDiv.style.display = 'none';
-                
-                Object.entries(types).forEach(([subcategory, standards]) => {
-                    const subcategoryDiv = document.createElement('div');
-                    subcategoryDiv.className = 'subcategory';
-                    
-                    const subcategoryHeader = document.createElement('div');
-                    subcategoryHeader.className = 'subcategory-header';
-                    subcategoryHeader.textContent = subcategory.replace('_', ' ');
-                    subcategoryDiv.appendChild(subcategoryHeader);
-                    
-                    Object.entries(standards).forEach(([standard, sizes]) => {
-                        const standardDiv = document.createElement('div');
-                        standardDiv.className = 'subcategory';
-                        standardDiv.style.marginLeft = '30px';
-                        
-                        const standardHeader = document.createElement('div');
-                        standardHeader.className = 'subcategory-header';
-                        standardHeader.textContent = standard;
-                        standardHeader.style.background = '#f3f4f6';
-                        standardDiv.appendChild(standardHeader);
-                        
-                        const fastenerList = document.createElement('div');
-                        fastenerList.className = 'fastener-list';
-                        
-                        sizes.forEach(size => {
-                            const item = document.createElement('div');
-                            item.className = 'fastener-item';
-                            item.textContent = size;
-                            item.onclick = () => {
-                                document.querySelectorAll('.fastener-item').forEach(el => el.classList.remove('selected'));
-                                item.classList.add('selected');
-                                
-                                const path = generateSTLPath(category, subcategory, standard, size);
-                                const displayName = generateDisplayName(subcategory, size, standard);
-                                loadSTL(path, displayName, standard, category, subcategory);
-                            };
-                            fastenerList.appendChild(item);
-                        });
-                        
-                        standardHeader.onclick = () => {
-                            fastenerList.classList.toggle('show');
-                        };
-                        
-                        standardDiv.appendChild(fastenerList);
-                        subcategoryDiv.appendChild(standardDiv);
-                    });
-                    
-                    subcategoriesDiv.appendChild(subcategoryDiv);
-                });
-                
-                categoryHeader.onclick = () => {
-                    const isVisible = subcategoriesDiv.style.display === 'block';
-                    subcategoriesDiv.style.display = isVisible ? 'none' : 'block';
-                    categoryHeader.classList.toggle('active');
-                };
-                
-                categoryDiv.appendChild(subcategoriesDiv);
-                categoryList.appendChild(categoryDiv);
-            });
-        }
-        
-        function generateSTLPath(category, subcategory, standard, size) {
-            let prefix = '';
-            if (subcategory === 'Flat_Head') prefix = 'FlatHead';
-            else if (subcategory === 'Hex_Head') prefix = 'HexHead';
-            else if (subcategory === 'Socket_Head') prefix = 'SHCS';
-            else if (subcategory === 'Flange') prefix = 'FlangeNut';
-            else if (subcategory === 'Hex') prefix = 'HexNut';
-            else if (subcategory === 'Hex_Thin') prefix = 'HexThinNut';
-            else if (subcategory === 'Nyloc') prefix = 'NylocNut';
-            
-            const filename = `${prefix}_${size}_${standard}.stl`;
-            return `${category}/${subcategory}/${standard}/STL/${filename}`;
-        }
-        
-        function generateDisplayName(subcategory, size, standard) {
-            const displaySubcategory = subcategory.replace('_', ' ');
-            return `${displaySubcategory} ${size} (${standard})`;
-        }
-        
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            document.querySelectorAll('.fastener-item').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(searchTerm) ? 'block' : 'none';
-            });
+      }
+      return rows;
+    }
+
+    // build → Family → Subtype → Standard → Diameter → [rows]
+    function buildIndex(rows){
+      const idx = new Map();
+      for(const r of rows){
+        const fam = r.family.trim();
+        const sub = r.subtype.trim();
+        const std = r.standard.trim();
+        const dia = r.diameter.trim();
+
+        if(!idx.has(fam)) idx.set(fam, new Map());
+        const m1 = idx.get(fam);
+        if(!m1.has(sub)) m1.set(sub, new Map());
+        const m2 = m1.get(sub);
+        if(!m2.has(std)) m2.set(std, new Map());
+        const m3 = m2.get(std);
+        if(!m3.has(dia)) m3.set(dia, []);
+        m3.get(dia).push(r);
+      }
+      return idx;
+    }
+
+    function fillSelect(sel, items){
+      sel.innerHTML = "";
+      for(const it of items){
+        const opt=document.createElement('option');
+        opt.value=it; opt.textContent=it; sel.appendChild(opt);
+      }
+    }
+
+    function updateChips(){
+      el.chips.innerHTML="";
+      const add = t=>{const c=document.createElement('div'); c.className='chip'; c.textContent=t; el.chips.appendChild(c);}
+      add(el.family.value||"—");
+      add(el.subtype.value||"—");
+      add(el.standard.value||"—");
+      add(el.diameter.value||"—");
+    }
+
+    function updateInfo(row){
+      const title = row.name_stem || `${row.family} ${row.subtype} ${row.standard} ${row.diameter}`;
+      el.title.textContent = title;
+      el.iFamily.textContent   = row.family;
+      el.iSubtype.textContent  = row.subtype;
+      el.iStandard.textContent = row.standard;
+      el.iDiameter.textContent = row.diameter;
+      el.iSpan.textContent     = row.measured_max_span_mm || "—";
+      el.dlSTL.href  = row.path_stl || "#";
+      el.dlSTEP.href = row.path_step || "#";
+    }
+
+    function filterRows(rows, query){
+      if(!query) return rows;
+      const q = query.toLowerCase();
+      return rows.filter(r =>
+        (r.family||"").toLowerCase().includes(q) ||
+        (r.subtype||"").toLowerCase().includes(q) ||
+        (r.standard||"").toLowerCase().includes(q) ||
+        (r.diameter||"").toLowerCase().includes(q) ||
+        (r.name_stem||"").toLowerCase().includes(q)
+      );
+    }
+
+    // ====== Boot ======
+    let ALL = [], INDEX = null;
+
+    function refreshSelectors(){
+      const fams = [...INDEX.keys()].sort();
+      fillSelect(el.family, fams);
+      refreshSubtype();
+    }
+    function refreshSubtype(){
+      const m1 = INDEX.get(el.family.value) || new Map();
+      fillSelect(el.subtype, [...m1.keys()].sort());
+      refreshStandard();
+    }
+    function refreshStandard(){
+      const m2 = (INDEX.get(el.family.value) || new Map()).get(el.subtype.value) || new Map();
+      fillSelect(el.standard, [...m2.keys()].sort());
+      refreshDiameter();
+    }
+    function refreshDiameter(){
+      const m3 = ((INDEX.get(el.family.value)||new Map()).get(el.subtype.value)||new Map()).get(el.standard.value) || new Map();
+      fillSelect(el.diameter, [...m3.keys()].sort());
+      updateChips();
+      showCurrent();
+    }
+
+    function showCurrent(){
+      // rows at the chosen leaf
+      const rows = ((INDEX.get(el.family.value)||new Map())
+                   .get(el.subtype.value)||new Map())
+                   .get(el.standard.value) || new Map();
+
+      const list = rows.get(el.diameter.value) || [];
+      el.tagCount.textContent = `${list.length} items`;
+
+      if(!list.length) return;
+
+      // pick the first row (you can expand to list multiple variants later)
+      const row = list[0];
+      updateInfo(row);
+      if(row.path_stl){
+        showSTL(row.path_stl).catch(err=>{
+          console.error(err);
+          alert("Failed to load STL. Check that the path exists in the repo.");
         });
-        
-        // Initialize
-        initViewer();
-        buildUI();
-    </script>
+      }
+    }
+
+    // events
+    el.family.addEventListener('change', refreshSubtype);
+    el.subtype.addEventListener('change', refreshStandard);
+    el.standard.addEventListener('change', refreshDiameter);
+    el.diameter.addEventListener('change', showCurrent);
+    el.search.addEventListener('input', ()=>{
+      const filtered = filterRows(ALL, el.search.value);
+      INDEX = buildIndex(filtered);
+      refreshSelectors();
+    });
+    el.theme.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      resize();
+    });
+
+    // Go
+    (async function start(){
+      await init3D();
+      ALL = await loadCSVs();
+      if(!ALL.length){ alert("No data rows found. Check MANIFESTS paths."); return; }
+      INDEX = buildIndex(ALL);
+      refreshSelectors();
+    })();
+  </script>
 </body>
 </html>
-        
