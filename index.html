@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Fasteners Viewer — Tiles</title>
+<title>Nima’s Fasteners Viewer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
 :root{--bg:#0e1116;--panel:#161a22;--text:#e6eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#232837;--chip:#1f2532;--chip-text:#dbe4ff}
@@ -41,9 +41,7 @@ pane .inner{padding:10px}
 <body class="light">
 <header>
   <div class="brand"><div class="dot"></div>Fasteners Viewer</div>
-  <div>
-    <button id="theme" class="btn">🌗 Theme</button>
-  </div>
+  <button id="theme" class="btn">🌗 Theme</button>
 </header>
 
 <main>
@@ -87,15 +85,17 @@ pane .inner{padding:10px}
 <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
 
 <script>
-// === 1) Point to your manifests ===
-const MANIFESTS = [
-  // Example: your working nuts set
-  "FastenersLib/Nuts/Hex_Thin/ISO4035/manifest_Hex_Thin_ISO4035.csv",
-  // Add more here (bolts, washers, etc)
-  // "FastenersLib/Bolts/Socket_Head/ISO4762/manifest_Socket_Head_ISO4762.csv",
-];
+// ===== CONFIG: set your repo here =====
+const REPO = {
+  owner: "YOUR_GITHUB_USERNAME",
+  name:  "YOUR_REPO_NAME",
+  branch:"main",                 // or "gh-pages"
+  root:  "FastenersLib"          // where your folders live
+};
+// We auto-pick any CSV named like manifest_*.csv
+const CSV_MATCH = /manifest_.*\.csv$/i;
 
-// === 2) Elements ===
+// ===== Elements =====
 const E = {
   theme: document.getElementById('theme'),
   tiles: document.getElementById('tiles'),
@@ -116,7 +116,7 @@ const E = {
   canvas: document.getElementById('viewer'),
 };
 
-// === 3) Three.js scene ===
+// ===== Three.js scene =====
 const renderer = new THREE.WebGLRenderer({canvas:E.canvas,antialias:true});
 let scene,camera,controls,currentMesh;
 function init3D(){
@@ -157,33 +157,52 @@ async function showSTL(url){
   E.spin.hidden=true;
 }
 
-// === 4) CSV loading & indexing ===
+// ===== GitHub API: discover all manifest CSVs under FastenersLib =====
+async function listManifestFiles(){
+  // Get repo tree (recursive)
+  const url = `https://api.github.com/repos/${REPO.owner}/${REPO.name}/git/trees/${REPO.branch}?recursive=1`;
+  const r = await fetch(url);
+  if(!r.ok){ throw new Error(`GitHub API error ${r.status}`); }
+  const js = await r.json();
+  const tree = js.tree || [];
+  const files = tree
+    .filter(n => n.type === "blob" && n.path.startsWith(REPO.root + "/") && CSV_MATCH.test(n.path))
+    .map(n => ({
+      path: n.path,
+      raw:  `https://raw.githubusercontent.com/${REPO.owner}/${REPO.name}/${REPO.branch}/${n.path}`
+    }));
+  return files;
+}
+
 function windowsPathToRepo(p){
   if(!p) return "";
   if(/^\.{0,2}\//.test(p) || p.startsWith('FastenersLib/')) return p;
   const m = p.match(/(Nuts|Bolts|Washers|Screws|Rivets|Pins)[\\\/].*$/i);
   return m ? ("FastenersLib/" + m[0].replace(/\\/g,'/')) : p;
 }
-async function loadCSVs(){
+
+async function loadRowsFromManifestList(list){
   const rows=[];
-  for(const url of MANIFESTS){
+  for(const f of list){
     try{
-      const r = await fetch(url); if(!r.ok) continue;
-      const txt = await r.text();
+      const res = await fetch(f.raw);
+      if(!res.ok) continue;
+      const txt = await res.text();
       const parsed = Papa.parse(txt,{header:true,skipEmptyLines:true});
-      for(const x of parsed.data){
-        if(!x.family||!x.subtype||!x.standard||!x.diameter) continue;
-        x.path_stl = windowsPathToRepo(x.path_stl);
-        x.path_step= windowsPathToRepo(x.path_step);
-        x.variant  = x.variant || (x.length ? `${x.diameter}×${x.length}` : x.diameter);
-        x.groupKey = `${x.family} / ${x.subtype} / ${x.standard}`;
-        rows.push(x);
+      for(const r of parsed.data){
+        if(!r.family||!r.subtype||!r.standard||!r.diameter) continue;
+        r.path_stl  = windowsPathToRepo(r.path_stl);
+        r.path_step = windowsPathToRepo(r.path_step);
+        r.variant   = r.variant || (r.length ? `${r.diameter}×${r.length}` : r.diameter);
+        r.groupKey  = `${r.family} / ${r.subtype} / ${r.standard}`;
+        rows.push(r);
       }
-    }catch(e){ console.warn('CSV error',url,e); }
+    }catch(e){ console.warn("CSV load error:", f.path, e); }
   }
   return rows;
 }
-function buildGroups(rows){ // groups by family/subtype/standard
+
+function buildGroups(rows){
   const map = new Map();
   for(const r of rows){
     if(!map.has(r.groupKey)) map.set(r.groupKey, {meta:{family:r.family,subtype:r.subtype,standard:r.standard}, items:[]});
@@ -192,7 +211,7 @@ function buildGroups(rows){ // groups by family/subtype/standard
   return map;
 }
 
-// === 5) Tiles UI ===
+// ===== Tiles UI =====
 function renderTiles(groups, filter=""){
   E.tiles.innerHTML="";
   const q = filter.trim().toLowerCase();
@@ -201,8 +220,7 @@ function renderTiles(groups, filter=""){
   for(const key of keys){
     const g = groups.get(key);
     const label = key;
-    if(q && !label.toLowerCase().includes(q)) {
-      // also test any item fields
+    if(q && !label.toLowerCase().includes(q)){
       const hit = g.items.some(it =>
         (it.diameter||"").toLowerCase().includes(q) ||
         (it.name_stem||"").toLowerCase().includes(q)
@@ -211,21 +229,19 @@ function renderTiles(groups, filter=""){
     }
     shown++;
     const c = document.createElement('div'); c.className='card';
-    const count = g.items.length;
     c.innerHTML = `<h4>${label}</h4>
       <div class="small">
         <span class="badge">${g.meta.family}</span>
         <span class="badge">${g.meta.subtype}</span>
         <span class="badge">${g.meta.standard}</span>
-        <span class="badge">${count} items</span>
+        <span class="badge">${g.items.length} items</span>
       </div>`;
     c.onclick = ()=> openGroup(g);
     E.tiles.appendChild(c);
   }
-  E.hint.textContent = shown? "" : "No matches. Try a shorter search like “M8” or a standard token.";
+  E.hint.textContent = shown? "" : "No matches. Try “M8”, “ISO4035”, “socket”, etc.";
 }
 function openGroup(group){
-  // Sort items by diameter then length (if any)
   const items = group.items.slice().sort((a,b)=>{
     const da = parseFloat((a.diameter||"").replace(/[^\d.]/g,""))||0;
     const db = parseFloat((b.diameter||"").replace(/[^\d.]/g,""))||0;
@@ -233,7 +249,6 @@ function openGroup(group){
     const la = parseFloat(a.length)||0, lb = parseFloat(b.length)||0;
     return la-lb;
   });
-  // Build variant pills
   E.variants.innerHTML="";
   items.forEach((r,idx)=>{
     const p = document.createElement('button');
@@ -247,7 +262,6 @@ function openGroup(group){
     };
     E.variants.appendChild(p);
   });
-  // Put meta
   E.title.textContent   = `${group.meta.family} / ${group.meta.subtype} / ${group.meta.standard}`;
   E.iFamily.textContent = group.meta.family;
   E.iSubtype.textContent= group.meta.subtype;
@@ -255,7 +269,6 @@ function openGroup(group){
   E.iDiameter.textContent="—";
   E.tagCount.textContent = `${items.length} variants`;
   E.info.hidden = false;
-  // Show first
   if(items.length) showRow(items[0]);
 }
 function showRow(r){
@@ -270,21 +283,23 @@ function showRow(r){
   }
 }
 
-// === 6) Wire up ===
-let ALL=[], GROUPS=null, FILTERED=null;
-E.search.addEventListener('input', ()=>{
-  const q = E.search.value;
-  renderTiles(GROUPS, q);
-});
+// ===== Wire up =====
+E.search.addEventListener('input', ()=> renderTiles(GROUPS, E.search.value));
 E.theme.addEventListener('click', ()=>{ document.body.classList.toggle('light'); resize(); });
 
-// Start
-init3D();
-(async function(){
-  ALL = await loadCSVs();
-  if(!ALL.length){ E.hint.textContent = "No CSV rows found. Add manifest paths in MANIFESTS."; return; }
-  GROUPS = buildGroups(ALL);
-  renderTiles(GROUPS);
+let GROUPS=new Map();
+(async function start(){
+  try{
+    init3D();
+    const files = await listManifestFiles();
+    if(!files.length){ E.hint.textContent = `No manifest_*.csv under ${REPO.root}/`; return; }
+    const rows  = await loadRowsFromManifestList(files);
+    GROUPS = buildGroups(rows);
+    renderTiles(GROUPS);
+  }catch(e){
+    console.error(e);
+    E.hint.textContent = "Could not read repo via GitHub API. If private, make it public or switch to the catalog.json approach.";
+  }
 })();
 </script>
 </body>
