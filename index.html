@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fasteners STL Viewer — Socket & Hex</title>
+  <title>Fasteners STL Viewer - Socket & Hex</title>
   <style>
     :root{
       --bg:#0f1220; --fg:#e6e7ee; --muted:#9aa3b2; --accent:#6ea8fe; --card:#171a2b; --border:#2a2f45;
@@ -34,14 +34,14 @@
 </head>
 <body>
   <header>
-    <h1>Fasteners STL Viewer — Socket Head (ISO 4762) &amp; Hex Head (ISO 4014)</h1>
+    <h1>Fasteners STL Viewer - Socket Head (ISO 4762) &amp; Hex Head (ISO 4014)</h1>
     <div class="controls">
       <div class="control">
         <label>Head Type</label>
         <div class="row">
           <select id="headType">
-            <option value="socket">Socket Head — ISO 4762</option>
-            <option value="hex">Hex Head — ISO 4014</option>
+            <option value="socket">Socket Head - ISO 4762</option>
+            <option value="hex">Hex Head - ISO 4014</option>
           </select>
         </div>
       </div>
@@ -70,7 +70,7 @@
         <div id="status" class="status">Ready.</div>
       </div>
       <div class="control dropzone" id="dropzone">
-        Drop a local STL here (optional) — overrides selection
+        Drop a local STL here (optional) - overrides selection
       </div>
     </div>
   </header>
@@ -79,16 +79,16 @@
 
   <div class="panel" id="infoPanel">
     <h3>Model Info</h3>
-    <div class="kv"><span>File</span><span id="kvFile">—</span></div>
-    <div class="kv"><span>Size (mm)</span><span id="kvSize">—</span></div>
-    <div class="kv"><span>Bounding Sphere R</span><span id="kvRadius">—</span></div>
-    <div class="kv"><span>Triangles</span><span id="kvTris">—</span></div>
+    <div class="kv"><span>File</span><span id="kvFile">-</span></div>
+    <div class="kv"><span>Size (mm)</span><span id="kvSize">-</span></div>
+    <div class="kv"><span>Bounding Sphere R</span><span id="kvRadius">-</span></div>
+    <div class="kv"><span>Triangles</span><span id="kvTris">-</span></div>
     <div class="small">Tip: host this HTML in the same GitHub repo and keep STL folders relative for zero-CORS pain.</div>
   </div>
 
   <!-- three.js + loaders (module build) -->
   <script type="module">
-    // ======= CONFIG — update these to match your repo layout =======
+    // ======= CONFIG - update these to match your repo layout =======
     // If this HTML is at the repo root and folders are beside it, these defaults work.
     const PATHS = {
       socket: "./Socket_Head/ISO4762/STL/",
@@ -203,7 +203,7 @@
 
       const size = new THREE.Vector3();
       bb.getSize(size);
-      kvSize.textContent = `${size.x.toFixed(2)} × ${size.y.toFixed(2)} × ${size.z.toFixed(2)}`;
+      kvSize.textContent = `${size.x.toFixed(2)} x ${size.y.toFixed(2)} x ${size.z.toFixed(2)}`;
       kvRadius.textContent = bs.radius.toFixed(2);
 
       // center
@@ -224,12 +224,12 @@
     }
 
     async function loadFromURL(url, label){
-      setStatus("Loading …");
+      setStatus("Loading...");
       clearModel();
       try{
         const geo = await new Promise((resolve, reject)=>{
           loader.load(url, resolve, (xhr)=>{
-            const pct = xhr.total ? (xhr.loaded/xhr.total*100).toFixed(1) : "…";
+            const pct = xhr.total ? (xhr.loaded/xhr.total*100).toFixed(1) : "...";
             setStatus(`Loading ${pct}%`);
           }, (err)=>reject(err));
         });
@@ -248,10 +248,10 @@
       }catch(e){
         console.error(e);
         setStatus("Failed to load. " + (e?.message || ""));
-        kvFile.textContent = "—";
-        kvSize.textContent = "—";
-        kvRadius.textContent = "—";
-        kvTris.textContent = "—";
+        kvFile.textContent = "-";
+        kvSize.textContent = "-";
+        kvRadius.textContent = "-";
+        kvTris.textContent = "-";
       }
     }
 
