@@ -1,306 +1,330 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Nima’s Fasteners Viewer</title>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<style>
-:root{--bg:#0e1116;--panel:#161a22;--text:#e6eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#232837;--chip:#1f2532;--chip-text:#dbe4ff}
-.light{--bg:#fff;--panel:#f7f9fc;--text:#0c1321;--muted:#5a667a;--accent:#2563eb;--line:#e5e9f2;--chip:#eef2f8;--chip-text:#0c1321}
-*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial;display:flex;flex-direction:column}
-header{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px}
-.brand{font-weight:700;display:flex;gap:10px;align-items:center}.dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
-.btn{border:1px solid var(--line);background:#0000;color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer}.btn:hover{border-color:var(--accent)}
-main{flex:1;display:grid;grid-template-columns:420px 1fr;min-height:0}
-aside{padding:14px;border-right:1px solid var(--line);background:var(--panel);overflow:auto}
-.field{margin-bottom:12px}label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-input{width:100%;padding:8px 10px;background:#0000;border:1px solid var(--line);color:var(--text);border-radius:8px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{border:1px solid var(--line);border-radius:12px;padding:10px;background:#0000;cursor:pointer}
-.card h4{margin:0 0 6px;font-size:14px}
-.small{color:var(--muted);font-size:12px}
-.badge{display:inline-block;background:var(--chip);color:var(--chip-text);border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:12px;margin-right:6px}
-.viewer{position:relative}
-canvas#viewer{position:absolute;inset:0;width:100%;height:100%}
-.wrap{position:relative;height:100%}
-.topbar{display:flex;gap:10px;align-items:center;position:absolute;right:10px;top:10px}
-.tag{padding:4px 8px;border-radius:8px;background:var(--chip);border:1px solid var(--line);font-size:12px}
-pane{display:block;position:absolute;left:10px;bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:460px}
-pane .inner{padding:10px}
-.kv{display:grid;grid-template-columns:110px 1fr;gap:6px;font-size:13px}
-.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#0000;cursor:pointer}
-.pill.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-.link{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:8px}
-.spinner{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-.s{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (max-width:1000px){main{grid-template-columns:1fr;grid-template-rows:auto 1fr}aside{border-right:none;border-bottom:1px solid var(--line)}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fasteners STL Viewer — Socket & Hex</title>
+  <style>
+    :root{
+      --bg:#0f1220; --fg:#e6e7ee; --muted:#9aa3b2; --accent:#6ea8fe; --card:#171a2b; --border:#2a2f45;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg);}
+    header{display:flex;align-items:center;gap:1rem;padding:1rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#11152a,#0f1220);position:sticky;top:0;z-index:10}
+    header h1{font-size:1rem;margin:0;color:#c7d2fe;font-weight:600;letter-spacing:.3px}
+    .controls{display:grid;grid-template-columns:repeat(6,minmax(110px,1fr));gap:.5rem;width:100%}
+    .control{background:var(--card);border:1px solid var(--border);padding:.6rem .7rem;border-radius:.8rem}
+    .control label{display:block;font-size:.73rem;color:var(--muted);margin-bottom:.25rem}
+    .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    select,button,input[type="checkbox"]{width:100%;padding:.5rem;border-radius:.5rem;border:1px solid var(--border);background:#0c0f1d;color:var(--fg);outline:none}
+    button{cursor:pointer;font-weight:600;background:#1b2240;border-color:#2b3561}
+    button:hover{background:#22305c}
+    .status{font-size:.8rem;color:var(--muted)}
+    #viewer{position:fixed;inset:80px 0 0 0}
+    .panel{position:fixed;right:12px;bottom:12px;background:var(--card);border:1px solid var(--border);padding:.7rem .8rem;border-radius:.8rem;font-size:.85rem;min-width:260px;max-width:360px}
+    .panel h3{margin:.1rem 0 .5rem 0;font-size:.9rem;color:#b6c4ff}
+    .panel .kv{display:flex;justify-content:space-between;margin:.18rem 0;color:#cdd6f4}
+    .panel .kv span:first-child{color:var(--muted)}
+    .small{font-size:.75rem;color:var(--muted)}
+    .dropzone{grid-column:span 6;display:flex;align-items:center;justify-content:center;padding:.7rem;border:1px dashed #405088;border-radius:.7rem;background:#12162a;color:#9fb3ff}
+    .link{color:#9ec1ff;text-decoration:none;border-bottom:1px dashed #496fb6}
+    @media (max-width:1100px){ .controls{grid-template-columns:repeat(3,minmax(120px,1fr));} #viewer{inset:120px 0 0 0;} }
+    @media (max-width:700px){ .controls{grid-template-columns:repeat(2,minmax(140px,1fr));} #viewer{inset:160px 0 0 0;} }
+  </style>
 </head>
-<body class="light">
-<header>
-  <div class="brand"><div class="dot"></div>Fasteners Viewer</div>
-  <button id="theme" class="btn">🌗 Theme</button>
-</header>
-
-<main>
-  <aside>
-    <div class="field">
-      <label>Search (e.g., “M8”, “ISO4035”, “hex”)</label>
-      <input id="search" placeholder="Type to filter tiles…">
-    </div>
-    <div id="tiles" class="grid"></div>
-    <div class="small" id="hint" style="margin-top:10px"></div>
-  </aside>
-
-  <section class="wrap">
-    <div class="spinner" id="spin" hidden><div class="s"></div></div>
-    <div class="topbar"><div class="tag" id="tagSpan">—</div><div class="tag" id="tagCount">—</div></div>
-    <div class="viewer"><canvas id="viewer"></canvas></div>
-    <pane id="info" hidden>
-      <div class="inner">
-        <h3 id="title" style="margin:0 0 6px;font-size:14px">—</h3>
-        <div class="kv" style="margin-bottom:8px">
-          <div>Family</div><div id="iFamily">—</div>
-          <div>Type</div><div id="iSubtype">—</div>
-          <div>Standard</div><div id="iStandard">—</div>
-          <div>Diameter</div><div id="iDiameter">—</div>
-        </div>
-        <div class="small">Variants</div>
-        <div class="row" id="variants"></div>
-        <div class="row" style="margin-top:10px">
-          <a id="dlSTL" class="link" download>⬇ STL</a>
-          <a id="dlSTEP" class="link" download>⬇ STEP</a>
+<body>
+  <header>
+    <h1>Fasteners STL Viewer — Socket Head (ISO 4762) &amp; Hex Head (ISO 4014)</h1>
+    <div class="controls">
+      <div class="control">
+        <label>Head Type</label>
+        <div class="row">
+          <select id="headType">
+            <option value="socket">Socket Head — ISO 4762</option>
+            <option value="hex">Hex Head — ISO 4014</option>
+          </select>
         </div>
       </div>
-    </pane>
-  </section>
-</main>
+      <div class="control">
+        <label>Diameter (M)</label>
+        <select id="diameter"></select>
+      </div>
+      <div class="control">
+        <label>Length (mm)</label>
+        <select id="length"></select>
+      </div>
+      <div class="control">
+        <label>View</label>
+        <div class="row">
+          <label class="small"><input type="checkbox" id="showGrid" checked> Grid</label>
+          <label class="small"><input type="checkbox" id="showAxes" checked> Axes</label>
+          <label class="small"><input type="checkbox" id="autoRotate"> Auto-rotate</label>
+        </div>
+      </div>
+      <div class="control">
+        <label>Actions</label>
+        <div class="row">
+          <button id="btnLoad">Load Model</button>
+          <button id="btnReset">Reset View</button>
+        </div>
+        <div id="status" class="status">Ready.</div>
+      </div>
+      <div class="control dropzone" id="dropzone">
+        Drop a local STL here (optional) — overrides selection
+      </div>
+    </div>
+  </header>
 
-<!-- libs -->
-<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-<script src="https://unpkg.com/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
-<script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+  <div id="viewer"></div>
 
-<script>
-// ===== CONFIG: set your repo here =====
-const REPO = {
-  owner: "YOUR_GITHUB_USERNAME",
-  name:  "YOUR_REPO_NAME",
-  branch:"main",                 // or "gh-pages"
-  root:  "FastenersLib"          // where your folders live
-};
-// We auto-pick any CSV named like manifest_*.csv
-const CSV_MATCH = /manifest_.*\.csv$/i;
+  <div class="panel" id="infoPanel">
+    <h3>Model Info</h3>
+    <div class="kv"><span>File</span><span id="kvFile">—</span></div>
+    <div class="kv"><span>Size (mm)</span><span id="kvSize">—</span></div>
+    <div class="kv"><span>Bounding Sphere R</span><span id="kvRadius">—</span></div>
+    <div class="kv"><span>Triangles</span><span id="kvTris">—</span></div>
+    <div class="small">Tip: host this HTML in the same GitHub repo and keep STL folders relative for zero-CORS pain.</div>
+  </div>
 
-// ===== Elements =====
-const E = {
-  theme: document.getElementById('theme'),
-  tiles: document.getElementById('tiles'),
-  search: document.getElementById('search'),
-  hint: document.getElementById('hint'),
-  spin: document.getElementById('spin'),
-  tagSpan: document.getElementById('tagSpan'),
-  tagCount: document.getElementById('tagCount'),
-  info: document.getElementById('info'),
-  title: document.getElementById('title'),
-  iFamily: document.getElementById('iFamily'),
-  iSubtype: document.getElementById('iSubtype'),
-  iStandard: document.getElementById('iStandard'),
-  iDiameter: document.getElementById('iDiameter'),
-  variants: document.getElementById('variants'),
-  dlSTL: document.getElementById('dlSTL'),
-  dlSTEP: document.getElementById('dlSTEP'),
-  canvas: document.getElementById('viewer'),
-};
-
-// ===== Three.js scene =====
-const renderer = new THREE.WebGLRenderer({canvas:E.canvas,antialias:true});
-let scene,camera,controls,currentMesh;
-function init3D(){
-  resize();
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(getComputedStyle(document.body).getPropertyValue('--panel'));
-  camera = new THREE.PerspectiveCamera(45, E.canvas.clientWidth/E.canvas.clientHeight, 0.1, 5000);
-  camera.position.set(140,110,160);
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  scene.add(new THREE.HemisphereLight(0xffffff,0x303030,0.9));
-  const d = new THREE.DirectionalLight(0xffffff,0.9); d.position.set(100,120,80); scene.add(d);
-  window.addEventListener('resize', resize);
-  requestAnimationFrame(function tick(){controls.update();renderer.render(scene,camera);requestAnimationFrame(tick)});
-}
-function resize(){
-  const w = E.canvas.parentElement.clientWidth, h = E.canvas.parentElement.clientHeight;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2)); renderer.setSize(w,h,false);
-  if(camera){ camera.aspect=w/h; camera.updateProjectionMatrix(); }
-}
-const loader = new THREE.STLLoader();
-async function showSTL(url){
-  E.spin.hidden=false;
-  if(currentMesh){ scene.remove(currentMesh); currentMesh.geometry.dispose(); currentMesh.material.dispose(); currentMesh=null; }
-  const geo = await new Promise((res,rej)=> loader.load(url,res,undefined,rej));
-  geo.computeVertexNormals();
-  geo.computeBoundingBox();
-  const bb = geo.boundingBox;
-  const center = new THREE.Vector3().addVectors(bb.min,bb.max).multiplyScalar(0.5);
-  geo.translate(-center.x,-center.y,-center.z);
-  const mat = new THREE.MeshStandardMaterial({color:0x7a7f86,metalness:.4,roughness:.6});
-  const mesh = new THREE.Mesh(geo,mat); scene.add(mesh); currentMesh=mesh;
-  const size = new THREE.Vector3().subVectors(bb.max,bb.min);
-  const maxDim = Math.max(size.x,size.y,size.z);
-  E.tagSpan.textContent = `${maxDim.toFixed(1)} mm max span`;
-  const dist = maxDim*2 + 20; camera.position.set(dist,dist*.75,dist);
-  controls.target.set(0,0,0); controls.update();
-  E.spin.hidden=true;
-}
-
-// ===== GitHub API: discover all manifest CSVs under FastenersLib =====
-async function listManifestFiles(){
-  // Get repo tree (recursive)
-  const url = `https://api.github.com/repos/${REPO.owner}/${REPO.name}/git/trees/${REPO.branch}?recursive=1`;
-  const r = await fetch(url);
-  if(!r.ok){ throw new Error(`GitHub API error ${r.status}`); }
-  const js = await r.json();
-  const tree = js.tree || [];
-  const files = tree
-    .filter(n => n.type === "blob" && n.path.startsWith(REPO.root + "/") && CSV_MATCH.test(n.path))
-    .map(n => ({
-      path: n.path,
-      raw:  `https://raw.githubusercontent.com/${REPO.owner}/${REPO.name}/${REPO.branch}/${n.path}`
-    }));
-  return files;
-}
-
-function windowsPathToRepo(p){
-  if(!p) return "";
-  if(/^\.{0,2}\//.test(p) || p.startsWith('FastenersLib/')) return p;
-  const m = p.match(/(Nuts|Bolts|Washers|Screws|Rivets|Pins)[\\\/].*$/i);
-  return m ? ("FastenersLib/" + m[0].replace(/\\/g,'/')) : p;
-}
-
-async function loadRowsFromManifestList(list){
-  const rows=[];
-  for(const f of list){
-    try{
-      const res = await fetch(f.raw);
-      if(!res.ok) continue;
-      const txt = await res.text();
-      const parsed = Papa.parse(txt,{header:true,skipEmptyLines:true});
-      for(const r of parsed.data){
-        if(!r.family||!r.subtype||!r.standard||!r.diameter) continue;
-        r.path_stl  = windowsPathToRepo(r.path_stl);
-        r.path_step = windowsPathToRepo(r.path_step);
-        r.variant   = r.variant || (r.length ? `${r.diameter}×${r.length}` : r.diameter);
-        r.groupKey  = `${r.family} / ${r.subtype} / ${r.standard}`;
-        rows.push(r);
-      }
-    }catch(e){ console.warn("CSV load error:", f.path, e); }
-  }
-  return rows;
-}
-
-function buildGroups(rows){
-  const map = new Map();
-  for(const r of rows){
-    if(!map.has(r.groupKey)) map.set(r.groupKey, {meta:{family:r.family,subtype:r.subtype,standard:r.standard}, items:[]});
-    map.get(r.groupKey).items.push(r);
-  }
-  return map;
-}
-
-// ===== Tiles UI =====
-function renderTiles(groups, filter=""){
-  E.tiles.innerHTML="";
-  const q = filter.trim().toLowerCase();
-  const keys = [...groups.keys()].sort();
-  let shown=0;
-  for(const key of keys){
-    const g = groups.get(key);
-    const label = key;
-    if(q && !label.toLowerCase().includes(q)){
-      const hit = g.items.some(it =>
-        (it.diameter||"").toLowerCase().includes(q) ||
-        (it.name_stem||"").toLowerCase().includes(q)
-      );
-      if(!hit) continue;
-    }
-    shown++;
-    const c = document.createElement('div'); c.className='card';
-    c.innerHTML = `<h4>${label}</h4>
-      <div class="small">
-        <span class="badge">${g.meta.family}</span>
-        <span class="badge">${g.meta.subtype}</span>
-        <span class="badge">${g.meta.standard}</span>
-        <span class="badge">${g.items.length} items</span>
-      </div>`;
-    c.onclick = ()=> openGroup(g);
-    E.tiles.appendChild(c);
-  }
-  E.hint.textContent = shown? "" : "No matches. Try “M8”, “ISO4035”, “socket”, etc.";
-}
-function openGroup(group){
-  const items = group.items.slice().sort((a,b)=>{
-    const da = parseFloat((a.diameter||"").replace(/[^\d.]/g,""))||0;
-    const db = parseFloat((b.diameter||"").replace(/[^\d.]/g,""))||0;
-    if(da!==db) return da-db;
-    const la = parseFloat(a.length)||0, lb = parseFloat(b.length)||0;
-    return la-lb;
-  });
-  E.variants.innerHTML="";
-  items.forEach((r,idx)=>{
-    const p = document.createElement('button');
-    p.className='pill'+(idx===0?' active':'');
-    p.textContent = r.variant || r.diameter;
-    p.title = r.name_stem || "";
-    p.onclick = ()=>{
-      [...E.variants.children].forEach(x=>x.classList.remove('active'));
-      p.classList.add('active');
-      showRow(r);
+  <!-- three.js + loaders (module build) -->
+  <script type="module">
+    // ======= CONFIG — update these to match your repo layout =======
+    // If this HTML is at the repo root and folders are beside it, these defaults work.
+    const PATHS = {
+      socket: "./Socket_Head/ISO4762/STL/",
+      hex: "./Hex_Head/ISO4014/STL/"
     };
-    E.variants.appendChild(p);
-  });
-  E.title.textContent   = `${group.meta.family} / ${group.meta.subtype} / ${group.meta.standard}`;
-  E.iFamily.textContent = group.meta.family;
-  E.iSubtype.textContent= group.meta.subtype;
-  E.iStandard.textContent=group.meta.standard;
-  E.iDiameter.textContent="—";
-  E.tagCount.textContent = `${items.length} variants`;
-  E.info.hidden = false;
-  if(items.length) showRow(items[0]);
-}
-function showRow(r){
-  E.iDiameter.textContent = r.diameter || "—";
-  E.dlSTL.href  = r.path_stl || "#";
-  E.dlSTEP.href = r.path_step || "#";
-  if(r.path_stl){
-    showSTL(r.path_stl).catch(e=>{
-      console.error(e);
-      alert("Failed to load STL. Check the path in CSV and repo folders.");
+    // File name patterns your generator used:
+    const NAME_PATTERNS = {
+      socket: ({M, L}) => `SocketHead_M${M}x${L}_ISO4762.stl`,
+      hex:    ({M, L}) => `HexHead_M${M}x${L}_ISO4014.stl`
+    };
+    // Which diameters to show:
+    const DIAMS = ["3","4","5","6","8","10","12","16","20","24"];
+    // Common usable lengths (mm). Your STL set might not include every combo; 404s are handled gracefully.
+    const LENGTHS = [6,8,10,12,14,16,20,25,30,35,40,45,50,55,60];
+
+    // ======= UI =======
+    const $ = (s)=>document.querySelector(s);
+    const headTypeSel = $("#headType");
+    const diamSel = $("#diameter");
+    const lenSel = $("#length");
+    const showGrid = $("#showGrid");
+    const showAxes = $("#showAxes");
+    const autoRotate = $("#autoRotate");
+    const btnLoad = $("#btnLoad");
+    const btnReset = $("#btnReset");
+    const statusEl = $("#status");
+    const kvFile = $("#kvFile");
+    const kvSize = $("#kvSize");
+    const kvRadius = $("#kvRadius");
+    const kvTris = $("#kvTris");
+    const dropzone = $("#dropzone");
+
+    function fillSelect(sel, items, fmt=(x)=>x){
+      sel.innerHTML = "";
+      items.forEach(v=>{
+        const opt = document.createElement("option");
+        opt.value = String(v);
+        opt.textContent = fmt(v);
+        sel.appendChild(opt);
+      });
+    }
+    fillSelect(diamSel, DIAMS, d=>"M"+d);
+    fillSelect(lenSel, LENGTHS);
+
+    // ======= Three.js setup =======
+    import * as THREE from "https://unpkg.com/three@0.161.0/build/three.module.js";
+    import {OrbitControls} from "https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js";
+    import {STLLoader} from "https://unpkg.com/three@0.161.0/examples/jsm/loaders/STLLoader.js";
+
+    const renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setClearColor(0x0b0e1a, 1);
+    $("#viewer").appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 5000);
+    camera.position.set(160, 140, 180);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.target.set(0,0,0);
+
+    // Lights
+    const amb = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(amb);
+    const key = new THREE.DirectionalLight(0xffffff, 1.0);
+    key.position.set(2,3,4);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, 0.6);
+    rim.position.set(-3,2,-2);
+    scene.add(rim);
+
+    // Helpers
+    const grid = new THREE.GridHelper(400, 40, 0x335, 0x223);
+    grid.visible = showGrid.checked;
+    scene.add(grid);
+    const axes = new THREE.AxesHelper(80);
+    axes.visible = showAxes.checked;
+    scene.add(axes);
+
+    showGrid.addEventListener("change", ()=>grid.visible = showGrid.checked);
+    showAxes.addEventListener("change", ()=>axes.visible = showAxes.checked);
+    autoRotate.addEventListener("change", ()=>controls.autoRotate = autoRotate.checked);
+
+    let mesh = null;
+    const loader = new STLLoader();
+
+    function setStatus(msg){ statusEl.textContent = msg; }
+    function clearModel(){
+      if(mesh){
+        scene.remove(mesh);
+        mesh.geometry.dispose();
+        if(mesh.material && mesh.material.dispose) mesh.material.dispose();
+        mesh = null;
+      }
+    }
+
+    function human(n, digits=2){
+      if(n === 0) return "0";
+      const a = Math.abs(n);
+      if(a>=1000) return (n/1000).toFixed(digits)+"k";
+      return n.toFixed(digits);
+    }
+
+    function fitCameraToObject(obj){
+      obj.geometry.computeBoundingSphere();
+      obj.geometry.computeBoundingBox();
+      const bs = obj.geometry.boundingSphere;
+      const bb = obj.geometry.boundingBox;
+
+      const size = new THREE.Vector3();
+      bb.getSize(size);
+      kvSize.textContent = `${size.x.toFixed(2)} × ${size.y.toFixed(2)} × ${size.z.toFixed(2)}`;
+      kvRadius.textContent = bs.radius.toFixed(2);
+
+      // center
+      const center = bs.center.clone();
+      obj.position.sub(center);
+
+      // distance for framing
+      const fov = camera.fov * (Math.PI/180);
+      let dist = bs.radius / Math.sin(fov/2);
+      dist *= 1.3; // a little padding
+
+      camera.near = Math.max(0.1, dist/100);
+      camera.far = dist*10;
+      camera.updateProjectionMatrix();
+      camera.position.copy(new THREE.Vector3(dist, dist*0.7, dist));
+      controls.target.set(0,0,0);
+      controls.update();
+    }
+
+    async function loadFromURL(url, label){
+      setStatus("Loading …");
+      clearModel();
+      try{
+        const geo = await new Promise((resolve, reject)=>{
+          loader.load(url, resolve, (xhr)=>{
+            const pct = xhr.total ? (xhr.loaded/xhr.total*100).toFixed(1) : "…";
+            setStatus(`Loading ${pct}%`);
+          }, (err)=>reject(err));
+        });
+        const mat = new THREE.MeshStandardMaterial({color:0xcfd8ff, metalness:0.15, roughness:0.6});
+        mesh = new THREE.Mesh(geo, mat);
+        // Flip Y if needed? STL is usually already fine. Keep as-is.
+        scene.add(mesh);
+        fitCameraToObject(mesh);
+
+        // triangles
+        let tris = 0;
+        if(geo.index){ tris = geo.index.count/3; } else { tris = geo.attributes.position.count/3; }
+        kvTris.textContent = human(tris, 0);
+        kvFile.textContent = label;
+        setStatus("Loaded.");
+      }catch(e){
+        console.error(e);
+        setStatus("Failed to load. " + (e?.message || ""));
+        kvFile.textContent = "—";
+        kvSize.textContent = "—";
+        kvRadius.textContent = "—";
+        kvTris.textContent = "—";
+      }
+    }
+
+    function buildURL(){
+      const type = headTypeSel.value; // 'socket' | 'hex'
+      const M = diamSel.value;
+      const L = lenSel.value;
+      const name = NAME_PATTERNS[type]({M, L});
+      const url = PATHS[type] + name;
+      return {url, label:name};
+    }
+
+    btnLoad.addEventListener("click", ()=>{
+      const {url, label} = buildURL();
+      loadFromURL(url, label);
     });
-  }
-}
 
-// ===== Wire up =====
-E.search.addEventListener('input', ()=> renderTiles(GROUPS, E.search.value));
-E.theme.addEventListener('click', ()=>{ document.body.classList.toggle('light'); resize(); });
+    btnReset.addEventListener("click", ()=>{
+      controls.reset();
+      controls.target.set(0,0,0);
+      controls.update();
+    });
 
-let GROUPS=new Map();
-(async function start(){
-  try{
-    init3D();
-    const files = await listManifestFiles();
-    if(!files.length){ E.hint.textContent = `No manifest_*.csv under ${REPO.root}/`; return; }
-    const rows  = await loadRowsFromManifestList(files);
-    GROUPS = buildGroups(rows);
-    renderTiles(GROUPS);
-  }catch(e){
-    console.error(e);
-    E.hint.textContent = "Could not read repo via GitHub API. If private, make it public or switch to the catalog.json approach.";
-  }
-})();
-</script>
+    // Drag & drop local STL
+    ;["dragenter","dragover","dragleave","drop"].forEach(evt=>{
+      dropzone.addEventListener(evt, e=>{ e.preventDefault(); e.stopPropagation(); }, false);
+    });
+    dropzone.addEventListener("dragover", ()=>dropzone.style.borderColor="#6ea8fe");
+    dropzone.addEventListener("dragleave", ()=>dropzone.style.borderColor="#405088");
+    dropzone.addEventListener("drop", (e)=>{
+      dropzone.style.borderColor="#405088";
+      const file = e.dataTransfer.files?.[0];
+      if(!file || !file.name.toLowerCase().endsWith(".stl")){ setStatus("Drop an .stl file"); return; }
+      kvFile.textContent = file.name + " (local)";
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        clearModel();
+        const geo = loader.parse(reader.result);
+        const mat = new THREE.MeshStandardMaterial({color:0xcfd8ff, metalness:0.15, roughness:0.6});
+        mesh = new THREE.Mesh(geo, mat);
+        scene.add(mesh);
+        fitCameraToObject(mesh);
+        let tris = 0;
+        if(geo.index){ tris = geo.index.count/3; } else { tris = geo.attributes.position.count/3; }
+        kvTris.textContent = human(tris, 0);
+        setStatus("Loaded local file.");
+      };
+      reader.readAsArrayBuffer(file);
+    });
+
+    // Initial load
+    (function init(){
+      headTypeSel.value = "socket";
+      diamSel.value = "6";
+      lenSel.value = "20";
+      const {url, label} = buildURL();
+      loadFromURL(url, label);
+    })();
+
+    // Resize
+    window.addEventListener("resize", ()=>{
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Animate
+    function animate(){
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
 </body>
 </html>
