@@ -8,91 +8,125 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       background: #0a0e1a;
       color: #e4e6eb;
-      overflow: hidden;
     }
     
-    #controls {
+    #ui {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to bottom, #141824, #0f121f);
-      border-bottom: 1px solid #2a3142;
-      padding: 16px 20px;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      background: #141824;
+      padding: 20px;
+      border-bottom: 2px solid #2a3142;
+      z-index: 1000;
+      max-height: 50vh;
+      overflow-y: auto;
     }
     
-    .control-grid {
+    h1 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #a5b4fc;
+    }
+    
+    .row {
       display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: flex-end;
     }
     
-    .control-group {
+    .field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      min-width: 140px;
-    }
-    
-    .control-group.grow {
-      flex: 1;
-      min-width: 200px;
+      gap: 5px;
     }
     
     label {
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 11px;
       color: #9ca3af;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-weight: 600;
     }
     
-    select, button {
-      padding: 10px 12px;
+    select, input, button {
+      padding: 8px 12px;
       background: #1a1f2e;
       border: 1px solid #2d3548;
-      border-radius: 6px;
+      border-radius: 4px;
       color: #e4e6eb;
       font-size: 14px;
+      min-width: 150px;
+    }
+    
+    select {
       cursor: pointer;
-      transition: all 0.2s;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 32px;
+    }
+    
+    select:focus, input:focus {
+      outline: 2px solid #3b82f6;
+      border-color: #3b82f6;
     }
     
     button {
       background: #2563eb;
       border-color: #3b82f6;
+      cursor: pointer;
       font-weight: 600;
-      background-image: none;
-      padding: 10px 20px;
+      padding: 8px 24px;
     }
     
     button:hover {
       background: #1d4ed8;
-      border-color: #2563eb;
     }
     
-    select:hover, select:focus {
-      border-color: #4b5563;
-      outline: none;
+    button:disabled {
+      background: #374151;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    
+    #fileList {
+      margin-top: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      background: #1a1f2e;
+      border: 1px solid #2d3548;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    
+    .file-item {
+      padding: 8px;
+      margin: 4px 0;
+      background: #0f1219;
+      border: 1px solid #2d3548;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    
+    .file-item:hover {
+      background: #1a1f2e;
+      border-color: #3b82f6;
+    }
+    
+    .file-item.selected {
+      background: #1e3a8a;
+      border-color: #3b82f6;
     }
     
     #viewer {
       position: fixed;
-      top: 90px;
+      top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+      z-index: 1;
     }
     
     #info {
@@ -102,137 +136,84 @@
       background: rgba(20, 24, 36, 0.95);
       backdrop-filter: blur(10px);
       border: 1px solid #2a3142;
-      border-radius: 8px;
-      padding: 16px;
-      min-width: 280px;
+      border-radius: 6px;
+      padding: 15px;
+      min-width: 250px;
       font-size: 13px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 100;
     }
     
-    #info h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: #a5b4fc;
-      margin-bottom: 12px;
+    #info div {
+      margin: 5px 0;
     }
     
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      margin: 8px 0;
-      padding: 4px 0;
-      border-bottom: 1px solid #1f2937;
-    }
-    
-    .info-row:last-child {
-      border-bottom: none;
-    }
-    
-    .info-label {
-      color: #9ca3af;
-      font-weight: 500;
-    }
-    
-    .info-value {
-      color: #e4e6eb;
-      font-weight: 600;
-    }
-    
-    #status {
-      margin-top: 8px;
+    .status {
+      margin-top: 10px;
       padding: 8px;
       background: #1a1f2e;
       border-radius: 4px;
       text-align: center;
       font-size: 12px;
-      color: #60a5fa;
     }
     
-    .checkbox-group {
+    .checks {
       display: flex;
-      gap: 16px;
+      gap: 15px;
       align-items: center;
     }
     
-    .checkbox-group label {
+    .checks label {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 13px;
+      gap: 5px;
       text-transform: none;
       cursor: pointer;
     }
     
     input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
+      min-width: auto;
+      width: 18px;
+      height: 18px;
       cursor: pointer;
-    }
-    
-    @media (max-width: 900px) {
-      #controls { padding: 12px; }
-      .control-grid { gap: 8px; }
-      .control-group { min-width: 120px; }
-      #viewer { top: 140px; }
-      #info { bottom: 10px; right: 10px; min-width: 240px; }
     }
   </style>
 </head>
 <body>
-  <div id="controls">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Category</label>
-        <select id="category">
-          <option value="bolts">Bolts</option>
-          <option value="nuts">Nuts</option>
-        </select>
+  <div id="viewer"></div>
+  
+  <div id="ui">
+    <h1>🔩 Fasteners STL Viewer</h1>
+    
+    <div class="row">
+      <div class="field">
+        <label>GitHub Path</label>
+        <input type="text" id="pathInput" value="Bolts/Socket_Head/ISO4762/STL" placeholder="e.g., Bolts/Socket_Head/ISO4762/STL">
       </div>
-      
-      <div class="control-group grow">
-        <label>Type</label>
-        <select id="type"></select>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button id="scanBtn">Scan Folder</button>
       </div>
-      
-      <div class="control-group">
-        <label>Diameter</label>
-        <select id="diameter"></select>
-      </div>
-      
-      <div class="control-group">
-        <label>Length</label>
-        <select id="length"></select>
-      </div>
-      
-      <div class="control-group">
-        <button id="loadBtn">Load Model</button>
-      </div>
-      
-      <div class="control-group checkbox-group">
-        <label><input type="checkbox" id="gridCheck" checked> Grid</label>
-        <label><input type="checkbox" id="axesCheck" checked> Axes</label>
-        <label><input type="checkbox" id="rotateCheck"> Rotate</label>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button id="toggleUI">Hide UI ▲</button>
       </div>
     </div>
+    
+    <div class="row checks">
+      <label><input type="checkbox" id="gridCheck" checked> Grid</label>
+      <label><input type="checkbox" id="axesCheck" checked> Axes</label>
+      <label><input type="checkbox" id="rotateCheck"> Auto Rotate</label>
+    </div>
+    
+    <div class="status" id="status">Enter a path and click "Scan Folder"</div>
+    
+    <div id="fileList"></div>
   </div>
 
-  <div id="viewer"></div>
-
   <div id="info">
-    <h3>Model Info</h3>
-    <div class="info-row">
-      <span class="info-label">File</span>
-      <span class="info-value" id="infoFile">-</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Size (mm)</span>
-      <span class="info-value" id="infoSize">-</span>
-    </div>
-    <div class="info-row">
-      <span class="info-label">Triangles</span>
-      <span class="info-value" id="infoTris">-</span>
-    </div>
-    <div id="status">Ready</div>
+    <div><strong>File:</strong> <span id="fileName">-</span></div>
+    <div><strong>Size:</strong> <span id="fileSize">-</span></div>
+    <div><strong>Triangles:</strong> <span id="fileTris">-</span></div>
   </div>
 
   <script type="module">
@@ -240,61 +221,26 @@
     import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js';
     import { STLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/loaders/STLLoader.js';
 
-    // =================================================================
-    // CONFIGURATION - Update this when adding new fastener types
-    // =================================================================
-    const CONFIG = {
-      github: {
-        user: "nimageran",
-        repo: "fasteners-viewer",
-        branch: "main"
-      },
-      catalog: {
-        bolts: {
-          socket: {
-            label: "Socket Head - ISO 4762",
-            path: "Bolts/Socket_Head/ISO4762/STL/",
-            pattern: (M, L) => `SocketHead_M${M}x${L}_ISO4762.stl`,
-            diameters: [3,4,5,6,8,10,12,16,20,24],
-            lengths: [6,8,10,12,14,16,18,20,25,30,35,40,45,50,55,60,70,80,90,100]
-          },
-          flat: {
-            label: "Flat Head - ISO 10642",
-            path: "Bolts/Flat_Head/ISO10642/STL/",
-            pattern: (M, L) => `FlatHead_M${M}x${L}_ISO10642.stl`,
-            diameters: [3,4,5,6,8,10,12,16,20],
-            lengths: [6,8,10,12,14,16,18,20,25,30,35,40,45,50,60]
-          }
-        },
-        nuts: {
-          hex: {
-            label: "Hex Nut - ISO 4032",
-            path: "Nuts/Hex_Nut/ISO4032/STL/",
-            pattern: (M) => `HexNut_M${M}_ISO4032.stl`,
-            diameters: [3,4,5,6,8,10,12,16,20,24],
-            lengths: null
-          }
-        }
-      }
-    };
+    // Config
+    const GITHUB_USER = "nimageran";
+    const GITHUB_REPO = "fasteners-viewer";
+    const GITHUB_BRANCH = "main";
 
-    const baseURL = `https://raw.githubusercontent.com/${CONFIG.github.user}/${CONFIG.github.repo}/${CONFIG.github.branch}/`;
-
-    // DOM Elements
-    const categoryEl = document.getElementById('category');
-    const typeEl = document.getElementById('type');
-    const diameterEl = document.getElementById('diameter');
-    const lengthEl = document.getElementById('length');
-    const loadBtn = document.getElementById('loadBtn');
+    // DOM
+    const pathInput = document.getElementById('pathInput');
+    const scanBtn = document.getElementById('scanBtn');
+    const toggleUI = document.getElementById('toggleUI');
+    const fileList = document.getElementById('fileList');
+    const status = document.getElementById('status');
     const gridCheck = document.getElementById('gridCheck');
     const axesCheck = document.getElementById('axesCheck');
     const rotateCheck = document.getElementById('rotateCheck');
-    const statusEl = document.getElementById('status');
-    const infoFileEl = document.getElementById('infoFile');
-    const infoSizeEl = document.getElementById('infoSize');
-    const infoTrisEl = document.getElementById('infoTris');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const fileTris = document.getElementById('fileTris');
+    const uiPanel = document.getElementById('ui');
 
-    // Three.js Setup
+    // Three.js setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10000);
     camera.position.set(100, 80, 120);
@@ -302,6 +248,7 @@
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x0a0e1a);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('viewer').appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -317,78 +264,95 @@
     light2.position.set(-5, 5, -5);
     scene.add(light2);
 
-    // Grid and Axes
-    const gridHelper = new THREE.GridHelper(200, 20, 0x444444, 0x222222);
-    scene.add(gridHelper);
-    const axesHelper = new THREE.AxesHelper(100);
-    scene.add(axesHelper);
+    // Helpers
+    const grid = new THREE.GridHelper(200, 20, 0x444444, 0x222222);
+    scene.add(grid);
+    const axes = new THREE.AxesHelper(100);
+    scene.add(axes);
 
-    gridCheck.addEventListener('change', () => gridHelper.visible = gridCheck.checked);
-    axesCheck.addEventListener('change', () => axesHelper.visible = axesCheck.checked);
+    gridCheck.addEventListener('change', () => grid.visible = gridCheck.checked);
+    axesCheck.addEventListener('change', () => axes.visible = axesCheck.checked);
     rotateCheck.addEventListener('change', () => controls.autoRotate = rotateCheck.checked);
 
     let currentMesh = null;
     const loader = new STLLoader();
 
-    // Populate Dropdowns
-    function populateTypes() {
-      const cat = categoryEl.value;
-      const types = CONFIG.catalog[cat];
-      typeEl.innerHTML = '';
-      Object.keys(types).forEach(key => {
-        const opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = types[key].label;
-        typeEl.appendChild(opt);
-      });
-      populateDiametersAndLengths();
-    }
-
-    function populateDiametersAndLengths() {
-      const cat = categoryEl.value;
-      const type = typeEl.value;
-      const config = CONFIG.catalog[cat][type];
-
-      diameterEl.innerHTML = '';
-      config.diameters.forEach(d => {
-        const opt = document.createElement('option');
-        opt.value = d;
-        opt.textContent = `M${d}`;
-        diameterEl.appendChild(opt);
-      });
-
-      if (config.lengths) {
-        lengthEl.disabled = false;
-        lengthEl.innerHTML = '';
-        config.lengths.forEach(l => {
-          const opt = document.createElement('option');
-          opt.value = l;
-          opt.textContent = `${l}mm`;
-          lengthEl.appendChild(opt);
-        });
+    // Toggle UI
+    let uiVisible = true;
+    toggleUI.addEventListener('click', () => {
+      uiVisible = !uiVisible;
+      if (uiVisible) {
+        uiPanel.style.display = 'block';
+        toggleUI.textContent = 'Hide UI ▲';
       } else {
-        lengthEl.disabled = true;
-        lengthEl.innerHTML = '<option>N/A</option>';
+        uiPanel.style.display = 'none';
+        toggleUI.textContent = 'Show UI ▼';
+        toggleUI.style.display = 'block';
+        toggleUI.style.position = 'fixed';
+        toggleUI.style.top = '10px';
+        toggleUI.style.left = '10px';
+        toggleUI.style.zIndex = '1000';
+      }
+    });
+
+    // Scan folder using GitHub API
+    async function scanFolder() {
+      const path = pathInput.value.trim();
+      if (!path) {
+        status.textContent = 'Please enter a path';
+        return;
+      }
+
+      status.textContent = 'Scanning...';
+      scanBtn.disabled = true;
+      fileList.innerHTML = '';
+
+      try {
+        const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`;
+        console.log('Fetching:', apiUrl);
+        
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const files = await response.json();
+        const stlFiles = files.filter(f => f.name.toLowerCase().endsWith('.stl'));
+
+        if (stlFiles.length === 0) {
+          status.textContent = 'No STL files found in this path';
+          return;
+        }
+
+        status.textContent = `Found ${stlFiles.length} STL files`;
+        
+        stlFiles.forEach(file => {
+          const div = document.createElement('div');
+          div.className = 'file-item';
+          div.textContent = file.name;
+          div.onclick = () => loadSTL(file.download_url, file.name, div);
+          fileList.appendChild(div);
+        });
+
+      } catch (error) {
+        console.error('Scan error:', error);
+        status.textContent = `Error: ${error.message}`;
+      } finally {
+        scanBtn.disabled = false;
       }
     }
 
-    categoryEl.addEventListener('change', populateTypes);
-    typeEl.addEventListener('change', populateDiametersAndLengths);
+    scanBtn.addEventListener('click', scanFolder);
 
-    // Load Model
-    async function loadModel() {
-      const cat = categoryEl.value;
-      const type = typeEl.value;
-      const M = diameterEl.value;
-      const L = lengthEl.value;
+    // Load STL
+    async function loadSTL(url, name, itemDiv) {
+      // Update selection
+      document.querySelectorAll('.file-item').forEach(el => el.classList.remove('selected'));
+      if (itemDiv) itemDiv.classList.add('selected');
 
-      const config = CONFIG.catalog[cat][type];
-      const filename = config.lengths ? config.pattern(M, L) : config.pattern(M);
-      const url = baseURL + config.path + filename;
-
-      statusEl.textContent = 'Loading...';
-      statusEl.style.color = '#60a5fa';
-      console.log('Loading from:', url);
+      status.textContent = 'Loading...';
+      console.log('Loading STL:', url);
 
       if (currentMesh) {
         scene.remove(currentMesh);
@@ -410,54 +374,55 @@
         currentMesh = new THREE.Mesh(geometry, material);
         scene.add(currentMesh);
 
-        // Center and fit camera
+        // Center and fit
         geometry.computeBoundingBox();
-        geometry.computeBoundingSphere();
         const box = geometry.boundingBox;
         const center = box.getCenter(new THREE.Vector3());
         currentMesh.position.sub(center);
 
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
-        const fov = camera.fov * (Math.PI / 180);
-        let cameraZ = Math.abs(maxDim / Math.sin(fov / 2)) * 1.5;
-        camera.position.set(cameraZ * 0.7, cameraZ * 0.5, cameraZ);
+        const dist = maxDim * 2;
+        camera.position.set(dist * 0.7, dist * 0.5, dist);
         camera.lookAt(0, 0, 0);
         controls.target.set(0, 0, 0);
         controls.update();
 
         // Update info
         const tris = geometry.index ? geometry.index.count / 3 : geometry.attributes.position.count / 3;
-        infoFileEl.textContent = filename;
-        infoSizeEl.textContent = `${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)}`;
-        infoTrisEl.textContent = tris.toLocaleString();
-        statusEl.textContent = 'Loaded successfully!';
-        statusEl.style.color = '#34d399';
+        fileName.textContent = name;
+        fileSize.textContent = `${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)} mm`;
+        fileTris.textContent = Math.round(tris).toLocaleString();
+        status.textContent = '✓ Loaded successfully';
 
       } catch (error) {
         console.error('Load error:', error);
-        statusEl.textContent = 'Failed to load. Check console.';
-        statusEl.style.color = '#f87171';
-        infoFileEl.textContent = '-';
-        infoSizeEl.textContent = '-';
-        infoTrisEl.textContent = '-';
+        status.textContent = `Failed: ${error.message}`;
+        fileName.textContent = '-';
+        fileSize.textContent = '-';
+        fileTris.textContent = '-';
       }
     }
 
-    loadBtn.addEventListener('click', loadModel);
+    // Auto-load first file on scan
+    const originalScanFolder = scanFolder;
+    scanFolder = async function() {
+      await originalScanFolder();
+      // Auto-click first file if any
+      const firstFile = fileList.querySelector('.file-item');
+      if (firstFile) {
+        setTimeout(() => firstFile.click(), 300);
+      }
+    };
 
     // Resize
-    function onResize() {
-      const width = window.innerWidth;
-      const height = window.innerHeight - 90;
-      camera.aspect = width / height;
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-    window.addEventListener('resize', onResize);
-    onResize();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
-    // Animation Loop
+    // Animation
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
@@ -465,11 +430,8 @@
     }
     animate();
 
-    // Initialize
-    populateTypes();
-    diameterEl.value = '10';
-    lengthEl.value = '20';
-    loadModel();
+    // Auto-scan on load
+    scanFolder();
   </script>
 </body>
 </html>
