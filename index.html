@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fasteners Viewer — GitHub‑driven</title>
+  <style>
+    :root { --bg:#0f1220; --fg:#e6e7ee; --muted:#a7acc4; --card:#161a2e; --accent:#6ea8fe; }
+    html,body { height:100%; margin:0; background:var(--bg); color:var(--fg); font:14px/1.45 system-ui,Segoe UI,Roboto,Helvetica,Arial; }
+    .wrap { display:grid; grid-template-columns: 340px 1fr; gap:14px; height:100%; padding:14px; box-sizing:border-box; }
+    .card { background:var(--card); border-radius:14px; box-shadow: 0 10px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.03); }
+    .panel { padding:14px 14px 10px; position:relative; overflow:visible; }
+    h1 { font-size:16px; margin:0 0 12px; color:#fff; font-weight:600; letter-spacing:.3px; }
+    label { display:block; margin:10px 0 6px; color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.6px; }
+    select, button, input[type="text"] {
+      width:100%; padding:10px 12px; border-radius:10px; border:1px solid #2a2f4a;
+      background:#0f1330; color:#e8ebff; outline:none; box-sizing:border-box;
+    }
+    select:focus, button:focus { border-color:#3f4c79; }
+    button { background:linear-gradient(180deg,#3a4ec7,#2a3aa8); cursor:pointer; margin-top:10px; font-weight:600; }
+    button[disabled] { opacity:.5; cursor:not-allowed; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .help { color:var(--muted); font-size:12px; margin-top:8px; }
+    .status { margin-top:10px; white-space:pre-line; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:12px; color:#b7c4ff; }
+    .viewer { position:relative; height:100%; }
+    #viewport { position:absolute; inset:0; }
+    .toolbar { position:absolute; right:12px; top:12px; display:flex; gap:8px; z-index:5; }
+    .toolbar a, .toolbar button {
+      padding:8px 10px; border-radius:8px; background:#0e1330; border:1px solid #2b3255; color:#dbe0ff; text-decoration:none; font-size:12px;
+    }
+    .toolbar a:hover, .toolbar button:hover { border-color:#3a4478; }
+    /* ensure dropdown menus can extend */
+    .panel, .card, .wrap { overflow:visible; z-index:0; }
+    select { position:relative; z-index:2; }
+    .footer { color:#8892b0; font-size:12px; margin-top:8px; }
+    .badge { display:inline-block; padding:.2em .5em; border-radius:999px; background:#10163a; border:1px solid #2c3563; color:#a6b4ff; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card panel">
+      <h1>Fasteners Viewer <span class="badge">auto‑indexed from file names</span></h1>
+      <div class="row">
+        <div>
+          <label for="family">Family</label>
+          <select id="family"></select>
+        </div>
+        <div>
+          <label for="diameter">Diameter</label>
+          <select id="diameter"></select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="length">Length (mm)</label>
+          <select id="length"></select>
+        </div>
+        <div>
+          <label for="standard">Standard</label>
+          <input id="standard" type="text" readonly />
+        </div>
+      </div>
+      <button id="loadBtn" disabled>Open model</button>
+      <div class="help">Data is pulled from your repo file names (e.g. <i>SocketHead_M10x25_ISO4762.stl</i>).</div>
+      <div class="status" id="status">Loading repo index…</div>
+      <div class="footer">Tips: keep names exact, case‑sensitive on Pages · Add more STL files and they’ll auto‑appear.</div>
+    </div>
+    <div class="card viewer">
+      <div class="toolbar">
+        <a id="downloadLink" href="#" download>Download STL</a>
+        <button id="fitBtn">Fit</button>
+        <button id="wireBtn">Wire</button>
+      </div>
+      <div id="viewport"></div>
+    </div>
+  </div>
+
+  <!-- Three.js + loaders -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+  <script>
+  (function() {
+    const owner = "nimageran";
+    const repo  = "fasteners-viewer";
+
+    // UI elements
+    const $family   = document.getElementById('family');
+    const $diameter = document.getElementById('diameter');
+    const $length   = document.getElementById('length');
+    const $std      = document.getElementById('standard');
+    const $status   = document.getElementById('status');
+    const $loadBtn  = document.getElementById('loadBtn');
+    const $fitBtn   = document.getElementById('fitBtn');
+    const $wireBtn  = document.getElementById('wireBtn');
+    const $download = document.getElementById('downloadLink');
+
+    // Data model
+    /** files: [{family, diameter:'M10', length:25, iso:'4762', path:'Bolts/.../file.stl', rawUrl:'...'}] */
+    let files = [];
+    /** index: family -> diameter -> { iso:Set, items:[{length, path, rawUrl, iso}]} */
+    let index = new Map();
+
+    // --- Helpers ---
+    const setStatus = (msg) => $status.textContent = msg;
+    const groupBy = (arr, key) => arr.reduce((m,x)=> (m[x[key]]=(m[x[key]]||[]).concat(x), m), {});
+    const uniqueSorted = (iterable, mapper=(x)=>x, sortFn=(a,b)=> (a<b?-1:a>b?1:0)) => {
+      const set = new Set();
+      const out = [];
+      for (const x of iterable) { const y = mapper(x); if(!set.has(y)){ set.add(y); out.push(y);}}
+      return out.sort(sortFn);
+    };
+
+    // Parse names like: SocketHead_M10x25_ISO4762.stl  or  FlatHead_M3x16_ISO10642.stl
+    const nameRE = /^(?<family>[A-Za-z]+Head)_(?<diameter>M\d+)x(?<length>\d+)_ISO(?<iso>\d+)\.stl$/i;
+
+    function parseName(filename) {
+      const m = filename.match(nameRE);
+      if (!m) return null;
+      const { family, diameter, length, iso } = m.groups;
+      return { family, diameter: diameter.toUpperCase(), length: Number(length), iso };
+    }
+
+    // --- GitHub tree fetch (1–2 calls, then single recursive tree) ---
+    async function getRepoTree() {
+      // get default branch (main)
+      const repoMeta = await fetch(`https://api.github.com/repos/${owner}/${repo}`).then(r=>r.json());
+      const branch = repoMeta.default_branch || "main";
+      // get branch commit -> tree sha
+      const br = await fetch(`https://api.github.com/repos/${owner}/${repo}/branches/${branch}`).then(r=>r.json());
+      const treeSha = br?.commit?.commit?.tree?.sha || br?.commit?.sha || branch;
+      // fetch full tree
+      const tree = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/trees/${treeSha}?recursive=1`).then(r=>r.json());
+      if (!tree.tree) throw new Error("Could not fetch repo tree");
+      return { branch, tree: tree.tree };
+    }
+
+    async function buildCatalog() {
+      setStatus("Indexing STL files from GitHub…");
+      try {
+        const { branch, tree } = await getRepoTree();
+        const stlEntries = tree.filter(n => n.type === "blob" && n.path.toLowerCase().endsWith(".stl"));
+
+        const rawBase = (path) => `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURI(path)}`;
+
+        const parsed = [];
+        for (const node of stlEntries) {
+          const fname = node.path.split("/").pop();
+          const meta = parseName(fname);
+          if (!meta) continue;
+          parsed.push({
+            family: meta.family,
+            diameter: meta.diameter,
+            length: meta.length,
+            iso: meta.iso,
+            path: node.path,
+            rawUrl: rawBase(node.path),
+          });
+        }
+        if (parsed.length === 0) throw new Error("No STL files matched the expected naming pattern.");
+        files = parsed;
+        setStatus(`Indexed ${files.length} STL files.`);
+        buildIndex();
+        hydrateUI();
+      } catch (err) {
+        console.error(err);
+        setStatus(`Index error: ${err.message}\nIf this is a fresh commit, give Pages a minute then refresh.`);
+      }
+    }
+
+    function buildIndex() {
+      index.clear();
+      for (const f of files) {
+        if (!index.has(f.family)) index.set(f.family, new Map());
+        const diamap = index.get(f.family);
+        if (!diamap.has(f.diameter)) diamap.set(f.diameter, { iso: new Set(), items: [] });
+        const bucket = diamap.get(f.diameter);
+        bucket.iso.add(f.iso);
+        bucket.items.push({ length: f.length, path: f.path, rawUrl: f.rawUrl, iso: f.iso });
+      }
+      // sort each bucket's items by length
+      for (const fam of index.values()) {
+        for (const bucket of fam.values()) {
+          bucket.items.sort((a,b)=>a.length-b.length);
+        }
+      }
+    }
+
+    function fillSelect(select, values, formatter=(x)=>x) {
+      select.innerHTML = "";
+      for (const v of values) {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = formatter(v);
+        select.appendChild(opt);
+      }
+      select.disabled = values.length === 0;
+    }
+
+    function hydrateUI() {
+      // Families
+      const families = uniqueSorted(index.keys(), (x)=>x);
+      fillSelect($family, families);
+      onFamilyChange();
+    }
+
+    function onFamilyChange() {
+      const fam = $family.value;
+      const diamap = index.get(fam) || new Map();
+      const diameters = uniqueSorted(diamap.keys(), (x)=>x, (a,b)=> Number(a.slice(1)) - Number(b.slice(1))); // sort by numeric
+      fillSelect($diameter, diameters);
+      onDiameterChange();
+    }
+
+    function onDiameterChange() {
+      const fam = $family.value;
+      const dia = $diameter.value;
+      const diamap = index.get(fam) || new Map();
+      const bucket = diamap.get(dia);
+      if (!bucket) {
+        fillSelect($length, []);
+        $std.value = "";
+        $loadBtn.disabled = true;
+        return;
+      }
+      const lengths = bucket.items.map(it=>it.length);
+      fillSelect($length, lengths, (x)=> String(x));
+      const isoList = Array.from(bucket.iso.values()).sort();
+      $std.value = isoList.join(", ");
+      $loadBtn.disabled = $length.value === "";
+    }
+
+    function findFile(family, diameter, length) {
+      const diamap = index.get(family);
+      if (!diamap) return null;
+      const bucket = diamap.get(diameter);
+      if (!bucket) return null;
+      return bucket.items.find(it => String(it.length) === String(length)) || null;
+    }
+
+    $family.addEventListener("change", onFamilyChange);
+    $diameter.addEventListener("change", onDiameterChange);
+    $length.addEventListener("change", ()=> { $loadBtn.disabled = ($length.value===""); });
+
+    // --- THREE Viewer ---
+    let renderer, scene, camera, controls;
+    let mesh = null;
+    let wireframe = false;
+
+    function init3D() {
+      const el = document.getElementById("viewport");
+      const w = el.clientWidth || el.offsetWidth || 800;
+      const h = el.clientHeight || 600;
+      renderer = new THREE.WebGLRenderer({ antialias:true });
+      renderer.setSize(w,h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+      el.appendChild(renderer.domElement);
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0f1220);
+
+      camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 1000);
+      camera.position.set(80,60,90);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+
+      const hemi = new THREE.HemisphereLight(0xffffff, 0x222233, 0.5);
+      scene.add(hemi);
+      const key = new THREE.DirectionalLight(0xffffff, 0.9);
+      key.position.set(100,120,80);
+      scene.add(key);
+      const fill = new THREE.DirectionalLight(0x88aaff, 0.5);
+      fill.position.set(-60,-40,100);
+      scene.add(fill);
+
+      const grid = new THREE.GridHelper(400, 40, 0x2a2f4a, 0x1b1f33);
+      scene.add(grid);
+
+      window.addEventListener('resize', onResize);
+      animate();
+    }
+
+    function onResize() {
+      const el = document.getElementById("viewport");
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      camera.aspect = w/h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w,h);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    function clearMesh() {
+      if (mesh) {
+        scene.remove(mesh);
+        mesh.geometry.dispose();
+        if (mesh.material) {
+          if (Array.isArray(mesh.material)) mesh.material.forEach(m=>m.dispose());
+          else mesh.material.dispose();
+        }
+        mesh = null;
+      }
+    }
+
+    function fitCameraToObject(object, offset=1.35) {
+      const box = new THREE.Box3().setFromObject(object);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const fov = camera.fov * (Math.PI / 180);
+      let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * offset;
+      camera.position.set(center.x + cameraZ*0.6, center.y + cameraZ*0.5, center.z + cameraZ);
+      camera.near = maxDim/100;
+      camera.far = maxDim*10 + cameraZ;
+      camera.updateProjectionMatrix();
+      controls.target.copy(center);
+      controls.update();
+    }
+
+    async function loadSTL(rawUrl) {
+      clearMesh();
+      setStatus("Loading STL…");
+      return new Promise((resolve, reject) => {
+        const loader = new THREE.STLLoader();
+        loader.load(rawUrl, (geom) => {
+          const mat = new THREE.MeshStandardMaterial({ color: 0xb8c7ff, metalness: 0.1, roughness: 0.6 });
+          mesh = new THREE.Mesh(geom, mat);
+          geom.computeVertexNormals();
+          scene.add(mesh);
+          fitCameraToObject(mesh);
+          setStatus("Model loaded.");
+          resolve();
+        }, undefined, (err) => {
+          console.error(err);
+          setStatus("Load failed. Check filename/path and GitHub Pages visibility.");
+          reject(err);
+        });
+      });
+    }
+
+    $loadBtn.addEventListener("click", async () => {
+      const fam = $family.value, dia = $diameter.value, len = $length.value;
+      const file = findFile(fam, dia, len);
+      if (!file) { setStatus("No matching STL found for that combo."); return; }
+      $download.href = file.rawUrl;
+      $download.download = file.path.split("/").pop();
+      await loadSTL(file.rawUrl);
+    });
+
+    $fitBtn.addEventListener("click", () => { if (mesh) fitCameraToObject(mesh, 1.25); });
+    $wireBtn.addEventListener("click", () => {
+      wireframe = !wireframe;
+      if (mesh && mesh.material) {
+        if (Array.isArray(mesh.material)) mesh.material.forEach(m=> m.wireframe = wireframe);
+        else mesh.material.wireframe = wireframe;
+      }
+    });
+
+    // bootstrap
+    init3D();
+    buildCatalog();
+  })();
+  </script>
+</body>
+</html>
