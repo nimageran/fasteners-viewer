@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fasteners Viewer — Auto from Filenames</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --text: #e8eef2;
+    --muted: #9aa7b2;
+    --accent: #6aa0ff;
+    --danger: #ff7a7a;
+    --ok: #7affb3;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+  header {
+    padding: 14px 16px; background: var(--panel); border-bottom: 1px solid #242a33;
+    position: sticky; top: 0; z-index: 50;
+    display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+  }
+  header h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: 0.2px; }
+  #status { font-size: 12px; color: var(--muted); }
+  .wrap { display: grid; grid-template-columns: 360px 1fr; gap: 0; height: calc(100% - 60px); }
+  @media (max-width: 960px) {
+    .wrap { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  }
+  aside {
+    background: var(--panel);
+    border-right: 1px solid #242a33;
+    padding: 14px;
+    overflow: auto;
+  }
+  .field { display: grid; gap: 6px; margin-bottom: 12px; }
+  label { font-size: 12px; color: var(--muted); }
+  select {
+    width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #2a313c;
+    background: #0f1320; color: var(--text); font-size: 14px; appearance: none;
+  }
+  option { background: #0f1320; color: var(--text); }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .error { color: var(--danger); margin-top: 8px; font-size: 12px; white-space: pre-wrap; }
+  .ok { color: var(--ok); }
+  main { position: relative; }
+  #viewer { position: absolute; inset: 0; }
+  canvas { display: block; }
+  .footer {
+    font-size: 11px; color: var(--muted); border-top: 1px dashed #2a313c; padding-top: 8px; margin-top: 10px;
+  }
+  .badge { padding: 2px 6px; border-radius: 8px; border: 1px solid #2a313c; font-size: 11px; color: var(--muted); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .small { font-size: 12px; color: var(--muted); }
+  .loading-dot { display:inline-block; width:5px; height:5px; background: var(--muted); border-radius: 999px; margin-left:3px; animation: blink 1s infinite alternate; }
+  @keyframes blink { from { opacity: 0.25; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Fasteners Viewer</h1>
+      <div id="status">Loading repo index<span class="loading-dot"></span></div>
+    </div>
+    <div class="row">
+      <span class="badge">auto-from-filenames</span>
+      <span class="badge" id="branchBadge">branch: …</span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside>
+      <div class="field">
+        <label for="kindSelect">Kind</label>
+        <select id="kindSelect" disabled></select>
+      </div>
+      <div class="field">
+        <label for="familySelect">Family</label>
+        <select id="familySelect" disabled></select>
+      </div>
+      <div class="field">
+        <label for="stdSelect">Standard</label>
+        <select id="stdSelect" disabled></select>
+      </div>
+      <div class="field">
+        <label for="diaSelect">Diameter (M)</label>
+        <select id="diaSelect" disabled></select>
+      </div>
+      <div class="field">
+        <label for="lenSelect">Length (mm)</label>
+        <select id="lenSelect" disabled></select>
+      </div>
+      <div class="small" id="debugPath"></div>
+      <div id="errorBox" class="error"></div>
+
+      <div class="footer">
+        Naming pattern: <code>Family_M{Dia}x{Len}_{Standard}.stl</code><br/>
+        Folder pattern: <code>{Kind}/{FamilyFolder}/{Standard}/STL/*.stl</code><br/>
+        Example: <code>Bolts/Socket_Head/ISO4762/STL/SocketHead_M10x20_ISO4762.stl</code>
+      </div>
+    </aside>
+
+    <main>
+      <div id="viewer"></div>
+    </main>
+  </div>
+
+  <!-- three.js & helpers (use a stable version with non-module examples loaders) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/loaders/STLLoader.js"></script>
+
+  <script>
+  (function(){
+    const USER = "nimageran";
+    const REPO = "fasteners-viewer";
+
+    const statusEl = document.getElementById('status');
+    const branchBadge = document.getElementById('branchBadge');
+    const errorBox = document.getElementById('errorBox');
+    const debugPath = document.getElementById('debugPath');
+
+    const kindSel   = document.getElementById('kindSelect');
+    const famSel    = document.getElementById('familySelect');
+    const stdSel    = document.getElementById('stdSelect');
+    const diaSel    = document.getElementById('diaSelect');
+    const lenSel    = document.getElementById('lenSelect');
+
+    // Data store
+    const db = {}; // db[kind][family][standard][dia][len] = rawPath
+
+    // --- Helpers
+    const setStatus = (msg, ok=false) => {
+      statusEl.textContent = msg;
+      if (ok) statusEl.classList.add('ok'); else statusEl.classList.remove('ok');
+    };
+    const showError = (msg) => {
+      console.error(msg);
+      errorBox.textContent = String(msg || '');
+    };
+    const clearError = () => errorBox.textContent = '';
+
+    function addOption(select, val, text) {
+      const opt = document.createElement('option');
+      opt.value = val;
+      opt.textContent = text ?? val;
+      select.appendChild(opt);
+    }
+    function fillSelect(select, arr) {
+      select.innerHTML = '';
+      arr.forEach(v => addOption(select, v, v));
+      select.disabled = arr.length === 0;
+    }
+
+    function parseFromPath(path) {
+      // Expect path like: Kind/FamilyFolder/Standard/STL/Filename.stl
+      const parts = path.split('/');
+      if (parts.length < 5) return null;
+      const kind = parts[0]; // e.g., Bolts
+      const standard = parts[2]; // e.g., ISO4762
+      const file = parts[4];
+
+      if (!file.toLowerCase().endsWith('.stl')) return null;
+      const base = file.replace(/\.stl$/i, '');
+
+      // Filename pattern: Family_M{Dia}x{Len}_{Standard}
+      // Example: SocketHead_M10x20_ISO4762
+      // or FlatHead_M3x16_ISO10642
+      const m = base.match(/^([A-Za-z0-9]+)_M(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)[_\-]([A-Za-z0-9]+)$/);
+      if (!m) return null;
+
+      const familyName = m[1];   // "SocketHead" or "FlatHead"
+      const dia = m[2];          // "10"
+      const len = m[3];          // "20"
+      const stdFromFile = m[4];  // should equal folder standard, but we trust filename
+
+      return { kind, familyName, standard: stdFromFile || standard, dia, len, path };
+    }
+
+    async function fetchJson(url) {
+      const r = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
+      if (!r.ok) throw new Error(`${r.status} ${r.statusText} — ${url}`);
+      return await r.json();
+    }
+
+    async function discover() {
+      setStatus('Contacting GitHub…');
+      const meta = await fetchJson(`https://api.github.com/repos/${USER}/${REPO}`);
+      const branch = meta.default_branch || 'main';
+      branchBadge.textContent = `branch: ${branch}`;
+
+      setStatus('Listing repository…');
+      // Use the "git trees" recursive listing (1 call)
+      const tree = await fetchJson(`https://api.github.com/repos/${USER}/${REPO}/git/trees/${branch}?recursive=1`);
+
+      const stlEntries = (tree.tree || [])
+        .filter(t => t.type === 'blob' && /\.stl$/i.test(t.path) && /\/STL\//.test(t.path));
+
+      if (!stlEntries.length) {
+        throw new Error('No STL files found under */STL/*.stl. Ensure your repo is public and paths match pattern.');
+      }
+
+      let added = 0;
+      for (const it of stlEntries) {
+        const info = parseFromPath(it.path);
+        if (!info) continue;
+        const { kind, familyName, standard, dia, len, path } = info;
+        db[kind] ??= {};
+        db[kind][familyName] ??= {};
+        db[kind][familyName][standard] ??= {};
+        db[kind][familyName][standard][dia] ??= {};
+        db[kind][familyName][standard][dia][len] = path;
+        added++;
+      }
+      if (!added) throw new Error('Found STL files, but none matched expected filename format.');
+
+      setStatus(`Indexed ${added} STL(s)`, true);
+      populateSelectors();
+    }
+
+    function populateSelectors() {
+      clearError();
+
+      // Kind
+      const kinds = Object.keys(db).sort();
+      fillSelect(kindSel, kinds);
+      kindSel.disabled = kinds.length === 0;
+
+      // Chain updates
+      function onKind() {
+        const kind = kindSel.value;
+        const families = kind ? Object.keys(db[kind] || {}).sort() : [];
+        fillSelect(famSel, families);
+        famSel.disabled = families.length === 0;
+        onFamily();
+      }
+      function onFamily() {
+        const kind = kindSel.value;
+        const fam = famSel.value;
+        const stds = (db[kind] && db[kind][fam]) ? Object.keys(db[kind][fam]).sort() : [];
+        fillSelect(stdSel, stds);
+        stdSel.disabled = stds.length === 0;
+        onStandard();
+      }
+      function onStandard() {
+        const kind = kindSel.value;
+        const fam = famSel.value;
+        const std = stdSel.value;
+        const dias = (db[kind] && db[kind][fam] && db[kind][fam][std]) ? Object.keys(db[kind][fam][std]).map(Number).sort((a,b)=>a-b).map(String) : [];
+        fillSelect(diaSel, dias);
+        diaSel.disabled = dias.length === 0;
+        onDia();
+      }
+      function onDia() {
+        const kind = kindSel.value;
+        const fam = famSel.value;
+        const std = stdSel.value;
+        const dia = diaSel.value;
+        const lens = (db[kind] && db[kind][fam] && db[kind][fam][std] && db[kind][fam][std][dia]) ? Object.keys(db[kind][fam][std][dia]).map(Number).sort((a,b)=>a-b).map(String) : [];
+        fillSelect(lenSel, lens);
+        lenSel.disabled = lens.length === 0;
+        onLen();
+      }
+      function onLen() {
+        const kind = kindSel.value;
+        const fam = famSel.value;
+        const std = stdSel.value;
+        const dia = diaSel.value;
+        const len = lenSel.value;
+        const path = (db[kind] && db[kind][fam] && db[kind][fam][std] && db[kind][fam][std][dia]) ? db[kind][fam][std][dia][len] : null;
+        if (path) {
+          const url = `https://raw.githubusercontent.com/${USER}/${REPO}/${branchBadge.textContent.replace('branch: ','')}/${encodeURI(path)}`;
+          debugPath.textContent = url;
+          loadSTL(url);
+        }
+      }
+
+      kindSel.onchange = onKind;
+      famSel.onchange = onFamily;
+      stdSel.onchange = onStandard;
+      diaSel.onchange = onDia;
+      lenSel.onchange = onLen;
+
+      // Kick off initial cascade (pick first of each)
+      if (!kindSel.disabled) {
+        kindSel.selectedIndex = 0;
+        onKind();
+      }
+    }
+
+    // --- three.js viewer
+    let renderer, scene, camera, controls, currentMesh, stlLoader;
+    const container = document.getElementById('viewer');
+
+    function init3D() {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || (window.innerHeight - 60);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(w, h);
+      renderer.setClearColor(0x0b0d12);
+      container.innerHTML = '';
+      container.appendChild(renderer.domElement);
+
+      scene = new THREE.Scene();
+
+      camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+      camera.position.set(80, 60, 80);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.target.set(0, 0, 0);
+
+      // Lighting
+      const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+      scene.add(ambient);
+      const dir1 = new THREE.DirectionalLight(0xffffff, 0.7); dir1.position.set(1,1,1);
+      const dir2 = new THREE.DirectionalLight(0xffffff, 0.4); dir2.position.set(-1,0.5,-0.8);
+      scene.add(dir1, dir2);
+
+      // Ground grid (subtle)
+      const grid = new THREE.GridHelper(200, 20, 0x263040, 0x1b2430);
+      grid.position.y = -0.01;
+      scene.add(grid);
+
+      stlLoader = new THREE.STLLoader();
+
+      window.addEventListener('resize', onResize);
+      animate();
+    }
+
+    function onResize() {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || (window.innerHeight - 60);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    function clearCurrentMesh() {
+      if (currentMesh) {
+        scene.remove(currentMesh);
+        currentMesh.geometry.dispose();
+        currentMesh.material.dispose();
+        currentMesh = null;
+      }
+    }
+
+    function fitToObject(obj) {
+      const box = new THREE.Box3().setFromObject(obj);
+      const size = new THREE.Vector3(); box.getSize(size);
+      const center = new THREE.Vector3(); box.getCenter(center);
+      controls.target.copy(center);
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const fov = camera.fov * (Math.PI / 180);
+      let cameraZ = (maxDim / 2) / Math.tan(fov / 2);
+
+      cameraZ *= 1.8;
+      camera.position.set(center.x + cameraZ, center.y + cameraZ * 0.6, center.z + cameraZ);
+      camera.lookAt(center);
+    }
+
+    async function loadSTL(url) {
+      clearError();
+      setStatus('Loading mesh…');
+      clearCurrentMesh();
+
+      stlLoader.load(
+        url,
+        (geom) => {
+          const mat = new THREE.MeshStandardMaterial({ color: 0xb7c6d1, metalness: 0.65, roughness: 0.35 });
+          const mesh = new THREE.Mesh(geom, mat);
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+
+          // Center geometry
+          geom.computeBoundingBox();
+          const bbox = geom.boundingBox;
+          const center = new THREE.Vector3();
+          bbox.getCenter(center);
+          geom.translate(-center.x, -center.y, -center.z);
+
+          currentMesh = mesh;
+          scene.add(mesh);
+          fitToObject(mesh);
+          setStatus('Ready', true);
+        },
+        (xhr) => {
+          // progress available
+        },
+        (err) => {
+          showError('Failed to load STL: ' + (err?.message || err));
+          setStatus('Ready (with errors)');
+        }
+      );
+    }
+
+    // Boot
+    init3D();
+    discover().catch(err => {
+      showError('Indexing failed:\n' + err.message + '\n\nTip: Make sure the repo is PUBLIC and contains paths like Bolts/.../STL/*.stl');
+      setStatus('Error');
+    });
+  })();
+  </script>
+</body>
+</html>
