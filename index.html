@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Nima’s Fasteners Viewer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+:root{--bg:#0e1116;--panel:#161a22;--text:#e6eaf2;--muted:#9aa3b2;--accent:#6ea8fe;--line:#232837;--chip:#1f2532;--chip-text:#dbe4ff}
+.light{--bg:#fff;--panel:#f7f9fc;--text:#0c1321;--muted:#5a667a;--accent:#2563eb;--line:#e5e9f2;--chip:#eef2f8;--chip-text:#0c1321}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial;display:flex;flex-direction:column}
+header{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px}
+.brand{font-weight:700;display:flex;gap:10px;align-items:center}.dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.btn{border:1px solid var(--line);background:#0000;color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer}.btn:hover{border-color:var(--accent)}
+main{flex:1;display:grid;grid-template-columns:420px 1fr;min-height:0}
+aside{padding:14px;border-right:1px solid var(--line);background:var(--panel);overflow:auto}
+.field{margin-bottom:12px}label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input{width:100%;padding:8px 10px;background:#0000;border:1px solid var(--line);color:var(--text);border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;padding:10px;background:#0000;cursor:pointer}
+.card h4{margin:0 0 6px;font-size:14px}
+.small{color:var(--muted);font-size:12px}
+.badge{display:inline-block;background:var(--chip);color:var(--chip-text);border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:12px;margin-right:6px}
+.viewer{position:relative}
+canvas#viewer{position:absolute;inset:0;width:100%;height:100%}
+.wrap{position:relative;height:100%}
+.topbar{display:flex;gap:10px;align-items:center;position:absolute;right:10px;top:10px}
+.tag{padding:4px 8px;border-radius:8px;background:var(--chip);border:1px solid var(--line);font-size:12px}
+pane{display:block;position:absolute;left:10px;bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:460px}
+pane .inner{padding:10px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px;font-size:13px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#0000;cursor:pointer}
+.pill.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.link{color:var(--accent);text-decoration:none;border:1px solid var(--line);padding:6px 10px;border-radius:8px}
+.spinner{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.s{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:1000px){main{grid-template-columns:1fr;grid-template-rows:auto 1fr}aside{border-right:none;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body class="light">
+<header>
+  <div class="brand"><div class="dot"></div>Fasteners Viewer</div>
+  <button id="theme" class="btn">🌗 Theme</button>
+</header>
+
+<main>
+  <aside>
+    <div class="field">
+      <label>Search (e.g., “M8”, “ISO4035”, “hex”)</label>
+      <input id="search" placeholder="Type to filter tiles…">
+    </div>
+    <div id="tiles" class="grid"></div>
+    <div class="small" id="hint" style="margin-top:10px"></div>
+  </aside>
+
+  <section class="wrap">
+    <div class="spinner" id="spin" hidden><div class="s"></div></div>
+    <div class="topbar"><div class="tag" id="tagSpan">—</div><div class="tag" id="tagCount">—</div></div>
+    <div class="viewer"><canvas id="viewer"></canvas></div>
+    <pane id="info" hidden>
+      <div class="inner">
+        <h3 id="title" style="margin:0 0 6px;font-size:14px">—</h3>
+        <div class="kv" style="margin-bottom:8px">
+          <div>Family</div><div id="iFamily">—</div>
+          <div>Type</div><div id="iSubtype">—</div>
+          <div>Standard</div><div id="iStandard">—</div>
+          <div>Diameter</div><div id="iDiameter">—</div>
+        </div>
+        <div class="small">Variants</div>
+        <div class="row" id="variants"></div>
+        <div class="row" style="margin-top:10px">
+          <a id="dlSTL" class="link" download>⬇ STL</a>
+          <a id="dlSTEP" class="link" download>⬇ STEP</a>
+        </div>
+      </div>
+    </pane>
+  </section>
+</main>
+
+<!-- libs -->
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+// ===== CONFIG: set your repo here =====
+const REPO = {
+  owner: "YOUR_GITHUB_USERNAME",
+  name:  "YOUR_REPO_NAME",
+  branch:"main",                 // or "gh-pages"
+  root:  "FastenersLib"          // where your folders live
+};
+// We auto-pick any CSV named like manifest_*.csv
+const CSV_MATCH = /manifest_.*\.csv$/i;
+
+// ===== Elements =====
+const E = {
+  theme: document.getElementById('theme'),
+  tiles: document.getElementById('tiles'),
+  search: document.getElementById('search'),
+  hint: document.getElementById('hint'),
+  spin: document.getElementById('spin'),
+  tagSpan: document.getElementById('tagSpan'),
+  tagCount: document.getElementById('tagCount'),
+  info: document.getElementById('info'),
+  title: document.getElementById('title'),
+  iFamily: document.getElementById('iFamily'),
+  iSubtype: document.getElementById('iSubtype'),
+  iStandard: document.getElementById('iStandard'),
+  iDiameter: document.getElementById('iDiameter'),
+  variants: document.getElementById('variants'),
+  dlSTL: document.getElementById('dlSTL'),
+  dlSTEP: document.getElementById('dlSTEP'),
+  canvas: document.getElementById('viewer'),
+};
+
+// ===== Three.js scene =====
+const renderer = new THREE.WebGLRenderer({canvas:E.canvas,antialias:true});
+let scene,camera,controls,currentMesh;
+function init3D(){
+  resize();
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(getComputedStyle(document.body).getPropertyValue('--panel'));
+  camera = new THREE.PerspectiveCamera(45, E.canvas.clientWidth/E.canvas.clientHeight, 0.1, 5000);
+  camera.position.set(140,110,160);
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  scene.add(new THREE.HemisphereLight(0xffffff,0x303030,0.9));
+  const d = new THREE.DirectionalLight(0xffffff,0.9); d.position.set(100,120,80); scene.add(d);
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(function tick(){controls.update();renderer.render(scene,camera);requestAnimationFrame(tick)});
+}
+function resize(){
+  const w = E.canvas.parentElement.clientWidth, h = E.canvas.parentElement.clientHeight;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2)); renderer.setSize(w,h,false);
+  if(camera){ camera.aspect=w/h; camera.updateProjectionMatrix(); }
+}
+const loader = new THREE.STLLoader();
+async function showSTL(url){
+  E.spin.hidden=false;
+  if(currentMesh){ scene.remove(currentMesh); currentMesh.geometry.dispose(); currentMesh.material.dispose(); currentMesh=null; }
+  const geo = await new Promise((res,rej)=> loader.load(url,res,undefined,rej));
+  geo.computeVertexNormals();
+  geo.computeBoundingBox();
+  const bb = geo.boundingBox;
+  const center = new THREE.Vector3().addVectors(bb.min,bb.max).multiplyScalar(0.5);
+  geo.translate(-center.x,-center.y,-center.z);
+  const mat = new THREE.MeshStandardMaterial({color:0x7a7f86,metalness:.4,roughness:.6});
+  const mesh = new THREE.Mesh(geo,mat); scene.add(mesh); currentMesh=mesh;
+  const size = new THREE.Vector3().subVectors(bb.max,bb.min);
+  const maxDim = Math.max(size.x,size.y,size.z);
+  E.tagSpan.textContent = `${maxDim.toFixed(1)} mm max span`;
+  const dist = maxDim*2 + 20; camera.position.set(dist,dist*.75,dist);
+  controls.target.set(0,0,0); controls.update();
+  E.spin.hidden=true;
+}
+
+// ===== GitHub API: discover all manifest CSVs under FastenersLib =====
+async function listManifestFiles(){
+  // Get repo tree (recursive)
+  const url = `https://api.github.com/repos/${REPO.owner}/${REPO.name}/git/trees/${REPO.branch}?recursive=1`;
+  const r = await fetch(url);
+  if(!r.ok){ throw new Error(`GitHub API error ${r.status}`); }
+  const js = await r.json();
+  const tree = js.tree || [];
+  const files = tree
+    .filter(n => n.type === "blob" && n.path.startsWith(REPO.root + "/") && CSV_MATCH.test(n.path))
+    .map(n => ({
+      path: n.path,
+      raw:  `https://raw.githubusercontent.com/${REPO.owner}/${REPO.name}/${REPO.branch}/${n.path}`
+    }));
+  return files;
+}
+
+function windowsPathToRepo(p){
+  if(!p) return "";
+  if(/^\.{0,2}\//.test(p) || p.startsWith('FastenersLib/')) return p;
+  const m = p.match(/(Nuts|Bolts|Washers|Screws|Rivets|Pins)[\\\/].*$/i);
+  return m ? ("FastenersLib/" + m[0].replace(/\\/g,'/')) : p;
+}
+
+async function loadRowsFromManifestList(list){
+  const rows=[];
+  for(const f of list){
+    try{
+      const res = await fetch(f.raw);
+      if(!res.ok) continue;
+      const txt = await res.text();
+      const parsed = Papa.parse(txt,{header:true,skipEmptyLines:true});
+      for(const r of parsed.data){
+        if(!r.family||!r.subtype||!r.standard||!r.diameter) continue;
+        r.path_stl  = windowsPathToRepo(r.path_stl);
+        r.path_step = windowsPathToRepo(r.path_step);
+        r.variant   = r.variant || (r.length ? `${r.diameter}×${r.length}` : r.diameter);
+        r.groupKey  = `${r.family} / ${r.subtype} / ${r.standard}`;
+        rows.push(r);
+      }
+    }catch(e){ console.warn("CSV load error:", f.path, e); }
+  }
+  return rows;
+}
+
+function buildGroups(rows){
+  const map = new Map();
+  for(const r of rows){
+    if(!map.has(r.groupKey)) map.set(r.groupKey, {meta:{family:r.family,subtype:r.subtype,standard:r.standard}, items:[]});
+    map.get(r.groupKey).items.push(r);
+  }
+  return map;
+}
+
+// ===== Tiles UI =====
+function renderTiles(groups, filter=""){
+  E.tiles.innerHTML="";
+  const q = filter.trim().toLowerCase();
+  const keys = [...groups.keys()].sort();
+  let shown=0;
+  for(const key of keys){
+    const g = groups.get(key);
+    const label = key;
+    if(q && !label.toLowerCase().includes(q)){
+      const hit = g.items.some(it =>
+        (it.diameter||"").toLowerCase().includes(q) ||
+        (it.name_stem||"").toLowerCase().includes(q)
+      );
+      if(!hit) continue;
+    }
+    shown++;
+    const c = document.createElement('div'); c.className='card';
+    c.innerHTML = `<h4>${label}</h4>
+      <div class="small">
+        <span class="badge">${g.meta.family}</span>
+        <span class="badge">${g.meta.subtype}</span>
+        <span class="badge">${g.meta.standard}</span>
+        <span class="badge">${g.items.length} items</span>
+      </div>`;
+    c.onclick = ()=> openGroup(g);
+    E.tiles.appendChild(c);
+  }
+  E.hint.textContent = shown? "" : "No matches. Try “M8”, “ISO4035”, “socket”, etc.";
+}
+function openGroup(group){
+  const items = group.items.slice().sort((a,b)=>{
+    const da = parseFloat((a.diameter||"").replace(/[^\d.]/g,""))||0;
+    const db = parseFloat((b.diameter||"").replace(/[^\d.]/g,""))||0;
+    if(da!==db) return da-db;
+    const la = parseFloat(a.length)||0, lb = parseFloat(b.length)||0;
+    return la-lb;
+  });
+  E.variants.innerHTML="";
+  items.forEach((r,idx)=>{
+    const p = document.createElement('button');
+    p.className='pill'+(idx===0?' active':'');
+    p.textContent = r.variant || r.diameter;
+    p.title = r.name_stem || "";
+    p.onclick = ()=>{
+      [...E.variants.children].forEach(x=>x.classList.remove('active'));
+      p.classList.add('active');
+      showRow(r);
+    };
+    E.variants.appendChild(p);
+  });
+  E.title.textContent   = `${group.meta.family} / ${group.meta.subtype} / ${group.meta.standard}`;
+  E.iFamily.textContent = group.meta.family;
+  E.iSubtype.textContent= group.meta.subtype;
+  E.iStandard.textContent=group.meta.standard;
+  E.iDiameter.textContent="—";
+  E.tagCount.textContent = `${items.length} variants`;
+  E.info.hidden = false;
+  if(items.length) showRow(items[0]);
+}
+function showRow(r){
+  E.iDiameter.textContent = r.diameter || "—";
+  E.dlSTL.href  = r.path_stl || "#";
+  E.dlSTEP.href = r.path_step || "#";
+  if(r.path_stl){
+    showSTL(r.path_stl).catch(e=>{
+      console.error(e);
+      alert("Failed to load STL. Check the path in CSV and repo folders.");
+    });
+  }
+}
+
+// ===== Wire up =====
+E.search.addEventListener('input', ()=> renderTiles(GROUPS, E.search.value));
+E.theme.addEventListener('click', ()=>{ document.body.classList.toggle('light'); resize(); });
+
+let GROUPS=new Map();
+(async function start(){
+  try{
+    init3D();
+    const files = await listManifestFiles();
+    if(!files.length){ E.hint.textContent = `No manifest_*.csv under ${REPO.root}/`; return; }
+    const rows  = await loadRowsFromManifestList(files);
+    GROUPS = buildGroups(rows);
+    renderTiles(GROUPS);
+  }catch(e){
+    console.error(e);
+    E.hint.textContent = "Could not read repo via GitHub API. If private, make it public or switch to the catalog.json approach.";
+  }
+})();
+</script>
+</body>
+</html>
