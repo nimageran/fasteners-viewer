@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fasteners Viewer — Flat Head (ISO 10642) & Socket Head (ISO 4762)</title>
+  <style>
+    :root {
+      --bg:#0f1115; --panel:#151922; --panel-2:#1b2030; --text:#e8ecf1; --muted:#9aa5b1; --accent:#5ac8fa;
+      --ok:#3ddc97; --warn:#ffcc00; --err:#ff6b6b; --border:#2a3142;
+    }
+    * { box-sizing: border-box; }
+    html, body { height:100%; margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol"; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .wrap { display:grid; grid-template-columns: 360px 1fr; gap: 12px; height: 100%; padding: 12px; }
+    .panel { background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid var(--border); border-radius:14px; padding:14px; position:relative; overflow:visible; }
+    .viewer { position:relative; overflow:hidden; }
+    #three-canvas { position:absolute; inset:0; display:block; }
+
+    /* Controls */
+    .title { font-size: 18px; margin:0 0 12px 0; letter-spacing: .3px; }
+    .row { display:flex; gap:10px; margin-bottom: 10px; }
+    .field { flex:1; position:relative; }
+    label { display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
+    select, button, input[type="number"] {
+      width:100%;
+      background:#0f1320;
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:14px;
+      outline:none;
+    }
+    select:focus, input:focus, button:focus { border-color: var(--accent); }
+    button { cursor:pointer; background:#0f1320; }
+    button.primary { background: linear-gradient(180deg,#1e263a,#1a2234); border-color:#2e3b57; }
+    button.primary:hover { filter: brightness(1.1); }
+    .help { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    /* Dropdown popover robustness */
+    .panel, .wrap, body, html { overflow: visible; }
+    select { position: relative; z-index: 30; }
+    .actions { display:flex; gap:10px; margin-top:10px; }
+    .chip { display:inline-flex; gap:6px; align-items:center; padding:6px 9px; border-radius:999px; border:1px solid var(--border); background:#0e1220; font-size:12px; color:var(--muted); }
+    .status { margin-top: 8px; min-height: 20px; font-size: 12px; color: var(--muted); white-space: pre-line; }
+
+    /* Footer link */
+    .footer { margin-top: 10px; font-size:12px; color:var(--muted); }
+    .linkrow { display:flex; gap:10px; align-items:center; margin-top:6px; flex-wrap:wrap; }
+
+    /* Loading overlay */
+    .overlay {
+      position:absolute; inset:0; display:none; align-items:center; justify-content:center;
+      background:linear-gradient(180deg, rgba(15,17,21,.55), rgba(15,17,21,.85));
+      z-index: 20;
+    }
+    .overlay.show { display:flex; }
+    .spinner { width:26px; height:26px; border-radius:50%; border:3px solid rgba(255,255,255,.15); border-top-color:var(--accent); animation:spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h1 class="title">Fasteners Viewer</h1>
+
+      <div class="row">
+        <div class="field">
+          <label for="family">Family</label>
+          <select id="family">
+            <option value="socket">Socket Head (ISO 4762)</option>
+            <option value="flat">Flat Head (ISO 10642)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="diameter">Diameter</label>
+          <select id="diameter"></select>
+        </div>
+        <div class="field">
+          <label for="length">Length (mm)</label>
+          <select id="length"></select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="openBtn">Open model</button>
+        <a id="downloadLink" class="chip" href="#" download title="Download STL">Download STL</a>
+      </div>
+
+      <div class="status" id="status">Ready.</div>
+
+      <div class="footer">
+        Repo paths must exist (same origin):
+        <div class="linkrow">
+          <code>Bolts/Socket_Head/ISO4762/STL/SocketHead_M6x20_ISO4762.stl</code>
+        </div>
+        <div class="linkrow">
+          <code>Bolts/Flat_Head/ISO10642/STL/FlatHead_M6x20_ISO10642.stl</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel viewer">
+      <div id="three-canvas"></div>
+      <div class="overlay" id="overlay"><div class="spinner" aria-label="Loading"></div></div>
+    </div>
+  </div>
+
+  <!-- Three.js (ES modules) -->
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.159.0/build/three.module.js';
+    import { OrbitControls } from 'https://unpkg.com/three@0.159.0/examples/jsm/controls/OrbitControls.js';
+    import { STLLoader } from 'https://unpkg.com/three@0.159.0/examples/jsm/loaders/STLLoader.js';
+
+    const CONFIG = {
+      families: {
+        socket: { dir: 'Bolts/Socket_Head/ISO4762/STL', prefix: 'SocketHead', iso: 'ISO4762' },
+        flat:   { dir: 'Bolts/Flat_Head/ISO10642/STL',  prefix: 'FlatHead',   iso: 'ISO10642' },
+      },
+      diameters: ['M3','M4','M5','M6','M8','M10','M12','M16','M20','M24'],
+      // Nima said ≤ 60 mm is enough; we try a sane set, then HEAD‑probe the server
+      candidateLengths: [6,8,10,12,14,16,18,20,22,25,30,35,40,45,50,55,60],
+      // camera
+      fov: 45, near: 0.1, far: 1000
+    };
+
+    const ui = {
+      family: document.getElementById('family'),
+      diameter: document.getElementById('diameter'),
+      length: document.getElementById('length'),
+      openBtn: document.getElementById('openBtn'),
+      download: document.getElementById('downloadLink'),
+      status: document.getElementById('status'),
+      overlay: document.getElementById('overlay')
+    };
+
+    // Fill diameter dropdown
+    CONFIG.diameters.forEach(d => {
+      const o = document.createElement('option'); o.value=d; o.textContent=d; ui.diameter.appendChild(o);
+    });
+
+    // Scene setup
+    const container = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ antialias:true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0f1115);
+    const camera = new THREE.PerspectiveCamera(CONFIG.fov, container.clientWidth/container.clientHeight, CONFIG.near, CONFIG.far);
+    camera.position.set(60, 40, 80);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = .08;
+    controls.target.set(0,0,0);
+
+    // Lights
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x222233, 0.8);
+    scene.add(hemi);
+    const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+    dir.position.set(50, 80, 40);
+    scene.add(dir);
+
+    // Ground
+    const grid = new THREE.GridHelper(400, 40, 0x334, 0x223);
+    scene.add(grid);
+
+    // Model holder
+    let currentMesh = null;
+    const loader = new STLLoader();
+
+    function setStatus(msg, kind='info') {
+      ui.status.textContent = msg;
+      if (kind === 'error') ui.status.style.color = 'var(--err)';
+      else if (kind === 'warn') ui.status.style.color = 'var(--warn)';
+      else ui.status.style.color = 'var(--muted)';
+    }
+    function showOverlay(show) { ui.overlay.classList.toggle('show', !!show); }
+
+    function modelUrl(familyKey, diameter, length) {
+      const fam = CONFIG.families[familyKey];
+      const name = `${fam.prefix}_${diameter}x${length}_${fam.iso}.stl`;
+      return `${fam.dir}/${name}`;
+    }
+
+    async function headExists(url) {
+      try {
+        const res = await fetch(url, { method:'HEAD' });
+        return res.ok;
+      } catch(e) { return false; }
+    }
+
+    async function rebuildLengths() {
+      const fam = ui.family.value;
+      const dia = ui.diameter.value;
+      ui.length.innerHTML = '';
+      setStatus('Scanning available lengths…');
+      showOverlay(true);
+
+      const lengths = [];
+      // Probe in parallel but keep order
+      for (const L of CONFIG.candidateLengths) {
+        const url = modelUrl(fam, dia, L);
+        /* eslint-disable no-await-in-loop */
+        const ok = await headExists(url);
+        if (ok) lengths.push(L);
+      }
+
+      // Fallback if none found: still offer the list, but warn
+      const source = lengths.length ? lengths : CONFIG.candidateLengths;
+      for (const L of source) {
+        const o = document.createElement('option'); o.value = String(L); o.textContent = String(L);
+        ui.length.appendChild(o);
+      }
+      if (lengths.length) {
+        setStatus(`Found ${lengths.length} length(s) for ${dia}.`);
+      } else {
+        setStatus(`No lengths found via HEAD. You can still try “Open model” — file may exist but HEAD blocked.`, 'warn');
+      }
+      showOverlay(false);
+    }
+
+    async function loadModel() {
+      const famKey = ui.family.value;
+      const dia = ui.diameter.value;
+      const L = ui.length.value;
+      const url = modelUrl(famKey, dia, L);
+
+      showOverlay(true);
+      setStatus(`Loading ${url} …`);
+
+      try {
+        const geo = await new Promise((resolve, reject) => {
+          loader.load(url, resolve, undefined, reject);
+        });
+
+        if (currentMesh) { scene.remove(currentMesh); currentMesh.geometry.dispose(); currentMesh.material.dispose(); }
+
+        const mat = new THREE.MeshStandardMaterial({ color: 0xb3c0ff, metalness: 0.85, roughness: 0.25 });
+        const mesh = new THREE.Mesh(geo, mat);
+        geo.computeBoundingBox();
+        const bb = geo.boundingBox;
+        const size = new THREE.Vector3();
+        bb.getSize(size);
+        const center = new THREE.Vector3();
+        bb.getCenter(center);
+        mesh.position.sub(center); // center it
+        currentMesh = mesh;
+        scene.add(mesh);
+
+        // Fit camera
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const dist = maxDim * 2.0;
+        camera.position.set(dist, dist * 0.65, dist * 1.05);
+        controls.target.set(0,0,0);
+        controls.update();
+
+        // Download link
+        ui.download.href = url;
+        ui.download.download = url.split('/').pop();
+
+        setStatus(`Loaded: ${url}`);
+      } catch (err) {
+        console.error(err);
+        setStatus(`Failed to load: ${url}`, 'error');
+      } finally {
+        showOverlay(false);
+      }
+    }
+
+    ui.family.addEventListener('change', rebuildLengths);
+    ui.diameter.addEventListener('change', rebuildLengths);
+    ui.openBtn.addEventListener('click', loadModel);
+
+    // Resize
+    function onResize() {
+      const w = container.clientWidth, h = container.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', onResize);
+
+    // Initialize defaults
+    (async function init() {
+      // Default to Socket Head, M6
+      ui.family.value = 'socket';
+      ui.diameter.value = 'M6';
+      await rebuildLengths();
+      await loadModel();
+      onResize();
+      animate();
+    })();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+  </script>
+</body>
+</html>
