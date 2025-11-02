@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fasteners STL Viewer - Socket & Hex</title>
+  <title>Fasteners STL Viewer - Socket & Flat Head</title>
   <style>
     :root{
       --bg:#0f1220; --fg:#e6e7ee; --muted:#9aa3b2; --accent:#6ea8fe; --card:#171a2b; --border:#2a2f45;
@@ -34,14 +34,14 @@
 </head>
 <body>
   <header>
-    <h1>Fasteners STL Viewer - Socket Head (ISO 4762) &amp; Hex Head (ISO 4014)</h1>
+    <h1>Fasteners STL Viewer - Socket Head (ISO 4762) &amp; Flat Head (ISO 10642)</h1>
     <div class="controls">
       <div class="control">
         <label>Head Type</label>
         <div class="row">
           <select id="headType">
             <option value="socket">Socket Head - ISO 4762</option>
-            <option value="hex">Hex Head - ISO 4014</option>
+            <option value="flat">Flat Head - ISO 10642</option>
           </select>
         </div>
       </div>
@@ -83,26 +83,35 @@
     <div class="kv"><span>Size (mm)</span><span id="kvSize">-</span></div>
     <div class="kv"><span>Bounding Sphere R</span><span id="kvRadius">-</span></div>
     <div class="kv"><span>Triangles</span><span id="kvTris">-</span></div>
-    <div class="small">Tip: host this HTML in the same GitHub repo and keep STL folders relative for zero-CORS pain.</div>
+    <div class="small">Loading from: github.com/nimageran/fasteners-viewer</div>
   </div>
 
   <!-- three.js + loaders (module build) -->
   <script type="module">
-    // ======= CONFIG - update these to match your repo layout =======
-    // If this HTML is at the repo root and folders are beside it, these defaults work.
+    // ======= CONFIG - Your GitHub Repository =======
+    const GITHUB_USER = "nimageran";
+    const GITHUB_REPO = "fasteners-viewer";
+    const BRANCH = "main"; // Change to "master" if that's your default branch
+    
+    // Base URL for raw files from GitHub
+    const BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/Bolts/`;
+    
     const PATHS = {
-      socket: "./Socket_Head/ISO4762/STL/",
-      hex: "./Hex_Head/ISO4014/STL/"
+      socket: BASE_URL + "Socket_Head/ISO4762/STL/",
+      flat: BASE_URL + "Flat_Head/ISO10642/STL/"
     };
-    // File name patterns your generator used:
+    
+    // File name patterns matching your actual files
     const NAME_PATTERNS = {
       socket: ({M, L}) => `SocketHead_M${M}x${L}_ISO4762.stl`,
-      hex:    ({M, L}) => `HexHead_M${M}x${L}_ISO4014.stl`
+      flat:   ({M, L}) => `FlatHead_M${M}x${L}_ISO10642.stl`
     };
-    // Which diameters to show:
+    
+    // Available diameters - adjust based on what you actually have
     const DIAMS = ["3","4","5","6","8","10","12","16","20","24"];
-    // Common usable lengths (mm). Your STL set might not include every combo; 404s are handled gracefully.
-    const LENGTHS = [6,8,10,12,14,16,20,25,30,35,40,45,50,55,60];
+    
+    // Available lengths - adjust based on what you actually have
+    const LENGTHS = [6,8,10,12,14,16,18,20,25,30,35,40,45,50,55,60,70,80,90,100];
 
     // ======= UI =======
     const $ = (s)=>document.querySelector(s);
@@ -235,7 +244,6 @@
         });
         const mat = new THREE.MeshStandardMaterial({color:0xcfd8ff, metalness:0.15, roughness:0.6});
         mesh = new THREE.Mesh(geo, mat);
-        // Flip Y if needed? STL is usually already fine. Keep as-is.
         scene.add(mesh);
         fitCameraToObject(mesh);
 
@@ -247,7 +255,7 @@
         setStatus("Loaded.");
       }catch(e){
         console.error(e);
-        setStatus("Failed to load. " + (e?.message || ""));
+        setStatus("Failed to load. Check if file exists or try different size.");
         kvFile.textContent = "-";
         kvSize.textContent = "-";
         kvRadius.textContent = "-";
@@ -256,7 +264,7 @@
     }
 
     function buildURL(){
-      const type = headTypeSel.value; // 'socket' | 'hex'
+      const type = headTypeSel.value; // 'socket' | 'flat'
       const M = diamSel.value;
       const L = lenSel.value;
       const name = NAME_PATTERNS[type]({M, L});
@@ -305,7 +313,7 @@
     // Initial load
     (function init(){
       headTypeSel.value = "socket";
-      diamSel.value = "6";
+      diamSel.value = "10";
       lenSel.value = "20";
       const {url, label} = buildURL();
       loadFromURL(url, label);
