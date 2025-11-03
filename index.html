@@ -1,437 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fasteners STL Viewer</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #0a0e1a;
-      color: #e4e6eb;
-    }
-    
-    #ui {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #141824;
-      padding: 20px;
-      border-bottom: 2px solid #2a3142;
-      z-index: 1000;
-      max-height: 50vh;
-      overflow-y: auto;
-    }
-    
-    h1 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #a5b4fc;
-    }
-    
-    .row {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-    
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    
-    label {
-      font-size: 11px;
-      color: #9ca3af;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    
-    select, input, button {
-      padding: 8px 12px;
-      background: #1a1f2e;
-      border: 1px solid #2d3548;
-      border-radius: 4px;
-      color: #e4e6eb;
-      font-size: 14px;
-      min-width: 150px;
-    }
-    
-    select {
-      cursor: pointer;
-    }
-    
-    select:focus, input:focus {
-      outline: 2px solid #3b82f6;
-      border-color: #3b82f6;
-    }
-    
-    button {
-      background: #2563eb;
-      border-color: #3b82f6;
-      cursor: pointer;
-      font-weight: 600;
-      padding: 8px 24px;
-    }
-    
-    button:hover {
-      background: #1d4ed8;
-    }
-    
-    button:disabled {
-      background: #374151;
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
-    
-    #fileList {
-      margin-top: 15px;
-      max-height: 300px;
-      overflow-y: auto;
-      background: #1a1f2e;
-      border: 1px solid #2d3548;
-      border-radius: 4px;
-      padding: 10px;
-    }
-    
-    .file-item {
-      padding: 8px;
-      margin: 4px 0;
-      background: #0f1219;
-      border: 1px solid #2d3548;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 13px;
-      transition: all 0.2s;
-    }
-    
-    .file-item:hover {
-      background: #1a1f2e;
-      border-color: #3b82f6;
-    }
-    
-    .file-item.selected {
-      background: #1e3a8a;
-      border-color: #3b82f6;
-    }
-    
-    #viewer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-    }
-    
-    #info {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(20, 24, 36, 0.95);
-      backdrop-filter: blur(10px);
-      border: 1px solid #2a3142;
-      border-radius: 6px;
-      padding: 15px;
-      min-width: 250px;
-      font-size: 13px;
-      z-index: 100;
-    }
-    
-    #info div {
-      margin: 5px 0;
-    }
-    
-    .status {
-      margin-top: 10px;
-      padding: 8px;
-      background: #1a1f2e;
-      border-radius: 4px;
-      text-align: center;
-      font-size: 12px;
-    }
-    
-    .checks {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-    
-    .checks label {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      text-transform: none;
-      cursor: pointer;
-    }
-    
-    input[type="checkbox"] {
-      min-width: auto;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fasteners Viewer (CSV-driven)</title>
+<style>
+  :root { --bg:#0f1115; --card:#171a21; --line:#232836; --text:#e8eef5; --sub:#9fb0c3; --accent:#8bd3ff; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+  header{padding:14px 16px;border-bottom:1px solid var(--line);background:#0d1016;position:sticky;top:0;z-index:10}
+  header h1{margin:0;font-size:16px}
+  .wrap{display:grid;grid-template-columns:320px 1fr;gap:14px;padding:14px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .panel h2{margin:0 0 10px;font-size:13px;color:var(--sub)}
+  .row{display:grid;gap:8px;margin-bottom:12px}
+  .row-inline{display:flex;gap:8px}
+  label{font-size:12px;color:var(--sub)}
+  select,button,input[type="text"]{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2a3040;background:#131722;color:var(--text)}
+  button{cursor:pointer}
+  .list{max-height:50vh;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  .item{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:none}
+  .small{font-size:12px;color:var(--sub)}
+  .viewer{position:relative;height:calc(100vh - 86px)}
+  #three{width:100%;height:100%;display:block;border-radius:14px;background:radial-gradient(1200px 600px at 50% 30%, #141926 0%, #0f1115 60%)}
+  .status{position:absolute;left:12px;bottom:12px;font-size:12px;color:var(--sub);background:#0d1016b0;padding:6px 8px;border-radius:8px;backdrop-filter: blur(3px)}
+  a{color:var(--accent);text-decoration:none}
+  @media (max-width: 980px){ .wrap{grid-template-columns:1fr} .list{max-height:32vh} }
+</style>
+<script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.159.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://unpkg.com/three@0.159.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
-  <div id="viewer"></div>
-  
-  <div id="ui">
-    <h1>🔩 Fasteners STL Viewer</h1>
-    
+<header><h1>Fasteners Viewer — CSV-driven (no hard-coding)</h1></header>
+
+<div class="wrap">
+  <aside class="panel">
+    <h2>Data source</h2>
     <div class="row">
-      <div class="field">
-        <label>GitHub Path</label>
-        <input type="text" id="pathInput" value="Bolts/Socket_Head/ISO4762/STL" placeholder="e.g., Bolts/Socket_Head/ISO4762/STL">
+      <label for="csvInput">CSV path (relative to repo root)</label>
+      <div class="row-inline">
+        <input id="csvInput" type="text"
+          value="Bolts/Flat_Head/ISO10642/STL/flat_head_iso10642_manifest.csv" />
+        <button id="loadBtn" title="Load this CSV">Load</button>
       </div>
-      <div class="field">
-        <label>&nbsp;</label>
-        <button id="scanBtn">Scan Folder</button>
-      </div>
-      <div class="field">
-        <label>&nbsp;</label>
-        <button id="toggleUI">Hide UI ▲</button>
-      </div>
+      <div class="small" id="csvResolved"></div>
     </div>
-    
-    <div class="row checks">
-      <label><input type="checkbox" id="gridCheck" checked> Grid</label>
-      <label><input type="checkbox" id="axesCheck" checked> Axes</label>
-      <label><input type="checkbox" id="rotateCheck"> Auto Rotate</label>
+
+    <h2>Filters</h2>
+    <div class="row row-inline">
+      <div class="row" style="flex:1"><label>Family</label><select id="familySel"><option value="">(all)</option></select></div>
+      <div class="row" style="flex:1"><label>Type</label><select id="typeSel"><option value="">(all)</option></select></div>
     </div>
-    
-    <div class="status" id="status">Enter a path and click "Scan Folder"</div>
-    
-    <div id="fileList"></div>
-  </div>
+    <div class="row row-inline">
+      <div class="row" style="flex:1"><label>Standard</label><select id="stdSel"><option value="">(all)</option></select></div>
+      <div class="row" style="flex:1"><label>Diameter</label><select id="diaSel"><option value="">(all)</option></select></div>
+    </div>
+    <div class="row">
+      <label>Length</label>
+      <select id="lenSel"><option value="">(all)</option></select>
+    </div>
+    <div class="row row-inline">
+      <button id="resetBtn">Reset filters</button>
+      <button id="openBtn">Open raw STL</button>
+    </div>
 
-  <div id="info">
-    <div><strong>File:</strong> <span id="fileName">-</span></div>
-    <div><strong>Size:</strong> <span id="fileSize">-</span></div>
-    <div><strong>Triangles:</strong> <span id="fileTris">-</span></div>
-  </div>
+    <h2>Results</h2>
+    <div id="list" class="list"></div>
+    <div class="small" id="counts"></div>
+  </aside>
 
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
-    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/controls/OrbitControls.js';
-    import { STLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/loaders/STLLoader.js';
+  <main class="panel viewer">
+    <div id="three"></div>
+    <div id="status" class="status">Pick an item to preview.</div>
+  </main>
+</div>
 
-    // Config
-    const GITHUB_USER = "nimageran";
-    const GITHUB_REPO = "fasteners-viewer";
-    const GITHUB_BRANCH = "main";
+<script>
+(function(){
+  // ----- Repo info (used only to build raw URLs; not for metadata) -----
+  const USER="nimageran", REPO="fasteners-viewer", BRANCH="main";
+  const RAW = `https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/`;
 
-    // DOM
-    const pathInput = document.getElementById('pathInput');
-    const scanBtn = document.getElementById('scanBtn');
-    const toggleUI = document.getElementById('toggleUI');
-    const fileList = document.getElementById('fileList');
-    const status = document.getElementById('status');
-    const gridCheck = document.getElementById('gridCheck');
-    const axesCheck = document.getElementById('axesCheck');
-    const rotateCheck = document.getElementById('rotateCheck');
-    const fileName = document.getElementById('fileName');
-    const fileSize = document.getElementById('fileSize');
-    const fileTris = document.getElementById('fileTris');
-    const uiPanel = document.getElementById('ui');
+  // ----- UI handles -----
+  const csvInput = document.getElementById('csvInput');
+  const loadBtn = document.getElementById('loadBtn');
+  const csvResolved = document.getElementById('csvResolved');
+  const familySel = document.getElementById('familySel');
+  const typeSel = document.getElementById('typeSel');
+  const stdSel = document.getElementById('stdSel');
+  const diaSel = document.getElementById('diaSel');
+  const lenSel = document.getElementById('lenSel');
+  const list = document.getElementById('list');
+  const counts = document.getElementById('counts');
+  const statusEl = document.getElementById('status');
+  const openBtn = document.getElementById('openBtn');
 
-    // Three.js setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10000);
-    camera.position.set(100, 80, 120);
+  // ----- Three.js viewer -----
+  const canvas = document.getElementById('three');
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+  canvas.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth/canvas.clientHeight, 0.1, 5000);
+  camera.position.set(140,110,160);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  scene.add(new THREE.AmbientLight(0xffffff, .6));
+  const k = new THREE.DirectionalLight(0xffffff,.9); k.position.set(200,180,140); scene.add(k);
+  const r = new THREE.DirectionalLight(0xffffff,.5); r.position.set(-180,-100,-160); scene.add(r);
+  const grid = new THREE.GridHelper(600, 60, 0x4b5563, 0x1f2937); grid.position.y = -30; scene.add(grid);
+  let mesh=null; const loader = new THREE.STLLoader(); loader.setCrossOrigin('anonymous');
+  function clearMesh(){ if(mesh){ scene.remove(mesh); mesh.geometry.dispose(); Array.isArray(mesh.material)?mesh.material.forEach(m=>m.dispose()):mesh.material.dispose(); mesh=null; } }
+  function fit(object, offset=1.3){
+    const b = new THREE.Box3().setFromObject(object); if(b.isEmpty()) return;
+    const s = b.getSize(new THREE.Vector3()), c=b.getCenter(new THREE.Vector3());
+    const maxDim = Math.max(s.x,s.y,s.z), fov= camera.fov*(Math.PI/180);
+    const camZ = Math.abs(maxDim/(2*Math.tan(fov/2))) * offset;
+    camera.position.set(c.x+camZ*0.6, c.y+camZ*0.45, c.z+camZ);
+    camera.near = Math.max(0.1, camZ/100); camera.far = camZ*100; camera.updateProjectionMatrix();
+    controls.target.copy(c); controls.update();
+  }
+  function preview(url, label){
+    statusEl.textContent = `Loading STL… ${label}`;
+    clearMesh();
+    loader.load(url, g=>{
+      const m = new THREE.MeshPhysicalMaterial({color:0xbad3ff, metalness:.95, roughness:.35, clearcoat:1, clearcoatRoughness:.1});
+      mesh = new THREE.Mesh(g,m);
+      g.computeBoundingBox(); const bb=g.boundingBox;
+      const cx=(bb.max.x+bb.min.x)/2, cy=(bb.max.y+bb.min.y)/2, cz=(bb.max.z+bb.min.z)/2;
+      g.translate(-cx,-cy,-cz);
+      scene.add(mesh); fit(mesh); statusEl.textContent = label;
+    }, undefined, e=>{ console.error(e); statusEl.textContent="Failed to load STL (path or CORS)."; });
+  }
+  function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene,camera); }
+  loop();
+  window.addEventListener('resize',()=>{ renderer.setSize(canvas.clientWidth, canvas.clientHeight); camera.aspect=canvas.clientWidth/canvas.clientHeight; camera.updateProjectionMatrix(); });
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(0x0a0e1a);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('viewer').appendChild(renderer.domElement);
+  // ----- Data handling (CSV-driven) -----
+  let rows = [];      // normalized rows
+  let filtered = [];  // after filters
+  let current = null; // selected
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
+  function uniq(arr){ return [...new Set(arr)].sort((a,b)=>{
+    const na=parseFloat(String(a).replace(/[^\d.]/g,'')); const nb=parseFloat(String(b).replace(/[^\d.]/g,''));
+    if(!isNaN(na) && !isNaN(nb)) return na-nb; return String(a).localeCompare(String(b));
+  }); }
 
-    // Lighting
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
-    light1.position.set(5, 10, 7);
-    scene.add(light1);
-    const light2 = new THREE.DirectionalLight(0xffffff, 0.4);
-    light2.position.set(-5, 5, -5);
-    scene.add(light2);
+  function parseAddress(addr){
+    // Example: Bolts/Flat_Head/ISO10642/STL
+    const parts = (addr||'').replace(/^\/+|\/+$/g,'').split('/');
+    const family  = parts[0] || '';
+    const type    = parts[1] || '';
+    const standard= parts[2] || '';
+    return {family, type, standard};
+  }
 
-    // Helpers
-    const grid = new THREE.GridHelper(200, 20, 0x444444, 0x222222);
-    scene.add(grid);
-    const axes = new THREE.AxesHelper(100);
-    scene.add(axes);
+  function inferFromFilename(fname){
+    // Tries to grab diameter/length and standard from the filename if missing
+    // Works with patterns like FlatHead_M10x25_ISO10642.stl
+    let diameter='', length='', standard='';
+    const m = fname.match(/_M([\d.]+)x([\d.]+)_([A-Za-z0-9\-]+)\.stl$/i);
+    if(m){ diameter = 'M'+m[1]; length = m[2]; standard = m[3]; }
+    return {diameter, length, standard};
+  }
 
-    gridCheck.addEventListener('change', () => grid.visible = gridCheck.checked);
-    axesCheck.addEventListener('change', () => axes.visible = axesCheck.checked);
-    rotateCheck.addEventListener('change', () => controls.autoRotate = rotateCheck.checked);
+  function normalizeRow(r){
+    const address = (r.address || r.path || '').trim();
+    const {family, type, standard:stdFromAddr} = parseAddress(address);
+    const filename = (r.filename || r.file || r.stl || '').trim();
+    const stdCsv = (r.standard || '').trim();
+    let diameter = (r.diameter || '').trim();
+    let length   = (r.length   || '').trim();
+    let standard = stdCsv || stdFromAddr || '';
 
-    let currentMesh = null;
-    const loader = new STLLoader();
-
-    // Toggle UI
-    let uiVisible = true;
-    toggleUI.addEventListener('click', () => {
-      uiVisible = !uiVisible;
-      if (uiVisible) {
-        uiPanel.style.display = 'block';
-        toggleUI.textContent = 'Hide UI ▲';
-      } else {
-        uiPanel.style.display = 'none';
-        toggleUI.textContent = 'Show UI ▼';
-        toggleUI.style.display = 'block';
-        toggleUI.style.position = 'fixed';
-        toggleUI.style.top = '10px';
-        toggleUI.style.left = '10px';
-        toggleUI.style.zIndex = '1000';
-      }
-    });
-
-    // Scan folder using GitHub API
-    async function scanFolder() {
-      const path = pathInput.value.trim();
-      if (!path) {
-        status.textContent = 'Please enter a path';
-        return;
-      }
-
-      status.textContent = 'Scanning...';
-      scanBtn.disabled = true;
-      fileList.innerHTML = '';
-
-      try {
-        const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`;
-        console.log('Fetching:', apiUrl);
-        
-        const response = await fetch(apiUrl);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        const files = await response.json();
-        const stlFiles = files.filter(f => f.name.toLowerCase().endsWith('.stl'));
-
-        if (stlFiles.length === 0) {
-          status.textContent = 'No STL files found in this path';
-          return;
-        }
-
-        status.textContent = `Found ${stlFiles.length} STL files`;
-        
-        stlFiles.forEach(file => {
-          const div = document.createElement('div');
-          div.className = 'file-item';
-          div.textContent = file.name;
-          div.onclick = () => loadSTL(file.download_url, file.name, div);
-          fileList.appendChild(div);
-        });
-
-      } catch (error) {
-        console.error('Scan error:', error);
-        status.textContent = `Error: ${error.message}`;
-      } finally {
-        scanBtn.disabled = false;
+    // If filename exists, use it for inference if fields are missing
+    let fname = filename;
+    if(!fname){
+      // fallback try: build from row (still CSV-driven)
+      const typeSlug = ( (r.type || type || '').replace(/\s+/g,'') );
+      const dia = diameter || '';
+      const len = length || '';
+      const std = standard || '';
+      if(typeSlug && dia && len && std){
+        fname = `${typeSlug}_${dia}x${len}_${std}.stl`;
       }
     }
-
-    scanBtn.addEventListener('click', scanFolder);
-
-    // Load STL
-    async function loadSTL(url, name, itemDiv) {
-      // Update selection
-      document.querySelectorAll('.file-item').forEach(el => el.classList.remove('selected'));
-      if (itemDiv) itemDiv.classList.add('selected');
-
-      status.textContent = 'Loading...';
-      console.log('Loading STL:', url);
-
-      if (currentMesh) {
-        scene.remove(currentMesh);
-        currentMesh.geometry.dispose();
-        currentMesh.material.dispose();
-      }
-
-      try {
-        const geometry = await new Promise((resolve, reject) => {
-          loader.load(url, resolve, undefined, reject);
-        });
-
-        const material = new THREE.MeshStandardMaterial({
-          color: 0xc7d2fe,
-          metalness: 0.3,
-          roughness: 0.5
-        });
-
-        currentMesh = new THREE.Mesh(geometry, material);
-        scene.add(currentMesh);
-
-        // Center and fit
-        geometry.computeBoundingBox();
-        const box = geometry.boundingBox;
-        const center = box.getCenter(new THREE.Vector3());
-        currentMesh.position.sub(center);
-
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const dist = maxDim * 2;
-        camera.position.set(dist * 0.7, dist * 0.5, dist);
-        camera.lookAt(0, 0, 0);
-        controls.target.set(0, 0, 0);
-        controls.update();
-
-        // Update info
-        const tris = geometry.index ? geometry.index.count / 3 : geometry.attributes.position.count / 3;
-        fileName.textContent = name;
-        fileSize.textContent = `${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)} mm`;
-        fileTris.textContent = Math.round(tris).toLocaleString();
-        status.textContent = '✓ Loaded successfully';
-
-      } catch (error) {
-        console.error('Load error:', error);
-        status.textContent = `Failed: ${error.message}`;
-        fileName.textContent = '-';
-        fileSize.textContent = '-';
-        fileTris.textContent = '-';
-      }
+    if(fname){
+      const inf = inferFromFilename(fname);
+      if(!diameter && inf.diameter) diameter = inf.diameter;
+      if(!length   && inf.length)   length   = inf.length;
+      if(!standard && inf.standard) standard = inf.standard;
     }
 
-    // Auto-load first file on scan
-    const originalScanFolder = scanFolder;
-    scanFolder = async function() {
-      await originalScanFolder();
-      // Auto-click first file if any
-      const firstFile = fileList.querySelector('.file-item');
-      if (firstFile) {
-        setTimeout(() => firstFile.click(), 300);
-      }
+    const url = RAW + (address ? address.replace(/^\/+|\/+$/g,'') + '/' : '') + fname;
+    return {
+      address, family, type: (r.type || type || '').trim(),
+      standard, diameter, length, filename: fname, url
     };
+  }
 
-    // Resize
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
-    // Animation
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
+  function populateFilters(rs){
+    function set(sel, values){
+      sel.innerHTML = `<option value="">(all)</option>` + uniq(values).map(v=>`<option>${v}</option>`).join('');
     }
-    animate();
+    set(familySel,  rs.map(x=>x.family).filter(Boolean));
+    set(typeSel,    rs.map(x=>x.type).filter(Boolean));
+    set(stdSel,     rs.map(x=>x.standard).filter(Boolean));
+    set(diaSel,     rs.map(x=>x.diameter).filter(Boolean));
+    set(lenSel,     rs.map(x=>x.length).filter(Boolean));
+  }
 
-    // Auto-scan on load
-    scanFolder();
-  </script>
+  function renderList(rs){
+    list.innerHTML = '';
+    if(!rs.length){ list.innerHTML = `<div class="item"><span>No matches.</span></div>`; counts.textContent=''; return; }
+    rs.forEach(row=>{
+      const div = document.createElement('div'); div.className='item';
+      const left = document.createElement('div');
+      left.innerHTML = `<strong>${row.family}/${row.type}</strong> <span class="small"> ${row.diameter} × ${row.length} (${row.standard})</span><br><span class="small">${row.filename}</span>`;
+      const btn = document.createElement('button'); btn.textContent='Preview';
+      btn.addEventListener('click', ()=>{ current=row; preview(row.url, row.filename); });
+      div.appendChild(left); div.appendChild(btn); list.appendChild(div);
+    });
+    counts.textContent = `${rs.length} item(s)`;
+  }
+
+  function applyFilters(){
+    const f = familySel.value, t = typeSel.value, s = stdSel.value, d = diaSel.value, l = lenSel.value;
+    filtered = rows.filter(r =>
+      (!f || r.family===f) &&
+      (!t || r.type===t) &&
+      (!s || r.standard===s) &&
+      (!d || r.diameter===d) &&
+      (!l || String(r.length)===String(l))
+    );
+    renderList(filtered);
+  }
+
+  [familySel,typeSel,stdSel,diaSel,lenSel].forEach(el=>el.addEventListener('change', applyFilters));
+  document.getElementById('resetBtn').addEventListener('click', ()=>{ [familySel,typeSel,stdSel,diaSel,lenSel].forEach(s=>s.value=''); applyFilters(); });
+  openBtn.addEventListener('click', ()=>{ if(current) window.open(current.url,'_blank'); });
+
+  function loadCsvAt(pathRel){
+    const url = RAW + pathRel.replace(/^\/+|\/+$/g,'');
+    csvResolved.textContent = url;
+    statusEl.textContent = 'Loading CSV…';
+    Papa.parse(url, {
+      download:true, header:true, skipEmptyLines:true,
+      complete: (res)=>{
+        try{
+          const raw = res.data;
+          if(!raw || !raw.length){ statusEl.textContent='CSV loaded but empty.'; rows=[]; renderList([]); return; }
+          rows = raw.map(normalizeRow).filter(r=>r.filename && r.address);
+          populateFilters(rows);
+          applyFilters();
+          statusEl.textContent = `Loaded ${rows.length} rows from CSV.`;
+        }catch(e){ console.error(e); statusEl.textContent='Parse error — check headers: address,type,diameter,length[,standard,filename]'; }
+      },
+      error: (err)=>{ console.error(err); statusEl.textContent='Failed to fetch CSV (path/branch/permissions).'; }
+    });
+  }
+
+  loadBtn.addEventListener('click', ()=> loadCsvAt(csvInput.value));
+  // auto-load default on first paint
+  loadCsvAt(csvInput.value);
+
+})();
+</script>
 </body>
 </html>
