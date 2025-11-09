@@ -1,133 +1,26 @@
-# Fasteners 3D Viewer - Setup Guide
+Fasteners 3D Viewer 🔩
+A web-based 3D viewer for fastener models (bolts, washers, nuts, etc.) with automatic catalog generation from your GitHub repository.
 
-## 📋 What You'll Have
+Show Image
+Show Image
 
-A beautiful web-based 3D viewer that:
-- ✅ Automatically displays all your STL files from GitHub
-- ✅ Shows them organized by Category > Type > Standard
-- ✅ Lets you click any file to view it in 3D
-- ✅ Updates when you run one simple command
+🎯 Features
+3D Visualization: View STL models of fasteners directly in your browser
+Auto-cataloging: Automatically scans your repository and generates a catalog
+Organized Navigation: Browse by category, type, and standard
+Interactive Viewer: Drag to rotate, scroll to zoom, auto-rotation
+Easy Updates: Add new STL files and regenerate catalog with one command
+No Installation Required: Works entirely in the browser
+🌐 Live Demo
+Visit the live viewer at: https://nimageran.github.io/fasteners-viewer/
 
----
-
-## 🚀 One-Time Setup (5 minutes)
-
-### Step 1: Install Node.js
-1. Go to https://nodejs.org/
-2. Download and install the LTS version
-3. Verify installation by opening terminal/command prompt and typing:
-   ```bash
-   node --version
-   ```
-
-### Step 2: Create Project Files
-
-Create a new folder on your computer (anywhere you like), for example:
-```
-C:\Projects\fasteners-viewer-local
-```
-
-Inside this folder, create these 3 files:
-
-#### File 1: `package.json`
-```json
-{
-  "name": "fasteners-catalog-generator",
-  "version": "1.0.0",
-  "scripts": {
-    "generate": "node generate-catalog.js"
-  }
-}
-```
-
-#### File 2: `generate-catalog.js`
-Copy the entire code from the "generate-catalog.js" artifact I created above.
-
-#### File 3: `index.html`
-Copy the entire code from the "Fasteners 3D Viewer (Complete)" artifact I created above.
-
-### Step 3: Generate Your First Catalog
-
-Open terminal/command prompt in your project folder and run:
-```bash
-node generate-catalog.js
-```
-
-This will:
-- ✅ Scan your GitHub repository
-- ✅ Find all folders and STL files
-- ✅ Create `catalog.json` automatically
-
-You should see output like:
-```
-🔍 Scanning repository...
-📁 Found category: Bolts
-  📂 Found type: Flat_Head
-    📄 Found standard: ISO10642
-      ✅ Found 8 STL files
-  📂 Found type: Socket_Head
-    📄 Found standard: ISO4762
-      ✅ Found 6 STL files
-
-✅ Catalog generated successfully!
-📊 Total: 1 categories, 2 types, 14 files
-```
-
-### Step 4: Add Files to GitHub
-
-1. Copy `catalog.json` and `index.html` to your GitHub repository
-2. Commit and push:
-   ```bash
-   git add catalog.json index.html
-   git commit -m "Add fasteners viewer"
-   git push
-   ```
-
-### Step 5: Enable GitHub Pages
-
-1. Go to your GitHub repository
-2. Click **Settings** > **Pages**
-3. Under "Source", select `main` branch
-4. Click **Save**
-5. Wait 1-2 minutes
-
-Your website will be live at:
-```
-https://nimageran.github.io/fasteners-viewer/
-```
-
----
-
-## 🔄 Future Updates (30 seconds each time)
-
-Whenever you add new STL files to your GitHub repo:
-
-1. Open terminal in your local project folder
-2. Run:
-   ```bash
-   node generate-catalog.js
-   ```
-3. Copy the new `catalog.json` to your GitHub repo
-4. Commit and push:
-   ```bash
-   git add catalog.json
-   git commit -m "Update catalog"
-   git push
-   ```
-
-Done! Your website automatically shows the new files.
-
----
-
-## 📁 Expected Repository Structure
-
-Your GitHub repo should look like this:
-
-```
+📁 Repository Structure
 fasteners-viewer/
-├── index.html          (your website)
-├── catalog.json        (auto-generated list of files)
-├── Bolts/
+├── index.html              # Main website file
+├── catalog.json            # Auto-generated catalog of all STL files
+├── README.md               # This file
+│
+├── Bolts/                  # Bolt category
 │   ├── Flat_Head/
 │   │   └── ISO10642/
 │   │       └── STL/
@@ -139,92 +32,167 @@ fasteners-viewer/
 │           └── STL/
 │               ├── SocketHead_M8x16_ISO4762.stl
 │               └── ...
-└── Washers/            (add in future)
-    └── Flat_Washer/
-        └── ISO7089/
-            └── STL/
-                └── ...
-```
+│
+└── [Future categories like Washers, Nuts, etc.]
+🚀 Quick Start
+Prerequisites
+Node.js (version 14 or higher) - Download here
+A GitHub account
+Your STL files organized in the repository
+Initial Setup
+Clone or download this repository
+bash
+   git clone https://github.com/nimageran/fasteners-viewer.git
+   cd fasteners-viewer
+Create a local tools folder (separate from this repo)
+bash
+   mkdir ~/fasteners-tools
+   cd ~/fasteners-tools
+Create the catalog generator files Create package.json:
+json
+   {
+     "name": "fasteners-catalog-generator",
+     "version": "1.0.0",
+     "scripts": {
+       "generate": "node generate-catalog.js"
+     }
+   }
+Create generate-catalog.js - Get the code from releases
 
----
+Generate the catalog
+bash
+   node generate-catalog.js
+Copy generated files to repository
+bash
+   cp catalog.json /path/to/fasteners-viewer/
+Commit and push
+bash
+   cd /path/to/fasteners-viewer/
+   git add catalog.json index.html
+   git commit -m "Add 3D viewer and catalog"
+   git push
+Enable GitHub Pages
+Go to repository Settings → Pages
+Select main branch as source
+Click Save
+Wait 1-2 minutes for deployment
+Access your viewer
+Visit: https://[your-username].github.io/fasteners-viewer/
+🔄 Updating the Catalog
+Whenever you add new STL files to your repository:
 
-## ✨ Adding New Categories
+Navigate to your tools folder
+bash
+   cd ~/fasteners-tools
+Regenerate the catalog
+bash
+   node generate-catalog.js
+Copy and push the updated catalog
+bash
+   cp catalog.json /path/to/fasteners-viewer/
+   cd /path/to/fasteners-viewer/
+   git add catalog.json
+   git commit -m "Update catalog with new models"
+   git push
+That's it! The website automatically reflects the changes.
 
-To add Washers, Nuts, etc. in the future:
+📦 Adding New Categories
+To add new fastener categories (e.g., Washers, Nuts):
 
-1. Create folder structure in GitHub:
-   ```
+Create the folder structure in your repository
    Washers/
      Flat_Washer/
        ISO7089/
          STL/
            washer_m10.stl
            washer_m12.stl
-   ```
-
-2. Run the generator:
-   ```bash
+Regenerate the catalog
+bash
    node generate-catalog.js
-   ```
+Push the updated catalog
+bash
+   git add catalog.json Washers/
+   git commit -m "Add washers category"
+   git push
+The new category will automatically appear in the viewer!
 
-3. Push updated `catalog.json` to GitHub
+🎨 File Naming Convention
+For best results, name your STL files descriptively:
 
-That's it! The website automatically shows the new category.
+[Type]_[Size]_[Standard].stl
 
----
+Examples:
+- FlatHead_M10x10_ISO10642.stl
+- SocketHead_M8x16_ISO4762.stl
+- FlatWasher_M10_ISO7089.stl
+🛠️ Technical Details
+Technologies Used
+Three.js (r128) - 3D rendering
+Vanilla JavaScript - No frameworks needed
+GitHub Pages - Free hosting
+GitHub API - Automatic catalog generation
+Supported STL Formats
+Binary STL
+ASCII STL
+Browser Compatibility
+Chrome/Edge (recommended)
+Firefox
+Safari
+Opera
+📝 Folder Structure Rules
+The catalog generator expects this structure:
 
-## 🛠️ Troubleshooting
+[Category]/
+  [Type]/
+    [Standard]/
+      STL/
+        *.stl files
+Example:
 
-**Problem: "GitHub API error: 403"**
-- You've hit the rate limit (60 requests/hour)
-- Wait 1 hour and try again
-- Or use a GitHub Personal Access Token (see advanced setup)
+Bolts/              ← Category
+  Flat_Head/        ← Type
+    ISO10642/       ← Standard
+      STL/          ← STL folder (required)
+        file1.stl
+        file2.stl
+🐛 Troubleshooting
+Catalog generation fails
+Issue: GitHub API rate limit (60 requests/hour)
+Solution: Wait 1 hour or use a personal access token
+STL files not loading
+Issue: Files not found or incorrect path
+Solution: Verify folder structure matches the expected pattern
+Check: Files are named with .stl extension (lowercase)
+Website not updating
+Issue: GitHub Pages cache
+Solution: Wait 2-5 minutes, clear browser cache, or do a hard refresh (Ctrl+F5)
+3D model appears too small/large
+Solution: The viewer auto-scales models. If it looks wrong, check your STL file units
+📊 Current Status
+✅ Categories: 1 (Bolts)
+✅ Types: 2 (Flat Head, Socket Head)
+✅ Standards: 2 (ISO10642, ISO4762)
+✅ Models: [Auto-generated from catalog.json]
+🤝 Contributing
+This is a personal tool, but suggestions are welcome!
 
-**Problem: "Catalog not found"**
-- Make sure `catalog.json` is in the same folder as `index.html`
-- Check that you pushed it to GitHub
-- Wait 1-2 minutes for GitHub Pages to update
+Fork the repository
+Create a feature branch
+Make your changes
+Submit a pull request
+📄 License
+MIT License - Feel free to use this for your own projects!
 
-**Problem: STL files not loading**
-- Check that files are actually in the STL folder
-- Make sure file names end with `.stl`
-- Check browser console (F12) for errors
+👤 Author
+nimageran
 
-**Problem: Website not showing on GitHub Pages**
-- Wait 2-5 minutes after enabling Pages
-- Make sure `index.html` is in the root of your repo
-- Check Settings > Pages for the URL
+GitHub: @nimageran
+Repository: fasteners-viewer
+🙏 Acknowledgments
+Three.js community for the amazing 3D library
+GitHub for free hosting via Pages
+📮 Contact
+For questions or issues, please open an issue on GitHub.
 
----
+Made with ❤️ for fastener enthusiasts
 
-## 🎯 Quick Reference
-
-**Generate catalog:**
-```bash
-node generate-catalog.js
-```
-
-**Your website URL:**
-```
-https://nimageran.github.io/fasteners-viewer/
-```
-
-**Update workflow:**
-1. Add STL files to GitHub
-2. Run `node generate-catalog.js`
-3. Push `catalog.json` to GitHub
-4. Done!
-
----
-
-## 💡 Tips
-
-- The website loads actual STL files from GitHub, so it works with any valid STL file
-- You can reorganize folders anytime - just regenerate the catalog
-- The 3D viewer supports both ASCII and binary STL formats
-- Models auto-rotate, drag to manually rotate, scroll to zoom
-- The catalog.json file is small (usually < 50KB) even with hundreds of files
-
----
-
-Need help? Check the browser console (F12) for detailed error messages!
