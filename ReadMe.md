@@ -1,3 +1,5 @@
+# Summary:
+Put the two files, **generate-catalog.js** and **package-json.json**, inside the folder **C:\fasteners-tools**, then open the command prompt and type "node generate-catalog.js" then you'll see a new generated file, **catalog.json**, in the same folder. Then, import that file into the repository. 
 # Fasteners 3D Viewer 🔩
 
 A simple website to view your 3D fastener models (bolts, washers, nuts, etc.) in your web browser.
