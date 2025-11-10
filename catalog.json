@@ -970,5 +970,284 @@
       }
     }
   },
-  "C_Drive": {}
+  "Nuts": {
+    "Flange": {
+      "ISO4161": {
+        "files": [
+          {
+            "name": "FlangeNut_M10_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M10_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M10_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M12_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M12_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M12_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M16_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M16_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M16_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M20_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M20_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M20_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M4_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M4_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M4_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M5_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M5_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M5_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M6_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M6_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M6_ISO4161.stl"
+          },
+          {
+            "name": "FlangeNut_M8_ISO4161.stl",
+            "path": "Nuts/Flange/ISO4161/STL/FlangeNut_M8_ISO4161.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Flange/ISO4161/STL/FlangeNut_M8_ISO4161.stl"
+          }
+        ],
+        "path": "Nuts/Flange/ISO4161/STL"
+      }
+    },
+    "Hex": {
+      "DIN934": {
+        "files": [
+          {
+            "name": "HexNut_M10_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M10_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M10_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M12_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M12_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M12_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M16_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M16_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M16_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M20_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M20_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M20_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M4_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M4_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M4_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M5_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M5_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M5_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M6_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M6_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M6_DIN934.stl"
+          },
+          {
+            "name": "HexNut_M8_DIN934.stl",
+            "path": "Nuts/Hex/DIN934/STL/HexNut_M8_DIN934.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex/DIN934/STL/HexNut_M8_DIN934.stl"
+          }
+        ],
+        "path": "Nuts/Hex/DIN934/STL"
+      }
+    },
+    "Hex_Thin": {
+      "ISO4035": {
+        "files": [
+          {
+            "name": "HexThinNut_M10_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M10_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M10_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M12_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M12_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M12_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M16_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M16_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M16_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M20_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M20_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M20_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M4_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M4_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M4_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M5_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M5_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M5_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M6_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M6_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M6_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M8_ISO4035.stl",
+            "path": "Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M8_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex_Thin/ISO4035/STL/HexThinNut_M8_ISO4035.stl"
+          }
+        ],
+        "path": "Nuts/Hex_Thin/ISO4035/STL"
+      }
+    },
+    "Nyloc": {
+      "DIN985": {
+        "files": [
+          {
+            "name": "NylocNut_M10_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M10_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M10_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M12_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M12_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M12_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M16_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M16_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M16_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M20_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M20_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M20_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M4_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M4_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M4_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M5_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M5_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M5_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M6_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M6_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M6_DIN985.stl"
+          },
+          {
+            "name": "NylocNut_M8_DIN985.stl",
+            "path": "Nuts/Nyloc/DIN985/STL/NylocNut_M8_DIN985.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/DIN985/STL/NylocNut_M8_DIN985.stl"
+          }
+        ],
+        "path": "Nuts/Nyloc/DIN985/STL"
+      },
+      "ISO10511": {
+        "files": [
+          {
+            "name": "NylocNut_M10_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M10_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M10_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M12_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M12_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M12_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M16_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M16_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M16_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M20_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M20_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M20_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M4_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M4_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M4_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M5_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M5_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M5_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M6_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M6_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M6_ISO10511.stl"
+          },
+          {
+            "name": "NylocNut_M8_ISO10511.stl",
+            "path": "Nuts/Nyloc/ISO10511/STL/NylocNut_M8_ISO10511.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10511/STL/NylocNut_M8_ISO10511.stl"
+          }
+        ],
+        "path": "Nuts/Nyloc/ISO10511/STL"
+      },
+      "ISO10512": {
+        "files": [
+          {
+            "name": "NylocNut_M10_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M10_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M10_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M12_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M12_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M12_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M16_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M16_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M16_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M20_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M20_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M20_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M4_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M4_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M4_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M5_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M5_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M5_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M6_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M6_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M6_ISO10512.stl"
+          },
+          {
+            "name": "NylocNut_M8_ISO10512.stl",
+            "path": "Nuts/Nyloc/ISO10512/STL/NylocNut_M8_ISO10512.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Nyloc/ISO10512/STL/NylocNut_M8_ISO10512.stl"
+          }
+        ],
+        "path": "Nuts/Nyloc/ISO10512/STL"
+      }
+    }
+  }
 }
