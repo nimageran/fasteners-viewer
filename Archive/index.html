@@ -76,7 +76,6 @@
         .chevron {
             margin-right: 8px;
             transition: transform 0.2s;
-            font-size: 12px;
         }
         .chevron.open {
             transform: rotate(90deg);
@@ -93,8 +92,6 @@
             margin-bottom: 12px;
         }
         .type-header {
-            display: flex;
-            align-items: center;
             font-weight: 600;
             color: #1f2937;
             font-size: 14px;
@@ -102,55 +99,22 @@
             background: #eff6ff;
             border-radius: 6px;
             margin-bottom: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .type-header:hover {
-            background: #dbeafe;
-        }
-        .type-chevron {
-            margin-right: 8px;
-            transition: transform 0.2s;
-            font-size: 10px;
-        }
-        .type-chevron.open {
-            transform: rotate(90deg);
-        }
-        .standards-container {
-            margin-left: 12px;
         }
         .standard-section {
+            margin-left: 12px;
             margin-bottom: 8px;
         }
-        .standard-header {
-            display: flex;
-            align-items: center;
+        .standard-label {
             font-size: 12px;
             color: #6b7280;
             font-weight: 500;
-            padding: 6px 8px;
-            background: #f9fafb;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .standard-header:hover {
-            background: #f3f4f6;
-        }
-        .standard-chevron {
-            margin-right: 6px;
-            transition: transform 0.2s;
-            font-size: 9px;
-        }
-        .standard-chevron.open {
-            transform: rotate(90deg);
+            margin-bottom: 4px;
+            padding-left: 4px;
         }
         .file-list {
             display: flex;
             flex-direction: column;
             gap: 4px;
-            margin-top: 4px;
-            margin-left: 12px;
         }
         .file-btn {
             width: 100%;
@@ -297,8 +261,6 @@
         let autoRotate = true;
         let catalog = {};
         let expandedCategories = {};
-        let expandedTypes = {};
-        let expandedStandards = {};
 
         // Initialize Three.js
         function initViewer() {
@@ -551,7 +513,6 @@
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
                 
-                // Category button
                 const categoryBtn = document.createElement('button');
                 categoryBtn.className = 'category-btn';
                 categoryBtn.innerHTML = `
@@ -561,101 +522,61 @@
                 `;
                 categoryBtn.onclick = () => toggleCategory(category);
                 
-                categoryDiv.appendChild(categoryBtn);
+                const typesDiv = document.createElement('div');
+                typesDiv.className = 'types';
+                typesDiv.style.display = expandedCategories[category] ? 'block' : 'none';
                 
-                // Types container
-                if (expandedCategories[category]) {
-                    const typesDiv = document.createElement('div');
-                    typesDiv.className = 'types';
+                for (const [type, standards] of Object.entries(types)) {
+                    const typeSection = document.createElement('div');
+                    typeSection.className = 'type-section';
                     
-                    for (const [type, standards] of Object.entries(types)) {
-                        const typeSection = document.createElement('div');
-                        typeSection.className = 'type-section';
+                    const typeHeader = document.createElement('div');
+                    typeHeader.className = 'type-header';
+                    typeHeader.textContent = type;
+                    typeSection.appendChild(typeHeader);
+                    
+                    for (const [standard, data] of Object.entries(standards)) {
+                        const standardSection = document.createElement('div');
+                        standardSection.className = 'standard-section';
                         
-                        // Type header (clickable)
-                        const typeHeader = document.createElement('div');
-                        typeHeader.className = 'type-header';
-                        const typeKey = `${category}-${type}`;
-                        typeHeader.innerHTML = `
-                            <span class="type-chevron ${expandedTypes[typeKey] ? 'open' : ''}">▶</span>
-                            <span>${type}</span>
-                        `;
-                        typeHeader.onclick = () => toggleType(category, type);
-                        typeSection.appendChild(typeHeader);
+                        const standardLabel = document.createElement('div');
+                        standardLabel.className = 'standard-label';
+                        standardLabel.textContent = `📐 ${standard} (${data.files.length} files)`;
+                        standardSection.appendChild(standardLabel);
                         
-                        // Standards container
-                        if (expandedTypes[typeKey]) {
-                            const standardsContainer = document.createElement('div');
-                            standardsContainer.className = 'standards-container';
-                            
-                            for (const [standard, data] of Object.entries(standards)) {
-                                const standardSection = document.createElement('div');
-                                standardSection.className = 'standard-section';
-                                
-                                // Standard header (clickable)
-                                const standardHeader = document.createElement('div');
-                                standardHeader.className = 'standard-header';
-                                const standardKey = `${category}-${type}-${standard}`;
-                                standardHeader.innerHTML = `
-                                    <span class="standard-chevron ${expandedStandards[standardKey] ? 'open' : ''}">▶</span>
-                                    <span>📐 ${standard} (${data.files.length} files)</span>
-                                `;
-                                standardHeader.onclick = () => toggleStandard(category, type, standard);
-                                standardSection.appendChild(standardHeader);
-                                
-                                // File list
-                                if (expandedStandards[standardKey]) {
-                                    const fileList = document.createElement('div');
-                                    fileList.className = 'file-list';
-                                    
-                                    for (const file of data.files) {
-                                        const fileBtn = document.createElement('button');
-                                        fileBtn.className = 'file-btn';
-                                        fileBtn.innerHTML = `
-                                            <span class="file-icon">📄</span>
-                                            <span>${file.name}</span>
-                                        `;
-                                        fileBtn.onclick = () => {
-                                            document.querySelectorAll('.file-btn').forEach(b => b.classList.remove('active'));
-                                            fileBtn.classList.add('active');
-                                            loadSTL(file.downloadUrl, file.name, category, type, standard);
-                                        };
-                                        fileList.appendChild(fileBtn);
-                                    }
-                                    
-                                    standardSection.appendChild(fileList);
-                                }
-                                
-                                standardsContainer.appendChild(standardSection);
-                            }
-                            
-                            typeSection.appendChild(standardsContainer);
+                        const fileList = document.createElement('div');
+                        fileList.className = 'file-list';
+                        
+                        for (const file of data.files) {
+                            const fileBtn = document.createElement('button');
+                            fileBtn.className = 'file-btn';
+                            fileBtn.innerHTML = `
+                                <span class="file-icon">📄</span>
+                                <span>${file.name}</span>
+                            `;
+                            fileBtn.onclick = () => {
+                                document.querySelectorAll('.file-btn').forEach(b => b.classList.remove('active'));
+                                fileBtn.classList.add('active');
+                                loadSTL(file.downloadUrl, file.name, category, type, standard);
+                            };
+                            fileList.appendChild(fileBtn);
                         }
                         
-                        typesDiv.appendChild(typeSection);
+                        standardSection.appendChild(fileList);
+                        typeSection.appendChild(standardSection);
                     }
                     
-                    categoryDiv.appendChild(typesDiv);
+                    typesDiv.appendChild(typeSection);
                 }
                 
+                categoryDiv.appendChild(categoryBtn);
+                categoryDiv.appendChild(typesDiv);
                 content.appendChild(categoryDiv);
             }
         }
 
         function toggleCategory(category) {
             expandedCategories[category] = !expandedCategories[category];
-            buildUI();
-        }
-
-        function toggleType(category, type) {
-            const typeKey = `${category}-${type}`;
-            expandedTypes[typeKey] = !expandedTypes[typeKey];
-            buildUI();
-        }
-
-        function toggleStandard(category, type, standard) {
-            const standardKey = `${category}-${type}-${standard}`;
-            expandedStandards[standardKey] = !expandedStandards[standardKey];
             buildUI();
         }
 
