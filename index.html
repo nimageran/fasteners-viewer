@@ -557,8 +557,9 @@
         let expandedCategories = {};
         let expandedTypes = {};
         let expandedStandards = {};
-        let currentMaterial = 'steel';
-        let currentBackground = 'light';
+        let currentMaterial = 'zinc';
+        let currentBackground = 'dark';
+        let gridVisible = false;
 
         const materials = {
             steel: { color: 0x8B9DC3, metalness: 0.8, roughness: 0.3 },
@@ -830,13 +831,42 @@
             
             scene.background.setHex(backgrounds[bg].color);
             
-            const grid = scene.getObjectByName('grid');
-            if (grid) {
-                scene.remove(grid);
+            if (gridVisible) {
+                const grid = scene.getObjectByName('grid');
+                if (grid) {
+                    scene.remove(grid);
+                }
+                const newGrid = new THREE.GridHelper(100, 100, backgrounds[bg].grid, backgrounds[bg].grid);
+                newGrid.name = 'grid';
+                scene.add(newGrid);
             }
-            const newGrid = new THREE.GridHelper(100, 100, backgrounds[bg].grid, backgrounds[bg].grid);
-            newGrid.name = 'grid';
-            scene.add(newGrid);
+        }
+
+        function setGrid(state) {
+            gridVisible = (state === 'show');
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.setting-group:has(.material-btn) .material-btn');
+            const gridButtons = Array.from(buttons).slice(-2); // Get last 2 buttons (grid buttons)
+            gridButtons.forEach(btn => btn.classList.remove('active'));
+            if (state === 'show') {
+                gridButtons[0].classList.add('active');
+            } else {
+                gridButtons[1].classList.add('active');
+            }
+            
+            const grid = scene.getObjectByName('grid');
+            if (gridVisible) {
+                if (!grid) {
+                    const newGrid = new THREE.GridHelper(100, 100, backgrounds[currentBackground].grid, backgrounds[currentBackground].grid);
+                    newGrid.name = 'grid';
+                    scene.add(newGrid);
+                }
+            } else {
+                if (grid) {
+                    scene.remove(grid);
+                }
+            }
         }
 
         function setCameraView(view) {
@@ -885,6 +915,7 @@
         function resetToDefaults() {
             setMaterial('steel');
             setBackground('light');
+            setGrid('show');
             resetCamera();
             document.querySelectorAll('.material-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector('.material-btn').classList.add('active');
