@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 <<<<<<< HEAD
@@ -602,319 +603,598 @@
     .kvs{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
     .kvs span{border:1px solid #2a3153; background:#0f1633; padding:4px 8px; border-radius:999px; font-size:12px}
   </style>
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasteners 3D Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            background: #f9fafb;
+        }
+        .sidebar {
+            width: 350px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 14px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+        .content {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+        }
+        .loading {
+            padding: 24px;
+            text-align: center;
+            color: #6b7280;
+        }
+        .category {
+            margin-bottom: 16px;
+        }
+        .category-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            transition: background 0.2s;
+        }
+        .category-btn:hover {
+            background: #f3f4f6;
+        }
+        .chevron {
+            margin-right: 8px;
+            transition: transform 0.2s;
+        }
+        .chevron.open {
+            transform: rotate(90deg);
+        }
+        .category-icon {
+            margin-right: 8px;
+            color: #3b82f6;
+        }
+        .types {
+            margin-left: 16px;
+            margin-top: 8px;
+        }
+        .type-section {
+            margin-bottom: 12px;
+        }
+        .type-header {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 14px;
+            padding: 8px 12px;
+            background: #eff6ff;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .standard-section {
+            margin-left: 12px;
+            margin-bottom: 8px;
+        }
+        .standard-label {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 500;
+            margin-bottom: 4px;
+            padding-left: 4px;
+        }
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .file-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            font-size: 13px;
+        }
+        .file-btn:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+        .file-btn.active {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+        }
+        .file-icon {
+            margin-right: 8px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        .viewer-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .info-bar {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 24px;
+        }
+        .info-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .info-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        #viewer {
+            flex: 1;
+            position: relative;
+            background: #f9fafb;
+        }
+        .empty-state {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #9ca3af;
+        }
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+        .controls-info {
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            padding: 24px;
+            text-align: center;
+            color: #dc2626;
+        }
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+>>>>>>> 860acaaaf506b18cb5ad2814a9d5e657ca364a54
 </head>
 <body>
-  <header>
-    <h1>Fasteners Viewer <span class="pill">auto‑indexed from STL filenames</span></h1>
-    <small>Repo: <span id="repoLabel"></span> • Branch: <span id="branchLabel"></span></small>
-  </header>
-  <main>
-    <section class="card">
-      <div class="grid">
-        <div>
-          <label for="familySel">Head / Family</label>
-          <select id="familySel" disabled></select>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <h1>Fasteners Library</h1>
+                <p>3D Model Viewer</p>
+            </div>
+            <div id="content" class="content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading catalog...</p>
+                </div>
+            </div>
         </div>
-        <div>
-          <label for="diamSel">Diameter (from name)</label>
-          <select id="diamSel" disabled></select>
+
+        <div class="viewer-container">
+            <div id="info-bar" class="info-bar hidden">
+                <div class="info-title" id="info-title"></div>
+                <div class="info-subtitle" id="info-subtitle"></div>
+            </div>
+            <div id="viewer">
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-icon">📦</div>
+                    <p style="font-size: 18px; font-weight: 500;">Select a fastener to view</p>
+                    <p style="font-size: 14px; margin-top: 8px;">Choose from the sidebar</p>
+                </div>
+                <div id="loader" class="loader hidden">
+                    <div class="spinner"></div>
+                    <p style="color: #6b7280;">Loading 3D model...</p>
+                </div>
+            </div>
+            <div id="controls-info" class="controls-info hidden">
+                🖱️ Drag to rotate | 🔍 Scroll to zoom | Model auto-rotates when idle
+            </div>
         </div>
-      </div>
-      <div class="grid">
-        <div>
-          <label for="lenSel">Length (from name)</label>
-          <select id="lenSel" disabled></select>
-        </div>
-        <div>
-          <label>Standard</label>
-          <div id="stdBox" class="kvs"></div>
-        </div>
-      </div>
-      <div class="toolbar">
-        <div class="row">
-          <button id="reloadBtn" title="Re-scan repository">Reload</button>
-        </div>
-        <div class="row">
-          <a id="dlLink" class="dl" href="#" target="_blank" rel="noopener">Download STL</a>
-        </div>
-      </div>
-      <div class="status" id="status">Loading repo index…</div>
-    </section>
-    <section class="card">
-      <div class="viewer" id="viewer"></div>
-    </section>
-  </main>
+    </div>
 
-  <!-- Three.js + loaders -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/STLLoader.js"></script>
+    <script>
+        let scene, camera, renderer, mesh;
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let autoRotate = true;
+        let catalog = {};
+        let expandedCategories = {};
 
-  <script>
-  (function(){
-    const owner = "nimageran";
-    const repo = "fasteners-viewer";
-    const rootDir = "Bolts";
-    const repoApi = `https://api.github.com/repos/${owner}/${repo}`;
-    const contentsApi = (path, ref) => `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(ref)}`;
-    let defaultBranch = "main"; // will be probed
-    const state = {
-      files: [], // {path, name, family, diam, len, std, rawUrl}
-      byFamily: new Map(),
-      selected: {family:null, diam:null, len:null, std:null, file:null}
-    };
+        // Initialize Three.js
+        function initViewer() {
+            const viewer = document.getElementById('viewer');
+            
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf5f5f5);
 
-    const el = {
-      repoLabel: document.getElementById('repoLabel'),
-      branchLabel: document.getElementById('branchLabel'),
-      familySel: document.getElementById('familySel'),
-      diamSel: document.getElementById('diamSel'),
-      lenSel: document.getElementById('lenSel'),
-      stdBox: document.getElementById('stdBox'),
-      status: document.getElementById('status'),
-      reloadBtn: document.getElementById('reloadBtn'),
-      dlLink: document.getElementById('dlLink'),
-      viewer: document.getElementById('viewer'),
-    };
+            camera = new THREE.PerspectiveCamera(45, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
+            camera.position.set(50, 50, 50);
+            camera.lookAt(0, 0, 0);
 
-    el.repoLabel.textContent = `${owner}/${repo}`;
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+            viewer.appendChild(renderer.domElement);
 
-    // --- UI helpers
-    function setStatus(msg, isErr=false){ el.status.innerHTML = isErr ? `<span class="error">${msg}</span>` : msg; }
-    function clearSelect(s){ s.innerHTML=""; }
-    function fillSelect(s, opts, placeholder){
-      clearSelect(s);
-      const p = document.createElement('option');
-      p.value=""; p.textContent = placeholder; p.disabled = true; p.selected = true;
-      s.appendChild(p);
-      opts.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=v; s.appendChild(o); });
-      s.disabled = false;
-    }
-    function uniqSorted(arr){ return [...new Set(arr)].sort((a,b)=>{
-      const na = parseFloat(a.replace(/^M/,"")), nb = parseFloat(b.replace(/^M/,""));
-      if(!isNaN(na) && !isNaN(nb)) return na-nb;
-      return String(a).localeCompare(String(b));
-    }); }
-    function lengthsSorted(arr){ return [...new Set(arr)].sort((a,b)=>Number(a)-Number(b)); }
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
 
-    // --- Filename parser
-    // Examples: SocketHead_M10x25_ISO4762.stl  |  FlatHead_M3x16_ISO10642.stl
-    const NAME_RE = /^(?<family>[A-Za-z]+Head)_(?<diam>M\d+(?:\.\d+)?)x(?<len>\d+(?:\.\d+)?)_(?<std>ISO\d+)\.stl$/i;
+            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight1.position.set(10, 10, 10);
+            scene.add(directionalLight1);
 
-    // --- GitHub traversal to collect all STL files under Bolts/**/STL
-    async function getJson(url){
-      const r = await fetch(url, {headers: {'Accept': 'application/vnd.github+json'}});
-      if(!r.ok){
-        const t = await r.text();
-        throw new Error(`HTTP ${r.status} on ${url}\n${t.slice(0,400)}`);
-      }
-      return r.json();
-    }
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight2.position.set(-10, -10, -10);
+            scene.add(directionalLight2);
 
-    async function detectBranch(){
-      try{
-        const info = await getJson(repoApi);
-        defaultBranch = info.default_branch || defaultBranch;
-        el.branchLabel.textContent = defaultBranch;
-      }catch(e){
-        setStatus(`Could not read repo metadata. Using '${defaultBranch}' branch.\n` + e.message, true);
-        el.branchLabel.textContent = defaultBranch;
-      }
-    }
+            const gridHelper = new THREE.GridHelper(100, 100, 0xcccccc, 0xe0e0e0);
+            scene.add(gridHelper);
 
-    async function listDir(path){
-      const data = await getJson(contentsApi(path, defaultBranch));
-      return Array.isArray(data) ? data : [];
-    }
+            renderer.domElement.addEventListener('mousedown', onMouseDown);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            renderer.domElement.addEventListener('mouseup', onMouseUp);
+            renderer.domElement.addEventListener('mouseleave', onMouseUp);
+            renderer.domElement.addEventListener('wheel', onWheel);
 
-    async function walkForStl(start){
-      // Depth-first down to */STL directories
-      const items = await listDir(start);
-      for(const it of items){
-        if(it.type === "dir"){
-          if(it.name.toLowerCase() === "stl"){
-            const stls = await listDir(it.path);
-            for(const f of stls){
-              if(f.type === "file" && f.name.toLowerCase().endsWith(".stl")){
-                const m = f.name.match(NAME_RE);
-                if(!m) continue; // skip unparseable names
-                const family = m.groups.family; // SocketHead / FlatHead / etc.
-                const diam = m.groups.diam.toUpperCase(); // M3..M24
-                const len = m.groups.len; // string numeric
-                const std = m.groups.std.toUpperCase();
-                const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${f.path}`;
-                const entry = {path:f.path, name:f.name, family, diam, len, std, rawUrl};
-                state.files.push(entry);
-              }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = viewer.clientWidth / viewer.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+            });
+        }
+
+        function onMouseDown(e) {
+            isDragging = true;
+            autoRotate = false;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        }
+
+        function onMouseMove(e) {
+            if (isDragging && mesh) {
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+                
+                mesh.rotation.y += deltaX * 0.01;
+                mesh.rotation.x += deltaY * 0.01;
+                
+                previousMousePosition = { x: e.clientX, y: e.clientY };
             }
-          }else{
-            await walkForStl(it.path);
-          }
         }
-      }
-    }
 
-    function indexFiles(){
-      state.byFamily.clear();
-      for(const f of state.files){
-        if(!state.byFamily.has(f.family)) state.byFamily.set(f.family, new Map());
-        const byDiam = state.byFamily.get(f.family);
-        if(!byDiam.has(f.diam)) byDiam.set(f.diam, []);
-        byDiam.get(f.diam).push(f);
-      }
-    }
-
-    function populateFamilies(){
-      const fams = uniqSorted([...state.byFamily.keys()]);
-      fillSelect(el.familySel, fams, "Select family from names");
-    }
-
-    function populateDiameters(family){
-      const byDiam = state.byFamily.get(family) || new Map();
-      const diams = uniqSorted([...byDiam.keys()]);
-      fillSelect(el.diamSel, diams, "Select diameter (M…)");
-      clearSelect(el.lenSel); el.lenSel.disabled = true;
-      el.stdBox.innerHTML = "";
-    }
-
-    function populateLengths(family, diam){
-      const byDiam = state.byFamily.get(family) || new Map();
-      const entries = (byDiam.get(diam) || []);
-      const lens = lengthsSorted(entries.map(e=>e.len));
-      fillSelect(el.lenSel, lens, "Select length (mm)");
-      // standards present for this subset
-      const stds = [...new Set(entries.map(e=>e.std))].sort();
-      el.stdBox.innerHTML = stds.map(s=>`<span>${s}</span>`).join("");
-    }
-
-    function selectFile(){
-      const fam = el.familySel.value;
-      const d = el.diamSel.value;
-      const L = el.lenSel.value;
-      if(!fam || !d || !L) return;
-      const list = (state.byFamily.get(fam)?.get(d)) || [];
-      const file = list.find(x => x.len === L);
-      if(!file){
-        setStatus(`No STL found for ${fam} ${d} x ${L}`, true);
-        return;
-      }
-      state.selected = {family:fam, diam:d, len:L, std:file.std, file};
-      setStatus(`Loaded from filename → family=${fam}, diam=${d}, length=${L}, std=${file.std}\n${file.name}`);
-      el.dlLink.href = file.rawUrl;
-      loadStl(file.rawUrl);
-    }
-
-    // --- 3D viewer
-    let renderer, scene, camera, controls, loader;
-    function init3D(){
-      const W = el.viewer.clientWidth;
-      const H = el.viewer.clientHeight;
-      renderer = new THREE.WebGLRenderer({antialias:true});
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(W,H);
-      el.viewer.innerHTML = "";
-      el.viewer.appendChild(renderer.domElement);
-
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0b0e1c);
-      camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 2000);
-      camera.position.set(180,140,180);
-      controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-
-      const hemi = new THREE.HemisphereLight(0xffffff, 0x223344, 0.8);
-      scene.add(hemi);
-      const dir = new THREE.DirectionalLight(0xffffff, 1.0);
-      dir.position.set(200,200,200);
-      scene.add(dir);
-
-      const grid = new THREE.GridHelper(400, 20, 0x23304f, 0x161c31);
-      grid.material.opacity = 0.3; grid.material.transparent = true;
-      scene.add(grid);
-
-      loader = new THREE.STLLoader();
-      window.addEventListener('resize', ()=>{
-        const w = el.viewer.clientWidth, h = el.viewer.clientHeight;
-        camera.aspect = w/h; camera.updateProjectionMatrix();
-        renderer.setSize(w,h);
-      });
-
-      animate();
-    }
-    function animate(){
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
-    }
-
-    let mesh=null;
-    function loadStl(url){
-      setStatus(`Loading STL…\n${url}`);
-      loader.load(url, (geom)=>{
-        if(mesh) { scene.remove(mesh); mesh.geometry.dispose(); mesh.material.dispose(); mesh=null; }
-        geom.computeBoundingBox();
-        const bbox = geom.boundingBox;
-        const size = new THREE.Vector3(); bbox.getSize(size);
-        const center = new THREE.Vector3(); bbox.getCenter(center);
-        geom.translate(-center.x, -center.y, -center.z);
-
-        const mat = new THREE.MeshStandardMaterial({metalness:0.8, roughness:0.35, color:0xb8c2d8});
-        mesh = new THREE.Mesh(geom, mat);
-        scene.add(mesh);
-
-        // frame
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const dist = maxDim * 2.2 + 40;
-        camera.position.set(dist, dist*0.7, dist);
-        controls.target.set(0,0,0); controls.update();
-
-        setStatus(`STL loaded ✓  size≈ ${size.x.toFixed(1)}×${size.y.toFixed(1)}×${size.z.toFixed(1)} mm`);
-      }, (xhr)=>{
-        // progress
-      }, (err)=>{
-        setStatus(`Failed to load STL\n${err?.message || err}`, true);
-      });
-    }
-
-    // --- Wiring
-    el.reloadBtn.addEventListener('click', bootstrap);
-    el.familySel.addEventListener('change', ()=>{
-      if(!el.familySel.value) return;
-      populateDiameters(el.familySel.value);
-    });
-    el.diamSel.addEventListener('change', ()=>{
-      if(!el.familySel.value || !el.diamSel.value) return;
-      populateLengths(el.familySel.value, el.diamSel.value);
-    });
-    el.lenSel.addEventListener('change', selectFile);
-
-    async function bootstrap(){
-      // lock UI during load
-      [el.familySel, el.diamSel, el.lenSel].forEach(s=>{ s.disabled = true; });
-      el.stdBox.innerHTML = "";
-      setStatus("Loading repo index…");
-      try{
-        await detectBranch();
-        // reset
-        state.files.length = 0;
-        state.byFamily.clear();
-        await walkForStl(rootDir);
-        if(state.files.length === 0){
-          setStatus("No STL files found under Bolts/**/STL or names not matching pattern.\nExpected: <Family>_M<diam>x<len>_<ISO>.stl", true);
-          return;
+        function onMouseUp() {
+            isDragging = false;
+            setTimeout(() => { autoRotate = true; }, 2000);
         }
-        indexFiles();
-        populateFamilies();
-        setStatus(`Indexed ${state.files.length} STL files from filenames.\nChoose family → diameter → length.`);
-      }catch(e){
-        setStatus("Indexing failed:\n"+e.message, true);
-      }
-    }
 
+<<<<<<< HEAD
     init3D();
     bootstrap();
   })();
   </script>
 >>>>>>> bb41b64153fb71c39674690760d0e6487f9a58af
+=======
+        function onWheel(e) {
+            e.preventDefault();
+            const delta = e.deltaY * 0.001;
+            camera.position.multiplyScalar(1 + delta);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            if (mesh && autoRotate && !isDragging) {
+                mesh.rotation.y += 0.005;
+            }
+            
+            renderer.render(scene, camera);
+        }
+
+        // STL Loader
+        function loadSTL(url, fileName, category, type, standard) {
+            document.getElementById('loader').classList.remove('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
+            
+            if (mesh) {
+                scene.remove(mesh);
+                mesh.geometry.dispose();
+                mesh.material.dispose();
+            }
+
+            fetch(url)
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const geometry = parseSTL(data);
+                    
+                    geometry.computeVertexNormals();
+                    geometry.center();
+                    
+                    const material = new THREE.MeshStandardMaterial({
+                        color: 0x4a90e2,
+                        metalness: 0.7,
+                        roughness: 0.3
+                    });
+
+                    mesh = new THREE.Mesh(geometry, material);
+                    
+                    const box = new THREE.Box3().setFromObject(mesh);
+                    const size = box.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 30 / maxDim;
+                    mesh.scale.multiplyScalar(scale);
+                    
+                    scene.add(mesh);
+                    
+                    document.getElementById('loader').classList.add('hidden');
+                    document.getElementById('info-bar').classList.remove('hidden');
+                    document.getElementById('controls-info').classList.remove('hidden');
+                    
+                    document.getElementById('info-title').textContent = `${category} / ${type} / ${standard}`;
+                    document.getElementById('info-subtitle').textContent = `File: ${fileName}`;
+                    
+                    camera.position.set(50, 50, 50);
+                    camera.lookAt(0, 0, 0);
+                    autoRotate = true;
+                })
+                .catch(error => {
+                    console.error('Error loading STL:', error);
+                    document.getElementById('loader').innerHTML = '<p style="color: #dc2626;">Error loading model</p>';
+                });
+        }
+
+        // Simple STL parser
+        function parseSTL(data) {
+            const view = new DataView(data);
+            const isASCII = data.byteLength < 100 ? true : 
+                new TextDecoder().decode(data.slice(0, 5)) === 'solid';
+            
+            if (isASCII) {
+                return parseSTLASCII(new TextDecoder().decode(data));
+            } else {
+                return parseSTLBinary(view);
+            }
+        }
+
+        function parseSTLBinary(view) {
+            const faces = view.getUint32(80, true);
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const normals = [];
+            
+            for (let i = 0; i < faces; i++) {
+                const offset = 84 + i * 50;
+                
+                const nx = view.getFloat32(offset, true);
+                const ny = view.getFloat32(offset + 4, true);
+                const nz = view.getFloat32(offset + 8, true);
+                
+                for (let j = 0; j < 3; j++) {
+                    const vOffset = offset + 12 + j * 12;
+                    vertices.push(
+                        view.getFloat32(vOffset, true),
+                        view.getFloat32(vOffset + 4, true),
+                        view.getFloat32(vOffset + 8, true)
+                    );
+                    normals.push(nx, ny, nz);
+                }
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+            
+            return geometry;
+        }
+
+        function parseSTLASCII(text) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const normals = [];
+            const vertexPattern = /vertex\s+([-+]?[\d.]+[eE]?[-+]?\d*)\s+([-+]?[\d.]+[eE]?[-+]?\d*)\s+([-+]?[\d.]+[eE]?[-+]?\d*)/g;
+            const normalPattern = /facet\s+normal\s+([-+]?[\d.]+[eE]?[-+]?\d*)\s+([-+]?[\d.]+[eE]?[-+]?\d*)\s+([-+]?[\d.]+[eE]?[-+]?\d*)/g;
+            
+            let normalMatch;
+            const normalsList = [];
+            while ((normalMatch = normalPattern.exec(text)) !== null) {
+                normalsList.push([
+                    parseFloat(normalMatch[1]),
+                    parseFloat(normalMatch[2]),
+                    parseFloat(normalMatch[3])
+                ]);
+            }
+            
+            let vertexMatch;
+            let normalIndex = 0;
+            let vertexCount = 0;
+            
+            while ((vertexMatch = vertexPattern.exec(text)) !== null) {
+                vertices.push(
+                    parseFloat(vertexMatch[1]),
+                    parseFloat(vertexMatch[2]),
+                    parseFloat(vertexMatch[3])
+                );
+                
+                if (normalsList[normalIndex]) {
+                    normals.push(...normalsList[normalIndex]);
+                }
+                
+                vertexCount++;
+                if (vertexCount % 3 === 0) {
+                    normalIndex++;
+                }
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3));
+            
+            return geometry;
+        }
+
+        // Load catalog and build UI
+        async function loadCatalog() {
+            try {
+                const response = await fetch('catalog.json');
+                if (!response.ok) {
+                    throw new Error('Catalog not found');
+                }
+                
+                catalog = await response.json();
+                buildUI();
+            } catch (error) {
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        <p style="font-size: 18px; margin-bottom: 8px;">❌ Error loading catalog</p>
+                        <p style="font-size: 14px;">${error.message}</p>
+                        <p style="font-size: 12px; margin-top: 16px;">Make sure catalog.json exists</p>
+                    </div>
+                `;
+            }
+        }
+
+        function buildUI() {
+            const content = document.getElementById('content');
+            content.innerHTML = '';
+            
+            for (const [category, types] of Object.entries(catalog)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                
+                const categoryBtn = document.createElement('button');
+                categoryBtn.className = 'category-btn';
+                categoryBtn.innerHTML = `
+                    <span class="chevron ${expandedCategories[category] ? 'open' : ''}">▶</span>
+                    <span class="category-icon">📁</span>
+                    <span>${category}</span>
+                `;
+                categoryBtn.onclick = () => toggleCategory(category);
+                
+                const typesDiv = document.createElement('div');
+                typesDiv.className = 'types';
+                typesDiv.style.display = expandedCategories[category] ? 'block' : 'none';
+                
+                for (const [type, standards] of Object.entries(types)) {
+                    const typeSection = document.createElement('div');
+                    typeSection.className = 'type-section';
+                    
+                    const typeHeader = document.createElement('div');
+                    typeHeader.className = 'type-header';
+                    typeHeader.textContent = type;
+                    typeSection.appendChild(typeHeader);
+                    
+                    for (const [standard, data] of Object.entries(standards)) {
+                        const standardSection = document.createElement('div');
+                        standardSection.className = 'standard-section';
+                        
+                        const standardLabel = document.createElement('div');
+                        standardLabel.className = 'standard-label';
+                        standardLabel.textContent = `📐 ${standard} (${data.files.length} files)`;
+                        standardSection.appendChild(standardLabel);
+                        
+                        const fileList = document.createElement('div');
+                        fileList.className = 'file-list';
+                        
+                        for (const file of data.files) {
+                            const fileBtn = document.createElement('button');
+                            fileBtn.className = 'file-btn';
+                            fileBtn.innerHTML = `
+                                <span class="file-icon">📄</span>
+                                <span>${file.name}</span>
+                            `;
+                            fileBtn.onclick = () => {
+                                document.querySelectorAll('.file-btn').forEach(b => b.classList.remove('active'));
+                                fileBtn.classList.add('active');
+                                loadSTL(file.downloadUrl, file.name, category, type, standard);
+                            };
+                            fileList.appendChild(fileBtn);
+                        }
+                        
+                        standardSection.appendChild(fileList);
+                        typeSection.appendChild(standardSection);
+                    }
+                    
+                    typesDiv.appendChild(typeSection);
+                }
+                
+                categoryDiv.appendChild(categoryBtn);
+                categoryDiv.appendChild(typesDiv);
+                content.appendChild(categoryDiv);
+            }
+        }
+
+        function toggleCategory(category) {
+            expandedCategories[category] = !expandedCategories[category];
+            buildUI();
+        }
+
+        // Initialize
+        initViewer();
+        loadCatalog();
+    </script>
+>>>>>>> 860acaaaf506b18cb5ad2814a9d5e657ca364a54
 </body>
 </html>

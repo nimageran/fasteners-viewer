@@ -1,0 +1,12 @@
+{
+  "name": "fasteners-catalog-generator",
+  "version": "1.0.0",
+  "description": "Generates catalog.json for fasteners 3D viewer",
+  "scripts": {
+    "generate": "node generate-catalog.js",
+    "update": "node generate-catalog.js"
+  },
+  "keywords": ["fasteners", "3d-viewer", "stl"],
+  "author": "nimageran",
+  "license": "MIT"
+}
