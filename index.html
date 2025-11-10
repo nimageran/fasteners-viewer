@@ -182,11 +182,18 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         .info-bar {
             background: white;
             border-bottom: 1px solid #e5e7eb;
             padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .info-content {
+            flex: 1;
         }
         .info-title {
             font-size: 20px;
@@ -197,6 +204,32 @@
             font-size: 14px;
             color: #6b7280;
             margin-top: 4px;
+        }
+        .info-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-size: 18px;
+        }
+        .icon-btn:hover {
+            background: #f9fafb;
+            border-color: #3b82f6;
+        }
+        .icon-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
         }
         #viewer {
             flex: 1;
@@ -218,10 +251,20 @@
         .controls-info {
             background: white;
             border-top: 1px solid #e5e7eb;
-            padding: 12px;
-            text-align: center;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 12px;
             color: #6b7280;
+        }
+        .controls-left {
+            display: flex;
+            gap: 16px;
+        }
+        .controls-right {
+            display: flex;
+            gap: 8px;
         }
         .hidden {
             display: none;
@@ -237,6 +280,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            z-index: 10;
         }
         .spinner {
             border: 4px solid #f3f4f6;
@@ -250,6 +294,143 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        /* Settings Panel */
+        .settings-panel {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            width: 280px;
+            z-index: 100;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .settings-title {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 16px;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #6b7280;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-btn:hover {
+            color: #1f2937;
+        }
+        .setting-group {
+            margin-bottom: 16px;
+        }
+        .setting-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .material-btn {
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .material-btn:hover {
+            border-color: #3b82f6;
+        }
+        .material-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        .background-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .bg-btn {
+            padding: 8px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+        .bg-btn:hover {
+            border-color: #3b82f6;
+        }
+        .bg-btn.active {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .bg-preview {
+            width: 100%;
+            height: 40px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+        .view-angles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .angle-btn {
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .angle-btn:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
         }
     </style>
 </head>
@@ -270,9 +451,17 @@
 
         <div class="viewer-container">
             <div id="info-bar" class="info-bar hidden">
-                <div class="info-title" id="info-title"></div>
-                <div class="info-subtitle" id="info-subtitle"></div>
+                <div class="info-content">
+                    <div class="info-title" id="info-title"></div>
+                    <div class="info-subtitle" id="info-subtitle"></div>
+                </div>
+                <div class="info-actions">
+                    <button class="icon-btn" onclick="toggleSettings()" title="Settings">⚙️</button>
+                    <button class="icon-btn" onclick="resetCamera()" title="Reset View">🔄</button>
+                    <button class="icon-btn" onclick="takeScreenshot()" title="Screenshot">📷</button>
+                </div>
             </div>
+            
             <div id="viewer">
                 <div id="empty-state" class="empty-state">
                     <div class="empty-icon">📦</div>
@@ -284,8 +473,69 @@
                     <p style="color: #6b7280;">Loading 3D model...</p>
                 </div>
             </div>
+            
+            <!-- Settings Panel -->
+            <div id="settings-panel" class="settings-panel hidden">
+                <div class="settings-header">
+                    <span class="settings-title">⚙️ Viewer Settings</span>
+                    <button class="close-btn" onclick="toggleSettings()">×</button>
+                </div>
+                
+                <div class="setting-group">
+                    <label class="setting-label">Material Finish</label>
+                    <div class="material-grid">
+                        <button class="material-btn active" onclick="setMaterial('steel')">🔩 Steel</button>
+                        <button class="material-btn" onclick="setMaterial('aluminum')">⚪ Aluminum</button>
+                        <button class="material-btn" onclick="setMaterial('brass')">🟡 Brass</button>
+                        <button class="material-btn" onclick="setMaterial('black')">⚫ Black Oxide</button>
+                        <button class="material-btn" onclick="setMaterial('zinc')">🔘 Galvanized</button>
+                        <button class="material-btn" onclick="setMaterial('bronze')">🟤 Bronze</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label class="setting-label">Background Style</label>
+                    <div class="background-grid">
+                        <button class="bg-btn active" onclick="setBackground('light')">
+                            <div class="bg-preview" style="background: #f5f5f5;"></div>
+                            Light
+                        </button>
+                        <button class="bg-btn" onclick="setBackground('dark')">
+                            <div class="bg-preview" style="background: #1f2937;"></div>
+                            Dark
+                        </button>
+                        <button class="bg-btn" onclick="setBackground('blueprint')">
+                            <div class="bg-preview" style="background: linear-gradient(#1e40af, #1e3a8a);"></div>
+                            Blueprint
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label class="setting-label">View Angles</label>
+                    <div class="view-angles">
+                        <button class="angle-btn" onclick="setCameraView('front')">Front</button>
+                        <button class="angle-btn" onclick="setCameraView('side')">Side</button>
+                        <button class="angle-btn" onclick="setCameraView('top')">Top</button>
+                        <button class="angle-btn" onclick="setCameraView('iso')">Isometric</button>
+                        <button class="angle-btn" onclick="setCameraView('bottom')">Bottom</button>
+                        <button class="angle-btn" onclick="setCameraView('back')">Back</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <button class="btn-primary" onclick="resetToDefaults()">Reset to Defaults</button>
+                </div>
+            </div>
+            
             <div id="controls-info" class="controls-info hidden">
-                🖱️ Drag to rotate | 🔍 Scroll to zoom | Model auto-rotates when idle
+                <div class="controls-left">
+                    <span>🖱️ Drag to rotate</span>
+                    <span>🔍 Scroll to zoom</span>
+                </div>
+                <div class="controls-right">
+                    <span id="model-info"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -299,34 +549,55 @@
         let expandedCategories = {};
         let expandedTypes = {};
         let expandedStandards = {};
+        let currentMaterial = 'steel';
+        let currentBackground = 'light';
 
-        // Initialize Three.js
+        const materials = {
+            steel: { color: 0x8B9DC3, metalness: 0.8, roughness: 0.3 },
+            aluminum: { color: 0xC0C0C0, metalness: 0.7, roughness: 0.4 },
+            brass: { color: 0xB5A642, metalness: 0.9, roughness: 0.2 },
+            black: { color: 0x2C2C2C, metalness: 0.6, roughness: 0.5 },
+            zinc: { color: 0xD4D4D4, metalness: 0.5, roughness: 0.6 },
+            bronze: { color: 0xCD7F32, metalness: 0.8, roughness: 0.3 }
+        };
+
+        const backgrounds = {
+            light: { color: 0xf5f5f5, grid: 0xcccccc },
+            dark: { color: 0x1f2937, grid: 0x374151 },
+            blueprint: { color: 0x1e3a8a, grid: 0x3b82f6 }
+        };
+
         function initViewer() {
             const viewer = document.getElementById('viewer');
             
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xf5f5f5);
+            scene.background = new THREE.Color(backgrounds.light.color);
 
             camera = new THREE.PerspectiveCamera(45, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
             camera.position.set(50, 50, 50);
             camera.lookAt(0, 0, 0);
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
             renderer.setSize(viewer.clientWidth, viewer.clientHeight);
             viewer.appendChild(renderer.domElement);
 
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
             scene.add(ambientLight);
 
-            const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight1.position.set(10, 10, 10);
-            scene.add(directionalLight1);
+            const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            keyLight.position.set(10, 10, 10);
+            scene.add(keyLight);
 
-            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
-            directionalLight2.position.set(-10, -10, -10);
-            scene.add(directionalLight2);
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            fillLight.position.set(-10, 5, -5);
+            scene.add(fillLight);
 
-            const gridHelper = new THREE.GridHelper(100, 100, 0xcccccc, 0xe0e0e0);
+            const rimLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            rimLight.position.set(0, 10, -10);
+            scene.add(rimLight);
+
+            const gridHelper = new THREE.GridHelper(100, 100, backgrounds.light.grid, backgrounds.light.grid);
+            gridHelper.name = 'grid';
             scene.add(gridHelper);
 
             renderer.domElement.addEventListener('mousedown', onMouseDown);
@@ -383,7 +654,6 @@
             renderer.render(scene, camera);
         }
 
-        // STL Loader
         function loadSTL(url, fileName, category, type, standard) {
             document.getElementById('loader').classList.remove('hidden');
             document.getElementById('empty-state').classList.add('hidden');
@@ -402,10 +672,11 @@
                     geometry.computeVertexNormals();
                     geometry.center();
                     
+                    const matProps = materials[currentMaterial];
                     const material = new THREE.MeshStandardMaterial({
-                        color: 0x4a90e2,
-                        metalness: 0.7,
-                        roughness: 0.3
+                        color: matProps.color,
+                        metalness: matProps.metalness,
+                        roughness: matProps.roughness
                     });
 
                     mesh = new THREE.Mesh(geometry, material);
@@ -425,6 +696,9 @@
                     document.getElementById('info-title').textContent = `${category} / ${type} / ${standard}`;
                     document.getElementById('info-subtitle').textContent = `File: ${fileName}`;
                     
+                    const triangles = geometry.attributes.position.count / 3;
+                    document.getElementById('model-info').textContent = `Triangles: ${triangles.toLocaleString()}`;
+                    
                     camera.position.set(50, 50, 50);
                     camera.lookAt(0, 0, 0);
                     autoRotate = true;
@@ -435,7 +709,6 @@
                 });
         }
 
-        // Simple STL parser
         function parseSTL(data) {
             const view = new DataView(data);
             const isASCII = data.byteLength < 100 ? true : 
@@ -522,7 +795,95 @@
             return geometry;
         }
 
-        // Load catalog and build UI
+        // Settings Functions
+        function toggleSettings() {
+            const panel = document.getElementById('settings-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function setMaterial(material) {
+            currentMaterial = material;
+            document.querySelectorAll('.material-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (mesh) {
+                const matProps = materials[material];
+                mesh.material.color.setHex(matProps.color);
+                mesh.material.metalness = matProps.metalness;
+                mesh.material.roughness = matProps.roughness;
+                mesh.material.needsUpdate = true;
+            }
+        }
+
+        function setBackground(bg) {
+            currentBackground = bg;
+            document.querySelectorAll('.bg-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.bg-btn').classList.add('active');
+            
+            scene.background.setHex(backgrounds[bg].color);
+            
+            const grid = scene.getObjectByName('grid');
+            if (grid) {
+                scene.remove(grid);
+            }
+            const newGrid = new THREE.GridHelper(100, 100, backgrounds[bg].grid, backgrounds[bg].grid);
+            newGrid.name = 'grid';
+            scene.add(newGrid);
+        }
+
+        function setCameraView(view) {
+            if (!mesh) return;
+            
+            const distance = 50;
+            switch(view) {
+                case 'front':
+                    camera.position.set(0, 0, distance);
+                    break;
+                case 'side':
+                    camera.position.set(distance, 0, 0);
+                    break;
+                case 'top':
+                    camera.position.set(0, distance, 0);
+                    break;
+                case 'bottom':
+                    camera.position.set(0, -distance, 0);
+                    break;
+                case 'back':
+                    camera.position.set(0, 0, -distance);
+                    break;
+                case 'iso':
+                    camera.position.set(distance, distance, distance);
+                    break;
+            }
+            camera.lookAt(0, 0, 0);
+            autoRotate = false;
+        }
+
+        function resetCamera() {
+            camera.position.set(50, 50, 50);
+            camera.lookAt(0, 0, 0);
+            autoRotate = true;
+        }
+
+        function takeScreenshot() {
+            renderer.render(scene, camera);
+            const screenshot = renderer.domElement.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'fastener-view.png';
+            link.href = screenshot;
+            link.click();
+        }
+
+        function resetToDefaults() {
+            setMaterial('steel');
+            setBackground('light');
+            resetCamera();
+            document.querySelectorAll('.material-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.material-btn').classList.add('active');
+            document.querySelectorAll('.bg-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.bg-btn').classList.add('active');
+        }
+
         async function loadCatalog() {
             try {
                 const response = await fetch('catalog.json');
@@ -551,7 +912,6 @@
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
                 
-                // Category button
                 const categoryBtn = document.createElement('button');
                 categoryBtn.className = 'category-btn';
                 categoryBtn.innerHTML = `
@@ -563,7 +923,6 @@
                 
                 categoryDiv.appendChild(categoryBtn);
                 
-                // Types container
                 if (expandedCategories[category]) {
                     const typesDiv = document.createElement('div');
                     typesDiv.className = 'types';
@@ -572,7 +931,6 @@
                         const typeSection = document.createElement('div');
                         typeSection.className = 'type-section';
                         
-                        // Type header (clickable)
                         const typeHeader = document.createElement('div');
                         typeHeader.className = 'type-header';
                         const typeKey = `${category}-${type}`;
@@ -583,7 +941,6 @@
                         typeHeader.onclick = () => toggleType(category, type);
                         typeSection.appendChild(typeHeader);
                         
-                        // Standards container
                         if (expandedTypes[typeKey]) {
                             const standardsContainer = document.createElement('div');
                             standardsContainer.className = 'standards-container';
@@ -592,7 +949,6 @@
                                 const standardSection = document.createElement('div');
                                 standardSection.className = 'standard-section';
                                 
-                                // Standard header (clickable)
                                 const standardHeader = document.createElement('div');
                                 standardHeader.className = 'standard-header';
                                 const standardKey = `${category}-${type}-${standard}`;
@@ -603,7 +959,6 @@
                                 standardHeader.onclick = () => toggleStandard(category, type, standard);
                                 standardSection.appendChild(standardHeader);
                                 
-                                // File list
                                 if (expandedStandards[standardKey]) {
                                     const fileList = document.createElement('div');
                                     fileList.className = 'file-list';
@@ -659,7 +1014,6 @@
             buildUI();
         }
 
-        // Initialize
         initViewer();
         loadCatalog();
     </script>
