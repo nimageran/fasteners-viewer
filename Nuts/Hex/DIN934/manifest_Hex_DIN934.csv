@@ -1,9 +1,0 @@
-family,type,standard,diameter,name_stem,measured_max_span_mm,path_step,path_stl,path_fcstd
-Nuts,Hex,DIN934,M4,HexNut_M4_DIN934,8.08,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M4_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M4_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M4_DIN934.FCStd
-Nuts,Hex,DIN934,M5,HexNut_M5_DIN934,9.24,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M5_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M5_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M5_DIN934.FCStd
-Nuts,Hex,DIN934,M6,HexNut_M6_DIN934,11.55,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M6_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M6_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M6_DIN934.FCStd
-Nuts,Hex,DIN934,M8,HexNut_M8_DIN934,15.01,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M8_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M8_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M8_DIN934.FCStd
-Nuts,Hex,DIN934,M10,HexNut_M10_DIN934,19.63,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M10_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M10_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M10_DIN934.FCStd
-Nuts,Hex,DIN934,M12,HexNut_M12_DIN934,21.94,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M12_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M12_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M12_DIN934.FCStd
-Nuts,Hex,DIN934,M16,HexNut_M16_DIN934,27.71,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M16_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M16_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M16_DIN934.FCStd
-Nuts,Hex,DIN934,M20,HexNut_M20_DIN934,34.64,C:\FastenersLib\Nuts\Hex\DIN934\STEP\HexNut_M20_DIN934.step,C:\FastenersLib\Nuts\Hex\DIN934\STL\HexNut_M20_DIN934.stl,C:\FastenersLib\Nuts\Hex\DIN934\FCStd\HexNut_M20_DIN934.FCStd
