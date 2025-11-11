@@ -234,7 +234,7 @@
         #viewer {
             flex: 1;
             position: relative;
-            background: #f9fafb;
+            background: #1f2937;
         }
         .empty-state {
             position: absolute;
@@ -484,11 +484,11 @@
                 <div class="setting-group">
                     <label class="setting-label">Material Finish</label>
                     <div class="material-grid">
-                        <button class="material-btn active" onclick="setMaterial('steel')">🔩 Steel</button>
+                        <button class="material-btn" onclick="setMaterial('steel')">🔩 Steel</button>
                         <button class="material-btn" onclick="setMaterial('aluminum')">⚪ Aluminum</button>
                         <button class="material-btn" onclick="setMaterial('brass')">🟡 Brass</button>
                         <button class="material-btn" onclick="setMaterial('black')">⚫ Black Oxide</button>
-                        <button class="material-btn" onclick="setMaterial('zinc')">🔘 Galvanized</button>
+                        <button class="material-btn active" onclick="setMaterial('zinc')">🔘 Galvanized</button>
                         <button class="material-btn" onclick="setMaterial('bronze')">🟤 Bronze</button>
                     </div>
                 </div>
@@ -496,11 +496,11 @@
                 <div class="setting-group">
                     <label class="setting-label">Background Style</label>
                     <div class="background-grid">
-                        <button class="bg-btn active" onclick="setBackground('light')">
+                        <button class="bg-btn" onclick="setBackground('light')">
                             <div class="bg-preview" style="background: #f5f5f5;"></div>
                             Light
                         </button>
-                        <button class="bg-btn" onclick="setBackground('dark')">
+                        <button class="bg-btn active" onclick="setBackground('dark')">
                             <div class="bg-preview" style="background: #1f2937;"></div>
                             Dark
                         </button>
@@ -526,8 +526,8 @@
                 <div class="setting-group">
                     <label class="setting-label">Floor Grid</label>
                     <div class="material-grid">
-                        <button class="material-btn active" onclick="setGrid('show')">✓ Show Grid</button>
-                        <button class="material-btn" onclick="setGrid('hide')">✗ Hide Grid</button>
+                        <button class="material-btn" onclick="setGrid('show')">✓ Show Grid</button>
+                        <button class="material-btn active" onclick="setGrid('hide')">✗ Hide Grid</button>
                     </div>
                 </div>
                 
@@ -557,9 +557,9 @@
         let expandedCategories = {};
         let expandedTypes = {};
         let expandedStandards = {};
-        let currentMaterial = 'steel';
-        let currentBackground = 'light';
-        let gridVisible = true;
+        let currentMaterial = 'zinc';
+        let currentBackground = 'dark';
+        let gridVisible = false;
 
         const materials = {
             steel: { color: 0x8B9DC3, metalness: 0.8, roughness: 0.3 },
@@ -580,7 +580,7 @@
             const viewer = document.getElementById('viewer');
             
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(backgrounds.light.color);
+            scene.background = new THREE.Color(backgrounds.dark.color);
 
             camera = new THREE.PerspectiveCamera(45, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
             camera.position.set(50, 50, 50);
@@ -605,9 +605,7 @@
             rimLight.position.set(0, 10, -10);
             scene.add(rimLight);
 
-            const gridHelper = new THREE.GridHelper(100, 100, backgrounds.light.grid, backgrounds.light.grid);
-            gridHelper.name = 'grid';
-            scene.add(gridHelper);
+            // Grid is hidden by default - don't add it
 
             renderer.domElement.addEventListener('mousedown', onMouseDown);
             renderer.domElement.addEventListener('mousemove', onMouseMove);
@@ -845,15 +843,19 @@
         function setGrid(state) {
             gridVisible = (state === 'show');
             
-            // Update button states
-            const buttons = document.querySelectorAll('.setting-group:has(.material-btn) .material-btn');
-            const gridButtons = Array.from(buttons).slice(-2); // Get last 2 buttons (grid buttons)
-            gridButtons.forEach(btn => btn.classList.remove('active'));
-            if (state === 'show') {
-                gridButtons[0].classList.add('active');
-            } else {
-                gridButtons[1].classList.add('active');
-            }
+            // Update button states - find the grid buttons specifically
+            const settingGroups = document.querySelectorAll('.setting-group');
+            settingGroups.forEach(group => {
+                if (group.querySelector('.setting-label')?.textContent === 'Floor Grid') {
+                    const buttons = group.querySelectorAll('.material-btn');
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    if (state === 'show') {
+                        buttons[0].classList.add('active');
+                    } else {
+                        buttons[1].classList.add('active');
+                    }
+                }
+            });
             
             const grid = scene.getObjectByName('grid');
             if (gridVisible) {
@@ -913,14 +915,10 @@
         }
 
         function resetToDefaults() {
-            setMaterial('steel');
-            setBackground('light');
-            setGrid('show');
+            setMaterial('zinc');
+            setBackground('dark');
+            setGrid('hide');
             resetCamera();
-            document.querySelectorAll('.material-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.material-btn').classList.add('active');
-            document.querySelectorAll('.bg-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.bg-btn').classList.add('active');
         }
 
         async function loadCatalog() {
