@@ -1504,6 +1504,10 @@
   },
   "Nuts": {
     "Flange": {
+      "DIN6923": {
+        "files": [],
+        "path": "Nuts/Flange/DIN6923/STL"
+      },
       "ISO4161": {
         "files": [
           {
@@ -1548,53 +1552,6 @@
           }
         ],
         "path": "Nuts/Flange/ISO4161/STL"
-      }
-    },
-    "Hex (Thin)": {
-      "ISO4035": {
-        "files": [
-          {
-            "name": "HexThinNut_M10_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M10_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M10_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M12_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M12_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M12_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M16_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M16_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M16_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M20_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M20_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M20_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M4_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M4_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M4_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M5_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M5_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M5_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M6_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M6_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M6_ISO4035.stl"
-          },
-          {
-            "name": "HexThinNut_M8_ISO4035.stl",
-            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M8_ISO4035.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex%20(Thin)/ISO4035/STL/HexThinNut_M8_ISO4035.stl"
-          }
-        ],
-        "path": "Nuts/Hex (Thin)/ISO4035/STL"
       }
     },
     "Hex": {
@@ -1642,6 +1599,61 @@
           }
         ],
         "path": "Nuts/Hex/DIN934/STL"
+      }
+    },
+    "Hex (Thin)": {
+      "DIN439": {
+        "files": [],
+        "path": "Nuts/Hex (Thin)/DIN439/STL"
+      },
+      "DIN439B": {
+        "files": [],
+        "path": "Nuts/Hex (Thin)/DIN439B/STL"
+      },
+      "ISO4035": {
+        "files": [
+          {
+            "name": "HexThinNut_M10_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M10_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M10_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M12_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M12_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M12_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M16_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M16_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M16_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M20_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M20_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M20_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M4_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M4_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M4_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M5_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M5_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M5_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M6_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M6_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M6_ISO4035.stl"
+          },
+          {
+            "name": "HexThinNut_M8_ISO4035.stl",
+            "path": "Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M8_ISO4035.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Hex (Thin)/ISO4035/STL/HexThinNut_M8_ISO4035.stl"
+          }
+        ],
+        "path": "Nuts/Hex (Thin)/ISO4035/STL"
       }
     },
     "Nyloc": {
@@ -1782,6 +1794,7 @@
       }
     }
   },
+  "Rings": {},
   "Set Screws": {
     "SetScrewConePoint": {
       "ISO4027": {
@@ -1789,242 +1802,242 @@
           {
             "name": "SetScrewConePoint_M10x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x20_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x20_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x20_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x20_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x25_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x25_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x25_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x25_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x30_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x30_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x30_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x30_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M10x35_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x35_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x35_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M10x35_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x20_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x20_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x20_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x20_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x25_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x25_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x25_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x25_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x30_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x30_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x30_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x30_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x35_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x35_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x35_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x35_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M12x40_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x40_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x40_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M12x40_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x3_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x3_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x3_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x3_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x4_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x4_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x4_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x4_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x5_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x5_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x5_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x5_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x6_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x6_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x6_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x6_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M3x8_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x8_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x8_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M3x8_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x4_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x4_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x4_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x4_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x5_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x5_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x5_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x5_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x6_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x6_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x6_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x6_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M4x8_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x8_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x8_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M4x8_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x20_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x20_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x20_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x20_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x5_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x5_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x5_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x5_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x6_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x6_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x6_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x6_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M5x8_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x8_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x8_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M5x8_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x20_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x20_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x20_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x20_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x25_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x25_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x25_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x25_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x6_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x6_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x6_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x6_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M6x8_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x8_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x8_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M6x8_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x10_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x10_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x10_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x10_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x12_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x12_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x12_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x12_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x16_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x16_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x16_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x16_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x20_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x20_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x20_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x20_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x25_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x25_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x25_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x25_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x30_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x30_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x30_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x30_ISO4027.stl"
           },
           {
             "name": "SetScrewConePoint_M8x8_ISO4027.stl",
             "path": "Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x8_ISO4027.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x8_ISO4027.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewConePoint/ISO4027/STL/SetScrewConePoint_M8x8_ISO4027.stl"
           }
         ],
         "path": "Set Screws/SetScrewConePoint/ISO4027/STL"
@@ -2036,242 +2049,242 @@
           {
             "name": "SetScrewCupPoint_M10x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x20_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x20_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x20_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x20_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x25_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x25_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x25_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x25_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x30_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x30_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x30_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x30_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M10x35_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x35_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x35_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M10x35_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x20_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x20_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x20_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x20_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x25_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x25_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x25_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x25_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x30_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x30_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x30_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x30_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x35_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x35_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x35_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x35_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M12x40_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x40_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x40_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M12x40_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x3_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x3_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x3_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x3_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x4_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x4_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x4_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x4_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x5_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x5_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x5_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x5_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x6_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x6_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x6_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x6_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M3x8_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x8_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x8_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M3x8_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x4_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x4_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x4_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x4_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x5_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x5_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x5_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x5_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x6_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x6_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x6_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x6_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M4x8_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x8_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x8_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M4x8_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x20_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x20_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x20_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x20_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x5_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x5_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x5_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x5_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x6_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x6_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x6_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x6_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M5x8_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x8_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x8_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M5x8_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x20_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x20_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x20_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x20_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x25_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x25_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x25_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x25_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x6_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x6_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x6_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x6_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M6x8_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x8_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x8_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M6x8_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x10_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x10_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x10_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x10_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x12_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x12_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x12_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x12_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x16_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x16_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x16_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x16_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x20_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x20_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x20_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x20_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x25_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x25_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x25_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x25_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x30_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x30_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x30_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x30_ISO4029.stl"
           },
           {
             "name": "SetScrewCupPoint_M8x8_ISO4029.stl",
             "path": "Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x8_ISO4029.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x8_ISO4029.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewCupPoint/ISO4029/STL/SetScrewCupPoint_M8x8_ISO4029.stl"
           }
         ],
         "path": "Set Screws/SetScrewCupPoint/ISO4029/STL"
@@ -2283,227 +2296,227 @@
           {
             "name": "SetScrewDogPoint_M10x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x20_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x20_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x20_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x20_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x25_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x25_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x25_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x25_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x30_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x30_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x30_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x30_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M10x35_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x35_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x35_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M10x35_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x20_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x20_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x20_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x20_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x25_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x25_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x25_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x25_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x30_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x30_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x30_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x30_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x35_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x35_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x35_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x35_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M12x40_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x40_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x40_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M12x40_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x4_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x4_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x4_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x4_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x5_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x5_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x5_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x5_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x6_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x6_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x6_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x6_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M3x8_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x8_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x8_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M3x8_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x5_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x5_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x5_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x5_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x6_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x6_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x6_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x6_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M4x8_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x8_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x8_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M4x8_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x20_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x20_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x20_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x20_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x6_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x6_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x6_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x6_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M5x8_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x8_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x8_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M5x8_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x20_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x20_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x20_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x20_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x25_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x25_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x25_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x25_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M6x8_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x8_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x8_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M6x8_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x10_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x10_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x10_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x10_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x12_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x12_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x12_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x12_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x16_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x16_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x16_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x16_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x20_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x20_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x20_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x20_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x25_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x25_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x25_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x25_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x30_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x30_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x30_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x30_ISO4028.stl"
           },
           {
             "name": "SetScrewDogPoint_M8x8_ISO4028.stl",
             "path": "Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x8_ISO4028.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x8_ISO4028.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewDogPoint/ISO4028/STL/SetScrewDogPoint_M8x8_ISO4028.stl"
           }
         ],
         "path": "Set Screws/SetScrewDogPoint/ISO4028/STL"
@@ -2515,242 +2528,242 @@
           {
             "name": "SetScrewFlatPoint_M10x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x20_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x20_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x20_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x20_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x25_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x25_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x25_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x25_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x30_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x30_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x30_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x30_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M10x35_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x35_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x35_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M10x35_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x20_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x20_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x20_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x20_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x25_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x25_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x25_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x25_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x30_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x30_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x30_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x30_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x35_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x35_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x35_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x35_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M12x40_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x40_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x40_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M12x40_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x3_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x3_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x3_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x3_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x4_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x4_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x4_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x4_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x5_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x5_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x5_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x5_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x6_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x6_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x6_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x6_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M3x8_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x8_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x8_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M3x8_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x4_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x4_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x4_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x4_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x5_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x5_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x5_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x5_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x6_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x6_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x6_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x6_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M4x8_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x8_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x8_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M4x8_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x20_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x20_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x20_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x20_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x5_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x5_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x5_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x5_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x6_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x6_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x6_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x6_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M5x8_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x8_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x8_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M5x8_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x20_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x20_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x20_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x20_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x25_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x25_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x25_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x25_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x6_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x6_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x6_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x6_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M6x8_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x8_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x8_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M6x8_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x10_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x10_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x10_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x10_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x12_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x12_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x12_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x12_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x16_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x16_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x16_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x16_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x20_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x20_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x20_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x20_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x25_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x25_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x25_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x25_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x30_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x30_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x30_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x30_ISO4026.stl"
           },
           {
             "name": "SetScrewFlatPoint_M8x8_ISO4026.stl",
             "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x8_ISO4026.stl",
-            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set%20Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x8_ISO4026.stl"
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Set Screws/SetScrewFlatPoint/ISO4026/STL/SetScrewFlatPoint_M8x8_ISO4026.stl"
           }
         ],
         "path": "Set Screws/SetScrewFlatPoint/ISO4026/STL"
