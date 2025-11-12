@@ -136,7 +136,7 @@
             font-size: 13px;
         }
 
-        /* Mobile menu button (top-right now) */
+        /* Mobile menu button */
         .mobile-menu-btn {
             display: none;
             width: 38px;
@@ -531,7 +531,7 @@
         .icon-btn:hover {
             background: radial-gradient(circle at top left, #1d4ed8, #020617);
             border-color: rgba(129, 140, 248, 0.9);
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.95);
+            box-shadow: 0 8px 24pxrgba(15, 23, 42, 0.95);
             transform: translateY(-1px);
         }
 
@@ -605,12 +605,24 @@
             display: flex;
             gap: 14px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .controls-right {
             display: flex;
             gap: 8px;
             align-items: center;
+            flex-wrap: wrap;
+            color: var(--text-muted);
+        }
+
+        #model-info {
+            white-space: nowrap;
+        }
+
+        #measure-info {
+            white-space: nowrap;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
@@ -934,6 +946,10 @@
                 border-left: none;
                 border-right: none;
             }
+
+            #measure-info {
+                white-space: normal;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1082,6 +1098,14 @@
                         </button>
                         <button class="icon-btn" onclick="resetCamera()" title="Reset View">
                             🔄
+                        </button>
+                        <button
+                            class="icon-btn"
+                            id="measure-btn"
+                            onclick="toggleMeasureMode()"
+                            title="Measure distance"
+                        >
+                            📏
                         </button>
                         <button
                             class="icon-btn"
@@ -1246,9 +1270,11 @@
                     <div class="controls-left">
                         <span>🖱️ Drag to rotate</span>
                         <span>🔍 Scroll / pinch to zoom</span>
+                        <span>📏 Measure: click two points</span>
                     </div>
                     <div class="controls-right">
                         <span id="model-info"></span>
+                        <span id="measure-info"></span>
                     </div>
                 </div>
             </section>
@@ -1267,6 +1293,14 @@
         let currentMaterial = "zinc";
         let currentBackground = "dark";
         let gridVisible = false;
+
+        // measurement globals
+        let measureMode = false;
+        let raycaster, mouse;
+        let measurePoints = [];
+        let measureMarkers = [];
+        let measureLine = null;
+        let currentScale = 1;
 
         const materials = {
             steel: { color: 0x8b9dc3, metalness: 0.8, roughness: 0.3 },
@@ -1320,11 +1354,16 @@
             rimLight.position.set(0, 10, -10);
             scene.add(rimLight);
 
+            // raycaster for measurement
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+
             renderer.domElement.addEventListener("mousedown", onMouseDown);
             renderer.domElement.addEventListener("mousemove", onMouseMove);
             renderer.domElement.addEventListener("mouseup", onMouseUp);
             renderer.domElement.addEventListener("mouseleave", onMouseUp);
             renderer.domElement.addEventListener("wheel", onWheel);
+            renderer.domElement.addEventListener("click", onCanvasClick);
 
             renderer.domElement.addEventListener("touchstart", onTouchStart, {
                 passive: false
@@ -1446,6 +1485,8 @@
         function loadSTL(url, fileName, category, type, standard) {
             document.getElementById("loader").classList.remove("hidden");
             document.getElementById("empty-state").classList.add("hidden");
+            document.getElementById("measure-info").textContent = "";
+            clearMeasurement();
 
             if (mesh) {
                 scene.remove(mesh);
@@ -1475,6 +1516,7 @@
                     const maxDim = Math.max(size.x, size.y, size.z);
                     const scale = 30 / maxDim;
                     mesh.scale.multiplyScalar(scale);
+                    currentScale = scale;
 
                     scene.add(mesh);
 
@@ -1613,6 +1655,100 @@
             );
 
             return geometry;
+        }
+
+        // measurement helpers
+        function toggleMeasureMode() {
+            measureMode = !measureMode;
+            const btn = document.getElementById("measure-btn");
+            const infoEl = document.getElementById("measure-info");
+            if (measureMode) {
+                if (btn) btn.classList.add("active");
+                clearMeasurement();
+                infoEl.textContent = "Measure: click two points on the model";
+            } else {
+                if (btn) btn.classList.remove("active");
+                clearMeasurement();
+                infoEl.textContent = "";
+            }
+        }
+
+        function clearMeasurement() {
+            measurePoints = [];
+            const infoEl = document.getElementById("measure-info");
+            if (!measureMode && infoEl) infoEl.textContent = "";
+
+            if (measureLine) {
+                scene.remove(measureLine);
+                if (measureLine.geometry) measureLine.geometry.dispose();
+                if (measureLine.material) measureLine.material.dispose();
+                measureLine = null;
+            }
+            if (measureMarkers.length) {
+                measureMarkers.forEach(m => {
+                    scene.remove(m);
+                    if (m.geometry) m.geometry.dispose();
+                    if (m.material) m.material.dispose();
+                });
+                measureMarkers = [];
+            }
+        }
+
+        function addMeasurePoint(point) {
+            if (!measureMode) return;
+
+            const infoEl = document.getElementById("measure-info");
+
+            if (measurePoints.length === 0) {
+                clearMeasurement();
+                infoEl.textContent = "First point set, click second point";
+            }
+
+            measurePoints.push(point.clone());
+
+            const markerGeom = new THREE.SphereGeometry(0.8, 16, 16);
+            const markerMat = new THREE.MeshBasicMaterial({ color: 0xa855f7 });
+            const marker = new THREE.Mesh(markerGeom, markerMat);
+            marker.position.copy(point);
+            scene.add(marker);
+            measureMarkers.push(marker);
+
+            if (measurePoints.length === 2) {
+                const p1 = measurePoints[0];
+                const p2 = measurePoints[1];
+
+                const lineGeom = new THREE.BufferGeometry().setFromPoints([p1, p2]);
+                const lineMat = new THREE.LineBasicMaterial({ color: 0xa855f7 });
+                measureLine = new THREE.Line(lineGeom, lineMat);
+                scene.add(measureLine);
+
+                const worldDistance = p1.distanceTo(p2);
+                const scale = currentScale || 1;
+                const mmDistance = worldDistance / scale;
+                const inchDistance = mmDistance / 25.4;
+
+                infoEl.textContent =
+                    `Distance ≈ ${mmDistance.toFixed(2)} mm (${inchDistance.toFixed(3)} in) (assumes model units are mm)`;
+
+                // prepare for a new measurement, keep visuals
+                measurePoints = [];
+            }
+        }
+
+        function onCanvasClick(e) {
+            if (!measureMode || !mesh) return;
+
+            const rect = renderer.domElement.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+            const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+            mouse.set(x, y);
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObject(mesh, true);
+            if (intersects.length > 0) {
+                addMeasurePoint(intersects[0].point);
+            }
         }
 
         // Settings / UI
@@ -1765,6 +1901,7 @@
             setBackground("dark");
             setGrid("hide");
             resetCamera();
+            if (measureMode) toggleMeasureMode();
         }
 
         async function loadCatalog() {
