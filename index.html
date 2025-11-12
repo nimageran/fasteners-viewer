@@ -625,7 +625,7 @@
             font-size: 13px;
         }
 
-        /* Settings Panel (glass card) */
+        /* Settings Panel */
         .settings-panel {
             position: absolute;
             top: 14px;
@@ -961,6 +961,56 @@
                 width: 82vw;
             }
         }
+
+        /* ==== LUXURY PURPLE NEON THEME OVERRIDE ==== */
+
+        :root {
+            --accent: #a855f7;
+            --accent-soft: rgba(168, 85, 247, 0.2);
+            --accent-strong: rgba(168, 85, 247, 0.45);
+        }
+
+        .sidebar-badge {
+            border-color: rgba(168, 85, 247, 0.8);
+            background: radial-gradient(circle at top left, var(--accent-soft), #020617);
+            color: #f5d0ff;
+        }
+
+        .file-btn.active,
+        .material-btn.active,
+        .bg-btn.active,
+        .icon-btn.active,
+        .btn-primary {
+            border-color: rgba(216, 180, 254, 1);
+            background: radial-gradient(circle at top left, #a855f7, #4c1d95);
+            color: #f9fafb;
+            box-shadow:
+                0 0 0 1px rgba(244, 219, 255, 0.9),
+                0 0 26px rgba(192, 132, 252, 0.95),
+                0 18px 30px rgba(15, 23, 42, 0.95);
+        }
+
+        .file-btn:hover,
+        .material-btn:hover,
+        .bg-btn:hover,
+        .category-btn:hover,
+        .type-header:hover,
+        .standard-header:hover,
+        .icon-btn:hover,
+        .btn-primary:hover {
+            border-color: rgba(192, 132, 252, 0.95);
+            box-shadow:
+                0 0 20px rgba(168, 85, 247, 0.9),
+                0 14px 32px rgba(15, 23, 42, 0.95);
+            background: radial-gradient(circle at top left, #9333ea, #312e81);
+            color: #f9fafb;
+        }
+
+        .chevron.open,
+        .type-chevron.open,
+        .standard-chevron.open {
+            color: #e9d5ff;
+        }
     </style>
 </head>
 <body>
@@ -1056,13 +1106,13 @@
                         >
                             Select a fastener to view
                         </p>
-                        <p style="font-size: 12px; color: var(--text-soft);">
+                        <p style="font-size: 12px; color: #6b7280;">
                             Use the catalogue panel on the left
                         </p>
                     </div>
                     <div id="loader" class="loader hidden">
                         <div class="spinner"></div>
-                        <p style="color: var(--text-soft); font-size: 12px;">
+                        <p style="color: #6b7280; font-size: 12px;">
                             Loading 3D model…
                         </p>
                     </div>
@@ -1133,7 +1183,7 @@
                                     style="
                                         background: linear-gradient(
                                             135deg,
-                                            #1d4ed8,
+                                            #7c3aed,
                                             #0f172a
                                         );
                                     "
@@ -1731,7 +1781,7 @@
                     <div class="error">
                         <p style="font-size: 14px; margin-bottom: 6px;">❌ Error loading catalog</p>
                         <p style="font-size: 12px;">${error.message}</p>
-                        <p style="font-size: 11px; margin-top: 10px; color: var(--text-soft);">Make sure <code>catalog.json</code> exists next to this file.</p>
+                        <p style="font-size: 11px; margin-top: 10px; color: #6b7280;">Make sure <code>catalog.json</code> exists next to this file.</p>
                     </div>
                 `;
             }
@@ -1907,7 +1957,6 @@
         initViewer();
         loadCatalog();
 
-        // Lightweight search filter (type name only, UI side)
         document
             .getElementById("search-input")
             .addEventListener("input", () => buildUI());
