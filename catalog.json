@@ -1503,11 +1503,139 @@
     }
   },
   "Nuts": {
+    "Cap nuts": {
+      "_default": {
+        "files": [
+          {
+            "name": "CapNut_M10_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M10_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M10_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M10_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M10_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M10_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M10_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M10_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M10_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M12_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M12_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M12_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M12_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M12_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M12_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M12_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M12_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M12_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M16_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M16_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M16_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M16_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M16_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M16_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M16_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M16_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M16_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M20_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M20_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M20_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M20_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M20_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M20_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M20_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M20_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M20_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M3_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M3_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M3_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M4_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M4_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M4_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M4_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M4_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M4_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M4_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M4_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M4_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M5_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M5_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M5_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M5_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M5_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M5_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M5_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M5_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M5_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M6_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M6_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M6_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M6_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M6_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M6_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M6_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M6_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M6_GOST11860-1.stl"
+          },
+          {
+            "name": "CapNut_M8_DIN1587.stl",
+            "path": "Nuts/Cap nuts/CapNut_M8_DIN1587.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M8_DIN1587.stl"
+          },
+          {
+            "name": "CapNut_M8_DIN917.stl",
+            "path": "Nuts/Cap nuts/CapNut_M8_DIN917.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M8_DIN917.stl"
+          },
+          {
+            "name": "CapNut_M8_GOST11860-1.stl",
+            "path": "Nuts/Cap nuts/CapNut_M8_GOST11860-1.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Nuts/Cap nuts/CapNut_M8_GOST11860-1.stl"
+          }
+        ],
+        "path": "Nuts/Cap nuts"
+      }
+    },
     "Flange": {
-      "DIN6923": {
-        "files": [],
-        "path": "Nuts/Flange/DIN6923/STL"
-      },
       "ISO4161": {
         "files": [
           {
@@ -1602,14 +1730,6 @@
       }
     },
     "Hex (Thin)": {
-      "DIN439": {
-        "files": [],
-        "path": "Nuts/Hex (Thin)/DIN439/STL"
-      },
-      "DIN439B": {
-        "files": [],
-        "path": "Nuts/Hex (Thin)/DIN439B/STL"
-      },
       "ISO4035": {
         "files": [
           {
@@ -1794,7 +1914,1374 @@
       }
     }
   },
-  "Rings": {},
+  "Rings": {
+    "EClip": {
+      "_default": {
+        "files": [
+          {
+            "name": "EClip_10-14mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_10-14mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_10-14mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_11-15mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_11-15mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_11-15mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_13-18mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_13-18mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_13-18mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_16-24mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_16-24mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_16-24mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_2-2.5mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_2-2.5mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_2-2.5mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_2.5-3mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_2.5-3mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_2.5-3mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_20-31mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_20-31mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_20-31mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_25-38mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_25-38mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_25-38mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_3-4mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_3-4mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_3-4mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_32-42mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_32-42mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_32-42mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_4-5mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_4-5mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_4-5mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_5-7mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_5-7mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_5-7mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_6-8mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_6-8mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_6-8mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_7-9mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_7-9mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_7-9mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_8-11mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_8-11mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_8-11mm_DIN6799.stl"
+          },
+          {
+            "name": "EClip_9-12mm_DIN6799.stl",
+            "path": "Rings/EClip/EClip_9-12mm_DIN6799.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/EClip/EClip_9-12mm_DIN6799.stl"
+          }
+        ],
+        "path": "Rings/EClip"
+      }
+    },
+    "RetainingRingExternal": {
+      "_default": {
+        "files": [
+          {
+            "name": "RetainingRingExternal_100mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_100mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_100mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_102mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_102mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_102mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_105mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_105mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_105mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_107mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_107mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_107mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_108mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_108mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_108mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_10mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_10mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_10mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_110mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_110mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_110mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_112mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_112mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_112mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_115mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_115mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_115mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_117mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_117mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_117mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_118mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_118mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_118mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_11mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_11mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_11mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_120mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_120mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_120mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_122mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_122mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_122mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_125mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_125mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_125mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_127mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_127mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_127mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_128mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_128mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_128mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_12mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_12mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_12mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_130mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_130mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_130mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_132mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_132mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_132mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_135mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_135mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_135mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_137mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_137mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_137mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_138mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_138mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_138mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_13mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_13mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_13mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_140mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_140mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_140mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_142mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_142mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_142mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_145mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_145mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_145mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_147mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_147mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_147mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_148mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_148mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_148mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_14mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_14mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_14mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_150mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_150mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_150mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_155mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_155mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_155mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_15mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_15mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_15mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_160mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_160mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_160mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_165mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_165mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_165mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_16mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_16mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_16mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_170mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_170mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_170mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_175mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_175mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_175mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_17mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_17mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_17mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_180mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_180mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_180mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_185mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_185mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_185mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_18mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_18mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_18mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_190mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_190mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_190mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_195mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_195mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_195mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_19mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_19mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_19mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_200mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_200mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_200mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_20mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_20mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_20mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_210mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_210mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_210mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_215mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_215mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_215mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_21mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_21mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_21mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_220mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_220mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_220mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_22mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_22mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_22mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_230mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_230mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_230mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_23mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_23mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_23mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_240mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_240mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_240mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_24mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_24mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_24mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_250mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_250mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_250mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_255mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_255mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_255mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_25mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_25mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_25mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_260mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_260mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_260mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_26mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_26mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_26mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_270mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_270mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_270mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_27mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_27mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_27mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_280mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_280mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_280mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_28mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_28mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_28mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_290mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_290mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_290mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_29mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_29mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_29mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_300mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_300mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_300mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_30mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_30mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_30mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_31mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_31mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_31mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_32mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_32mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_32mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_33mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_33mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_33mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_34mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_34mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_34mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_35mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_35mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_35mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_36mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_36mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_36mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_37mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_37mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_37mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_38mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_38mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_38mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_39mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_39mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_39mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_3mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_3mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_3mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_40mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_40mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_40mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_41mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_41mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_41mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_42mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_42mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_42mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_44mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_44mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_44mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_45mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_45mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_45mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_46mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_46mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_46mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_47mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_47mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_47mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_48mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_48mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_48mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_4mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_4mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_4mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_50mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_50mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_50mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_52mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_52mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_52mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_54mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_54mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_54mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_55mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_55mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_55mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_56mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_56mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_56mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_57mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_57mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_57mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_58mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_58mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_58mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_5mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_5mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_5mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_60mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_60mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_60mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_62mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_62mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_62mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_63mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_63mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_63mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_65mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_65mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_65mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_67mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_67mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_67mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_68mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_68mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_68mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_6mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_6mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_6mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_70mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_70mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_70mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_72mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_72mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_72mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_75mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_75mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_75mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_77mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_77mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_77mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_78mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_78mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_78mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_7mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_7mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_7mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_80mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_80mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_80mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_82mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_82mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_82mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_85mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_85mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_85mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_87mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_87mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_87mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_88mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_88mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_88mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_8mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_8mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_8mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_90mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_90mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_90mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_92mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_92mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_92mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_95mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_95mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_95mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_97mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_97mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_97mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_98mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_98mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_98mm_DIN471.stl"
+          },
+          {
+            "name": "RetainingRingExternal_9mm_DIN471.stl",
+            "path": "Rings/RetainingRingExternal/RetainingRingExternal_9mm_DIN471.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingExternal/RetainingRingExternal_9mm_DIN471.stl"
+          }
+        ],
+        "path": "Rings/RetainingRingExternal"
+      }
+    },
+    "RetainingRingInternal": {
+      "_default": {
+        "files": [
+          {
+            "name": "RetainingRingInternal_100mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_100mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_100mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_102mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_102mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_102mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_105mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_105mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_105mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_107mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_107mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_107mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_108mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_108mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_108mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_10mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_10mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_10mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_110mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_110mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_110mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_112mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_112mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_112mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_115mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_115mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_115mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_117mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_117mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_117mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_118mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_118mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_118mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_11mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_11mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_11mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_120mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_120mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_120mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_122mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_122mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_122mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_125mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_125mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_125mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_127mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_127mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_127mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_128mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_128mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_128mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_12mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_12mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_12mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_130mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_130mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_130mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_132mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_132mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_132mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_135mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_135mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_135mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_137mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_137mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_137mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_138mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_138mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_138mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_13mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_13mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_13mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_140mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_140mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_140mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_142mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_142mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_142mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_145mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_145mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_145mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_147mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_147mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_147mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_148mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_148mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_148mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_14mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_14mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_14mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_150mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_150mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_150mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_152mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_152mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_152mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_155mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_155mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_155mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_158mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_158mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_158mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_15mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_15mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_15mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_160mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_160mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_160mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_165mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_165mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_165mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_168mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_168mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_168mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_16mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_16mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_16mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_170mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_170mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_170mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_175mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_175mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_175mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_178mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_178mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_178mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_17mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_17mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_17mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_180mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_180mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_180mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_185mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_185mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_185mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_18mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_18mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_18mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_190mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_190mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_190mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_195mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_195mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_195mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_19mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_19mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_19mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_200mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_200mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_200mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_205mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_205mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_205mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_20mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_20mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_20mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_210mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_210mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_210mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_215mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_215mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_215mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_21mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_21mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_21mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_220mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_220mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_220mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_225mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_225mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_225mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_22mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_22mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_22mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_230mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_230mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_230mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_235mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_235mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_235mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_23mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_23mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_23mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_240mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_240mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_240mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_245mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_245mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_245mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_24mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_24mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_24mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_250mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_250mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_250mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_255mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_255mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_255mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_25mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_25mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_25mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_260mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_260mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_260mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_265mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_265mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_265mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_26mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_26mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_26mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_270mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_270mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_270mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_275mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_275mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_275mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_27mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_27mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_27mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_280mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_280mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_280mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_285mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_285mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_285mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_28mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_28mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_28mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_290mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_290mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_290mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_29mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_29mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_29mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_300mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_300mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_300mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_30mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_30mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_30mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_31mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_31mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_31mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_32mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_32mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_32mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_33mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_33mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_33mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_34mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_34mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_34mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_35mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_35mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_35mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_36mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_36mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_36mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_37mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_37mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_37mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_38mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_38mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_38mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_39mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_39mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_39mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_40mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_40mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_40mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_41mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_41mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_41mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_42mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_42mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_42mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_43mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_43mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_43mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_44mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_44mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_44mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_45mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_45mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_45mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_46mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_46mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_46mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_47mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_47mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_47mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_48mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_48mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_48mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_49mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_49mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_49mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_50mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_50mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_50mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_51mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_51mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_51mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_52mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_52mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_52mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_53mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_53mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_53mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_54mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_54mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_54mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_55mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_55mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_55mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_56mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_56mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_56mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_57mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_57mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_57mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_58mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_58mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_58mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_60mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_60mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_60mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_62mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_62mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_62mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_63mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_63mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_63mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_64mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_64mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_64mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_65mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_65mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_65mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_67mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_67mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_67mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_68mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_68mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_68mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_70mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_70mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_70mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_72mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_72mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_72mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_75mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_75mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_75mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_77mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_77mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_77mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_78mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_78mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_78mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_80mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_80mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_80mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_82mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_82mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_82mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_85mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_85mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_85mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_87mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_87mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_87mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_88mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_88mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_88mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_8mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_8mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_8mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_90mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_90mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_90mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_92mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_92mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_92mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_95mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_95mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_95mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_97mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_97mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_97mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_98mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_98mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_98mm_DIN472.stl"
+          },
+          {
+            "name": "RetainingRingInternal_9mm_DIN472.stl",
+            "path": "Rings/RetainingRingInternal/RetainingRingInternal_9mm_DIN472.stl",
+            "downloadUrl": "https://raw.githubusercontent.com/nimageran/fasteners-viewer/main/Rings/RetainingRingInternal/RetainingRingInternal_9mm_DIN472.stl"
+          }
+        ],
+        "path": "Rings/RetainingRingInternal"
+      }
+    }
+  },
   "Set Screws": {
     "SetScrewConePoint": {
       "ISO4027": {
