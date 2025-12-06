@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Fasteners 3D Library</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        /* --- FUTURISTIC THEME VARIABLES --- */
+        :root {
+            --c-bg: #0b1121; /* Deepest Void */
+            --c-surface: #151e32; /* Panel BG */
+            --c-surface-hover: #1e293b;
+            --c-border: #2d3b55;
+            --c-primary: #06b6d4; /* Cyan Neon */
+            --c-primary-dim: rgba(6, 182, 212, 0.15);
+            --c-primary-glow: rgba(6, 182, 212, 0.4);
+            --c-text-main: #f1f5f9;
+            --c-text-muted: #94a3b8;
+            --c-text-dim: #64748b;
+            
+            --font-main: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "Consolas", "Monaco", monospace;
+            
+            --radius: 4px; /* Sharper corners for tech look */
+            --blur: 12px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.5);
+            --glow-text: 0 0 10px rgba(6, 182, 212, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--c-bg);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+            color: var(--c-text-main);
+            font-family: var(--font-main);
+            height: 100vh;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- ICONS (SVG Styling) --- */
+        .icon {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .icon-lg { width: 20px; height: 20px; }
+
+        /* --- LAYOUT --- */
+        .app-layout {
+            display: grid;
+            grid-template-rows: 60px 1fr;
+            height: 100%;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            background: rgba(11, 17, 33, 0.8);
+            backdrop-filter: blur(var(--blur));
+            border-bottom: 1px solid var(--c-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 50;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--c-primary);
+            text-shadow: var(--glow-text);
+        }
+        
+        .brand-logo-gfx {
+            width: 28px;
+            height: 28px;
+            background: var(--c-primary);
+            color: var(--c-bg);
+            display: grid;
+            place-items: center;
+            border-radius: 4px;
+            box-shadow: 0 0 15px var(--c-primary-glow);
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .workspace {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background: rgba(21, 30, 50, 0.6);
+            border-right: 1px solid var(--c-border);
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(var(--blur));
+        }
+
+        .search-container {
+            padding: 16px;
+            border-bottom: 1px solid var(--c-border);
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--c-text-muted);
+            width: 14px;
+            height: 14px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--c-bg);
+            border: 1px solid var(--c-border);
+            color: var(--c-text-main);
+            padding: 8px 10px 8px 32px;
+            border-radius: var(--radius);
+            font-size: 13px;
+            font-family: var(--font-main);
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--c-primary);
+            box-shadow: 0 0 0 2px var(--c-primary-dim);
+        }
+
+        .catalog-tree {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        /* Tree Items */
+        .tree-item {
+            display: block;
+            cursor: pointer;
+            margin-bottom: 2px;
+            user-select: none;
+        }
+
+        .tree-header {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: var(--radius);
+            color: var(--c-text-muted);
+            font-size: 13px;
+            transition: 0.15s;
+            border: 1px solid transparent;
+        }
+
+        .tree-header:hover {
+            background: var(--c-surface-hover);
+            color: var(--c-text-main);
+        }
+        
+        /* Hierarchy indentation */
+        .indent-1 { padding-left: 20px; }
+        .indent-2 { padding-left: 36px; }
+
+        .tree-arrow {
+            margin-right: 8px;
+            transition: transform 0.2s;
+            color: var(--c-text-dim);
+            width: 12px;
+            height: 12px;
+        }
+        
+        .tree-icon {
+            margin-right: 8px;
+            color: var(--c-primary);
+        }
+
+        .tree-label {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .tree-count {
+            font-size: 10px;
+            background: var(--c-border);
+            padding: 2px 6px;
+            border-radius: 10px;
+            color: var(--c-text-dim);
+            font-family: var(--font-mono);
+        }
+
+        .expanded > .tree-header .tree-arrow {
+            transform: rotate(90deg);
+            color: var(--c-primary);
+        }
+        
+        .expanded > .tree-header {
+            color: var(--c-text-main);
+            background: var(--c-surface-hover);
+        }
+
+        .tree-children {
+            display: none;
+        }
+        
+        .expanded > .tree-children {
+            display: block;
+            animation: slideDown 0.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* File Item */
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 10px 6px 42px; /* Indent for files */
+            font-size: 12px;
+            color: var(--c-text-muted);
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: 0.1s;
+            border-left: 1px solid transparent;
+        }
+
+        .file-item:hover {
+            color: var(--c-text-main);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .file-item.active {
+            color: var(--c-primary);
+            background: var(--c-primary-dim);
+            border-left: 2px solid var(--c-primary);
+        }
+
+        /* --- VIEWER --- */
+        .viewer-area {
+            position: relative;
+            background: radial-gradient(circle at center, #111a2e 0%, #050914 100%);
+        }
+
+        #viewer-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .viewer-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+        }
+
+        .model-title {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--c-text-main);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .model-subtitle {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--c-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(6, 182, 212, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            display: inline-block;
+        }
+
+        .viewer-controls {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--c-border);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-icon {
+            background: transparent;
+            border: none;
+            color: var(--c-text-muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-icon:hover {
+            background: var(--c-primary);
+            color: #000;
+            box-shadow: 0 0 10px var(--c-primary-glow);
+        }
+
+        /* --- LOADING & EMPTY STATES --- */
+        .state-msg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-text-dim);
+            pointer-events: none;
+        }
+
+        .state-msg svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .hidden { display: none !important; }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .workspace { grid-template-columns: 1fr; }
+            .sidebar { position: absolute; inset: 0; z-index: 100; transform: translateX(-100%); transition: 0.3s; }
+            .sidebar.open { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+        }
+        @media (min-width: 769px) {
+            .mobile-toggle { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-logo-gfx">
+                    <!-- Cube Icon -->
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <span>Fasteners<span style="color:var(--c-text-muted); font-weight:400;">DB</span></span>
+            </div>
+            
+            <div class="header-controls">
+                <button class="btn-icon mobile-toggle" onclick="toggleSidebar()">
+                    <svg class="icon-lg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <a href="https://github.com/nimageran/fasteners-viewer" target="_blank" class="btn-icon" title="View on GitHub">
+                    <svg class="icon-lg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="workspace">
+            
+            <!-- SIDEBAR -->
+            <aside class="sidebar" id="sidebar">
+                <div class="search-container">
+                    <div class="search-box">
+                        <!-- Search Icon -->
+                        <svg viewBox="0 0 24 24" class="icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search M6, Socket, ISO...">
+                    </div>
+                </div>
+                <div id="catalog-tree" class="catalog-tree">
+                    <!-- Tree content injected by JS -->
+                    <div class="state-msg" style="position:static; padding:20px;">
+                        <svg class="icon-lg animate-spin" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+                        <span style="font-size:12px; margin-top:10px;">Initializing Database...</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- VIEWER AREA -->
+            <section class="viewer-area">
+                <div class="viewer-overlay">
+                    <h1 id="model-title" class="model-title">Welcome</h1>
+                    <div id="model-subtitle" class="model-subtitle">Select a component</div>
+                </div>
+
+                <div id="viewer-container" style="width:100%; height:100%;"></div>
+
+                <div class="state-msg" id="empty-state">
+                    <svg viewBox="0 0 24 24" class="icon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline><polyline points="7.5 19.79 7.5 14.6 3 12"></polyline><polyline points="21 12 16.5 14.6 16.5 19.79"></polyline><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <p>Select a file from the catalog</p>
+                </div>
+
+                <div class="state-msg hidden" id="loading-state">
+                    <svg class="icon-lg" viewBox="0 0 24 24" style="animation: spin 1s linear infinite"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                    <p>Loading Geometry...</p>
+                </div>
+
+                <!-- Floating Controls -->
+                <div class="viewer-controls">
+                    <button class="btn-icon" onclick="setMaterial('zinc')" title="Zinc"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg></button>
+                    <button class="btn-icon" onclick="setMaterial('black')" title="Black Oxide"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"></circle></svg></button>
+                    <div style="width:1px; background:var(--c-border); margin:0 4px;"></div>
+                    <button class="btn-icon" onclick="setCamera('iso')" title="Reset View"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg></button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        // --- ICONS (SVG Strings) ---
+        const ICONS = {
+            chevron: '<svg class="tree-arrow icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>',
+            folder: '<svg class="tree-icon icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
+            file: '<svg class="tree-icon icon" viewBox="0 0 24 24" style="opacity:0.7"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>',
+            cube: '<svg class="tree-icon icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>'
+        };
+
+        let catalog = {};
+        let scene, camera, renderer, currentMesh;
+        let isDragging = false, prevMouse = {x:0, y:0};
+
+        // --- INIT ---
+        window.addEventListener('load', async () => {
+            initThreeJS();
+            try {
+                const res = await fetch('catalog.json');
+                if(!res.ok) throw new Error("Catalog fetch failed");
+                catalog = await res.json();
+                renderTree(catalog); // Initial Render
+            } catch (err) {
+                document.getElementById('catalog-tree').innerHTML = 
+                    `<div class="state-msg" style="color:#ef4444"><p>Error loading catalog.json</p><small>${err.message}</small></div>`;
+            }
+        });
+
+        // --- SEARCH ENGINE (DEEP FILTER) ---
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            renderTree(catalog, query);
+        });
+
+        function renderTree(data, query = "") {
+            const container = document.getElementById('catalog-tree');
+            container.innerHTML = "";
+            
+            // If query exists, we filter. If not, we show full tree.
+            // We use a helper to construct the DOM only for matching nodes.
+            
+            for (const [catName, types] of Object.entries(data)) {
+                const catNode = createCategoryNode(catName, types, query);
+                if (catNode) container.appendChild(catNode);
+            }
+        }
+
+        // Helper: Check if a node (or children) matches query
+        function matches(name, children, query) {
+            if (!query) return true; // Show all if no query
+            if (name.toLowerCase().includes(query)) return true; // Name match
+            // Check children recursion
+            // This is complex because children format varies. 
+            // Simplified: The DOM creator functions will return null if no children match.
+            return false;
+        }
+
+        // 1. Create Category (Level 1)
+        function createCategoryNode(name, types, query) {
+            // Recurse to children first to see if any match
+            const childrenFragment = document.createDocumentFragment();
+            let hasMatchingChild = false;
+            let fileCount = 0;
+
+            for (const [typeName, content] of Object.entries(types)) {
+                const typeNode = createTypeNode(typeName, content, query);
+                if (typeNode) {
+                    childrenFragment.appendChild(typeNode);
+                    hasMatchingChild = true;
+                    // Try to extract count from DOM attribute if possible, or ignore for now
+                }
+            }
+
+            // If query is active: Only show if name matches OR has children
+            const nameMatch = name.toLowerCase().includes(query);
+            if (query && !nameMatch && !hasMatchingChild) return null;
+
+            // DOM Construction
+            const wrapper = document.createElement('div');
+            wrapper.className = 'tree-item expanded'; // Default to expanded if filtering
+
+            const header = document.createElement('div');
+            header.className = 'tree-header';
+            header.innerHTML = `${ICONS.chevron} ${ICONS.folder} <span class="tree-label">${name}</span>`;
+            
+            const childrenContainer = document.createElement('div');
+            childrenContainer.className = 'tree-children indent-1';
+            childrenContainer.appendChild(childrenFragment);
+
+            // Interaction
+            if (!query) wrapper.classList.remove('expanded'); // Collapse by default if no search
+            else wrapper.classList.add('expanded'); // Auto expand on search
+
+            header.onclick = () => wrapper.classList.toggle('expanded');
+
+            wrapper.appendChild(header);
+            wrapper.appendChild(childrenContainer);
+            return wrapper;
+        }
+
+        // 2. Create Type (Level 2)
+        function createTypeNode(name, content, query) {
+            const childrenFragment = document.createDocumentFragment();
+            let hasMatchingChild = false;
+
+            // Handle _default files
+            if (content._default && content._default.files) {
+                content._default.files.forEach(file => {
+                    const fileNode = createFileNode(file, query);
+                    if (fileNode) {
+                        childrenFragment.appendChild(fileNode);
+                        hasMatchingChild = true;
+                    }
+                });
+            }
+
+            // Handle Standard Subfolders (Level 3)
+            for (const [key, val] of Object.entries(content)) {
+                if (key === '_default' || key === '_root') continue; // Skip special keys
+                
+                const stdNode = createStandardNode(key, val, query);
+                if (stdNode) {
+                    childrenFragment.appendChild(stdNode);
+                    hasMatchingChild = true;
+                }
+            }
+
+            const nameMatch = name.toLowerCase().includes(query);
+            if (query && !nameMatch && !hasMatchingChild) return null;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'tree-item';
+            
+            const header = document.createElement('div');
+            header.className = 'tree-header';
+            header.innerHTML = `${ICONS.chevron} ${ICONS.cube} <span class="tree-label">${name}</span>`;
+
+            const childrenContainer = document.createElement('div');
+            childrenContainer.className = 'tree-children indent-2';
+            childrenContainer.appendChild(childrenFragment);
+
+            if (query) wrapper.classList.add('expanded');
+
+            header.onclick = (e) => {
+                e.stopPropagation();
+                wrapper.classList.toggle('expanded');
+            };
+
+            wrapper.appendChild(header);
+            wrapper.appendChild(childrenContainer);
+            return wrapper;
+        }
+
+        // 3. Create Standard (Level 3)
+        function createStandardNode(name, data, query) {
+            const childrenFragment = document.createDocumentFragment();
+            let hasMatchingChild = false;
+
+            if (data.files) {
+                data.files.forEach(file => {
+                    const fileNode = createFileNode(file, query);
+                    if (fileNode) {
+                        childrenFragment.appendChild(fileNode);
+                        hasMatchingChild = true;
+                    }
+                });
+            }
+
+            const nameMatch = name.toLowerCase().includes(query);
+            if (query && !nameMatch && !hasMatchingChild) return null;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'tree-item';
+
+            const header = document.createElement('div');
+            header.className = 'tree-header';
+            header.innerHTML = `${ICONS.chevron} <span class="tree-icon icon" style="color:var(--c-text-muted)">📐</span> <span class="tree-label">${name}</span>`;
+
+            const childrenContainer = document.createElement('div');
+            childrenContainer.className = 'tree-children indent-2'; // Keep nesting consistent
+            childrenContainer.appendChild(childrenFragment);
+
+            if (query) wrapper.classList.add('expanded');
+
+            header.onclick = (e) => {
+                e.stopPropagation();
+                wrapper.classList.toggle('expanded');
+            };
+
+            wrapper.appendChild(header);
+            wrapper.appendChild(childrenContainer);
+            return wrapper;
+        }
+
+        // 4. Create File (Leaf)
+        function createFileNode(file, query) {
+            // If searching, check filename
+            if (query && !file.name.toLowerCase().includes(query)) return null;
+
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            // Strip .stl extension for cleaner look
+            const displayName = file.name.replace('.stl', '').replace('.STL', '');
+            
+            div.innerHTML = `${ICONS.file} <span>${displayName}</span>`;
+            
+            div.onclick = (e) => {
+                e.stopPropagation();
+                // Highlight active
+                document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+                div.classList.add('active');
+                
+                // Update text
+                document.getElementById('model-title').innerText = displayName;
+                // Try to derive standard from parent path or context
+                const pathParts = file.path.split('/');
+                const standard = pathParts.length > 2 ? pathParts[pathParts.length-2] : "Standard";
+                document.getElementById('model-subtitle').innerText = standard;
+
+                loadSTL(file.downloadUrl);
+                
+                // Close sidebar on mobile
+                if(window.innerWidth < 768) document.getElementById('sidebar').classList.remove('open');
+            };
+            return div;
+        }
+
+
+        // --- THREE.JS VIEWER LOGIC ---
+        function initThreeJS() {
+            const container = document.getElementById('viewer-container');
+            scene = new THREE.Scene();
+            
+            // Lighting
+            const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+            dirLight.position.set(10, 20, 10);
+            const backLight = new THREE.DirectionalLight(0x06b6d4, 0.5); // Cyan rim light
+            backLight.position.set(-10, 5, -10);
+            
+            scene.add(ambient, dirLight, backLight);
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(30, 30, 30);
+            
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Controls (Orbit-like)
+            container.addEventListener('mousedown', e => { isDragging = true; prevMouse = {x:e.clientX, y:e.clientY}; });
+            window.addEventListener('mouseup', () => isDragging = false);
+            container.addEventListener('mousemove', e => {
+                if(isDragging && currentMesh) {
+                    const dx = e.clientX - prevMouse.x;
+                    const dy = e.clientY - prevMouse.y;
+                    currentMesh.rotation.y += dx * 0.01;
+                    currentMesh.rotation.x += dy * 0.01;
+                    prevMouse = {x:e.clientX, y:e.clientY};
+                }
+            });
+            container.addEventListener('wheel', e => {
+                e.preventDefault();
+                camera.position.multiplyScalar(1 + e.deltaY * 0.001);
+            });
+
+            // Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                if(currentMesh && !isDragging) currentMesh.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            // Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+        function loadSTL(url) {
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('loading-state').classList.remove('hidden');
+            
+            if(currentMesh) {
+                scene.remove(currentMesh);
+                currentMesh.geometry.dispose();
+                currentMesh.material.dispose();
+            }
+
+            fetch(url)
+            .then(res => res.arrayBuffer())
+            .then(buffer => {
+                const geometry = parseSTL(buffer);
+                geometry.center();
+                
+                // Fit to view
+                geometry.computeBoundingBox();
+                const size = geometry.boundingBox.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const scale = 20 / maxDim;
+                
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0xc0c0c0, 
+                    metalness: 0.6, 
+                    roughness: 0.3
+                });
+                
+                currentMesh = new THREE.Mesh(geometry, material);
+                currentMesh.scale.setScalar(scale);
+                currentMesh.rotation.x = -Math.PI / 2; // Fix orientation
+                
+                scene.add(currentMesh);
+                document.getElementById('loading-state').classList.add('hidden');
+            })
+            .catch(err => console.error(err));
+        }
+
+        // Basic Binary/ASCII STL Parser
+        function parseSTL(buffer) {
+            const view = new DataView(buffer);
+            const isAscii = buffer.byteLength < 80 || new TextDecoder().decode(buffer.slice(0, 5)) === 'solid';
+            const geom = new THREE.BufferGeometry();
+            let vertices = [];
+
+            if(isAscii) {
+                // Simple ASCII fallback (simplified)
+                const text = new TextDecoder().decode(buffer);
+                const regex = /vertex\s+([\d-.]+)\s+([\d-.]+)\s+([\d-.]+)/g;
+                let match;
+                while((match = regex.exec(text)) !== null) {
+                    vertices.push(parseFloat(match[1]), parseFloat(match[2]), parseFloat(match[3]));
+                }
+            } else {
+                // Binary
+                const count = view.getUint32(80, true);
+                for(let i=0; i<count; i++) {
+                    const offset = 84 + i*50;
+                    for(let j=0; j<3; j++) {
+                        const vOff = offset + 12 + j*12;
+                        vertices.push(
+                            view.getFloat32(vOff, true),
+                            view.getFloat32(vOff+4, true),
+                            view.getFloat32(vOff+8, true)
+                        );
+                    }
+                }
+            }
+            geom.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geom.computeVertexNormals();
+            return geom;
+        }
+
+        // --- VIEWER ACTIONS ---
+        function setMaterial(type) {
+            if(!currentMesh) return;
+            if(type === 'zinc') {
+                currentMesh.material.color.setHex(0xc0c0c0);
+                currentMesh.material.metalness = 0.6;
+            } else if(type === 'black') {
+                currentMesh.material.color.setHex(0x222222);
+                currentMesh.material.metalness = 0.2;
+            }
+        }
+        
+        function setCamera(type) {
+            camera.position.set(30, 30, 30);
+            camera.lookAt(0,0,0);
+        }
+        
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Spin Animation CSS
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes spin { 100% { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
