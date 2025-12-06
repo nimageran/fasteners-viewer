@@ -880,7 +880,7 @@
                 // Resume rotation after a short delay
                 autoRotateTimeout = setTimeout(() => {
                     autoRotate = true;
-                }, 2000);
+                }, 500);
             });
             
             container.addEventListener('mousemove', e => {
@@ -911,7 +911,7 @@
                 if(autoRotateTimeout) clearTimeout(autoRotateTimeout);
                 autoRotateTimeout = setTimeout(() => {
                     autoRotate = true;
-                }, 2000);
+                }, 500);
             });
 
             function animate() {
