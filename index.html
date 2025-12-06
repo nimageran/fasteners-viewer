@@ -630,6 +630,7 @@
         let scene, camera, renderer, currentMesh, modelGroup;
         let isDragging = false, prevMouse = {x:0, y:0};
         let activeLoadUrl = ""; 
+        let autoRotate = false; // Flag to track auto-rotation state
         
         // Material Definitions
         const materials = {
@@ -867,6 +868,8 @@
             container.addEventListener('mousedown', e => { 
                 isDragging = true; 
                 prevMouse = {x:e.clientX, y:e.clientY}; 
+                // Stop auto-rotation when user interacts
+                autoRotate = false;
             });
             window.addEventListener('mouseup', () => isDragging = false);
             container.addEventListener('mousemove', e => {
@@ -891,10 +894,21 @@
                 spherical.radius = Math.max(2, Math.min(100, spherical.radius));
                 camera.position.setFromSpherical(spherical);
                 camera.lookAt(0,0,0);
+                autoRotate = false; // Also stop on zoom
             });
 
             function animate() {
                 requestAnimationFrame(animate);
+                
+                // --- AUTO ROTATE LOGIC ---
+                // If autoRotate is true, spin the camera slowly around the model
+                if(autoRotate && camera && !isDragging) {
+                    const spherical = new THREE.Spherical().setFromVector3(camera.position);
+                    spherical.theta += 0.005; // Adjust speed here
+                    camera.position.setFromSpherical(spherical);
+                    camera.lookAt(0, 0, 0);
+                }
+                
                 renderer.render(scene, camera);
             }
             animate();
@@ -946,6 +960,9 @@
                 
                 modelGroup.add(currentMesh);
                 setCamera('iso');
+                
+                // Enable auto-rotation on new load
+                autoRotate = true;
                 
                 document.getElementById('loading-state').classList.add('hidden');
             })
@@ -1016,6 +1033,7 @@
                 default: camera.position.set(25, 20, 25); break;
             }
             camera.lookAt(0, 0, 0);
+            autoRotate = false; // Stop rotating if user manually sets a camera angle
         }
         
         const themes = ['light', 'neon', 'dark'];
