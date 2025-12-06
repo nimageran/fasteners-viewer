@@ -904,7 +904,10 @@
                 // If autoRotate is true, spin the camera slowly around the model
                 if(autoRotate && camera && !isDragging) {
                     const spherical = new THREE.Spherical().setFromVector3(camera.position);
-                    spherical.theta += 0.005; // Adjust speed here
+                    spherical.theta += 0.005; // Horizontal rotation
+                    // Add slight vertical undulation for 3D effect
+                    spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi + Math.sin(Date.now() * 0.001) * 0.002));
+                    
                     camera.position.setFromSpherical(spherical);
                     camera.lookAt(0, 0, 0);
                 }
