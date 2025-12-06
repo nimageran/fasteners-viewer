@@ -631,6 +631,7 @@
         let isDragging = false, prevMouse = {x:0, y:0};
         let activeLoadUrl = ""; 
         let autoRotate = false; // Flag to track auto-rotation state
+        let autoRotateTimeout = null; // Timer to resume rotation
         
         // Material Definitions
         const materials = {
@@ -870,8 +871,18 @@
                 prevMouse = {x:e.clientX, y:e.clientY}; 
                 // Stop auto-rotation when user interacts
                 autoRotate = false;
+                // Clear any pending timeout to resume rotation
+                if(autoRotateTimeout) clearTimeout(autoRotateTimeout);
             });
-            window.addEventListener('mouseup', () => isDragging = false);
+            
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                // Resume rotation after a short delay
+                autoRotateTimeout = setTimeout(() => {
+                    autoRotate = true;
+                }, 2000);
+            });
+            
             container.addEventListener('mousemove', e => {
                 if(isDragging) {
                     const dx = e.clientX - prevMouse.x;
@@ -887,6 +898,7 @@
                     prevMouse = {x:e.clientX, y:e.clientY};
                 }
             });
+            
             container.addEventListener('wheel', e => {
                 e.preventDefault();
                 const spherical = new THREE.Spherical().setFromVector3(camera.position);
@@ -894,17 +906,22 @@
                 spherical.radius = Math.max(2, Math.min(100, spherical.radius));
                 camera.position.setFromSpherical(spherical);
                 camera.lookAt(0,0,0);
-                autoRotate = false; // Also stop on zoom
+                
+                autoRotate = false; 
+                if(autoRotateTimeout) clearTimeout(autoRotateTimeout);
+                autoRotateTimeout = setTimeout(() => {
+                    autoRotate = true;
+                }, 2000);
             });
 
             function animate() {
                 requestAnimationFrame(animate);
                 
                 // --- AUTO ROTATE LOGIC ---
-                // If autoRotate is true, spin the camera slowly around the model
+                // Continuous 360 rotation
                 if(autoRotate && camera && !isDragging) {
                     const spherical = new THREE.Spherical().setFromVector3(camera.position);
-                    spherical.theta += 0.005; // Horizontal rotation
+                    spherical.theta += 0.005; // Continuous rotation
                     // Add slight vertical undulation for 3D effect
                     spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi + Math.sin(Date.now() * 0.001) * 0.002));
                     
@@ -1037,6 +1054,7 @@
             }
             camera.lookAt(0, 0, 0);
             autoRotate = false; // Stop rotating if user manually sets a camera angle
+            if(autoRotateTimeout) clearTimeout(autoRotateTimeout); // Clear restart timer
         }
         
         const themes = ['light', 'neon', 'dark'];
