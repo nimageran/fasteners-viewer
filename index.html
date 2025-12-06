@@ -29,6 +29,7 @@
             --shadow-glow: 0 0 15px var(--c-primary-dim), 0 0 2px var(--c-primary);
             --text-glow: 0 0 8px rgba(6, 182, 212, 0.4);
             --border-glow: 0 0 8px rgba(6, 182, 212, 0.3);
+            --icon-glow: drop-shadow(0 0 5px rgba(6, 182, 212, 0.6));
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,7 +58,7 @@
             stroke-linejoin: round;
             display: inline-block;
             vertical-align: middle;
-            transition: filter 0.2s ease;
+            transition: all 0.3s ease;
         }
         .icon-lg { width: 20px; height: 20px; }
 
@@ -104,6 +105,10 @@
             border-radius: 4px;
             box-shadow: var(--shadow-glow);
         }
+        
+        .brand-logo-gfx svg {
+            filter: var(--icon-glow);
+        }
 
         .header-controls {
             display: flex;
@@ -148,7 +153,8 @@
             color: var(--c-primary);
             width: 14px;
             height: 14px;
-            opacity: 0.7;
+            opacity: 0.8;
+            filter: var(--icon-glow);
         }
 
         .search-input {
@@ -197,13 +203,12 @@
         .tree-header:hover {
             background: var(--c-surface-hover);
             color: var(--c-text-main);
-            border-color: rgba(255,255,255,0.05);
-            /* Subtle glow on hover */
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-color: rgba(6, 182, 212, 0.1);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.05);
         }
         
-        .tree-header:hover .icon {
-            filter: drop-shadow(0 0 3px var(--c-primary));
+        .tree-header:hover .tree-icon {
+            filter: var(--icon-glow);
             color: var(--c-primary);
         }
         
@@ -238,6 +243,7 @@
         .expanded > .tree-header .tree-arrow {
             transform: rotate(90deg);
             color: var(--c-primary);
+            filter: drop-shadow(0 0 3px var(--c-primary));
         }
         
         .expanded > .tree-header {
@@ -248,7 +254,7 @@
 
         .expanded > .tree-header .tree-icon {
             color: var(--c-primary);
-            filter: drop-shadow(0 0 5px var(--c-primary-glow));
+            filter: var(--icon-glow);
         }
 
         .tree-children {
@@ -287,19 +293,19 @@
         
         .file-item:hover .icon {
             color: var(--c-primary);
-            filter: drop-shadow(0 0 2px var(--c-primary));
+            filter: var(--icon-glow);
         }
 
         .file-item.active {
             color: #fff;
             background: linear-gradient(90deg, rgba(6, 182, 212, 0.15), transparent);
             border: 1px solid rgba(6, 182, 212, 0.3);
-            box-shadow: inset 2px 0 0 var(--c-primary), 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: inset 2px 0 0 var(--c-primary), 0 0 15px rgba(6, 182, 212, 0.1);
         }
         
         .file-item.active .icon {
             color: var(--c-primary);
-            filter: drop-shadow(0 0 4px var(--c-primary));
+            filter: var(--icon-glow);
         }
 
         /* --- VIEWER --- */
@@ -351,7 +357,7 @@
             border: 1px solid rgba(6, 182, 212, 0.3);
             display: inline-block;
             backdrop-filter: blur(4px);
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+            box-shadow: var(--shadow-glow);
         }
 
         .viewer-controls {
@@ -388,11 +394,11 @@
             background: rgba(6, 182, 212, 0.1);
             color: var(--c-text-main);
             border-color: rgba(6, 182, 212, 0.3);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+            box-shadow: var(--shadow-glow);
         }
         
         .btn-icon:hover svg {
-            filter: drop-shadow(0 0 2px var(--c-primary));
+            filter: var(--icon-glow);
         }
 
         /* --- LOADING & EMPTY STATES --- */
@@ -829,9 +835,8 @@
                 
                 scene.add(currentMesh);
                 
-                // Reset Camera slightly
-                camera.position.set(25, 20, 25);
-                camera.lookAt(0,0,0);
+                // --- FIX: Force Camera Reset Immediately ---
+                setCamera('iso');
                 
                 document.getElementById('loading-state').classList.add('hidden');
             })
@@ -886,8 +891,24 @@
         }
         
         function setCamera(type) {
-            camera.position.set(25, 20, 25);
-            camera.lookAt(0,0,0);
+            if(!camera) return;
+            
+            const dist = 35; // Standard distance
+            
+            // Actually handle the different views now
+            switch(type) {
+                case 'front': camera.position.set(0, 0, dist); break;
+                case 'back': camera.position.set(0, 0, -dist); break;
+                case 'top': camera.position.set(0, dist, 0); break;
+                case 'bottom': camera.position.set(0, -dist, 0); break;
+                case 'left': camera.position.set(-dist, 0, 0); break;
+                case 'right': camera.position.set(dist, 0, 0); break;
+                case 'iso': 
+                default:
+                    camera.position.set(25, 20, 25); 
+                    break;
+            }
+            camera.lookAt(0, 0, 0);
         }
         
         function toggleSidebar() {
