@@ -1,5 +1,14 @@
 # Summary:
-Put the two files, **generate-catalog.js** and **package-json.json**, inside the folder **C:\fasteners-tools**, then open the command prompt by right-cliciing any where and sleecting Open in Terminal, then type "node generate-catalog.js" then you'll see a new generated file, **catalog.json**, in the same folder. Then, import that file into the repository. 
+Put the two files, **generate-catalog.js** and **package-json.json**, inside the clone folder of the repo (inside the fastener-viewer folder), then using git bash run it:
+npm run generate
+
+Thenm using git bash push these new catalog file into the online repo:
+
+git add .
+git commit -m "Fixed catalog structure for website viewer"
+git push
+(For opening git bash, just right click insde the path you want to clone the repo, and click on Open Git Bash, so this way you won't need to change the path. Also, for cloning, use this:
+git pull)
 # Fasteners 3D Viewer 🔩
 
 A simple website to view your 3D fastener models (bolts, washers, nuts, etc.) in your web browser.
