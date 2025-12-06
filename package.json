@@ -6,7 +6,11 @@
     "generate": "node generate-catalog.js",
     "update": "node generate-catalog.js"
   },
-  "keywords": ["fasteners", "3d-viewer", "stl"],
+  "keywords": [
+    "fasteners",
+    "3d-viewer",
+    "stl"
+  ],
   "author": "nimageran",
   "license": "MIT"
 }
