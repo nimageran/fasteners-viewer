@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="neon">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -8,13 +8,14 @@
     <style>
         /* --- FUTURISTIC THEME VARIABLES --- */
         :root {
-            --c-bg: #0b1121; /* Deepest Void */
-            --c-surface: #151e32; /* Panel BG */
+            /* DEFAULT: Purple Neon (Futuristic Professional) */
+            --c-bg: #0b1121; 
+            --c-surface: #151e32;
             --c-surface-hover: #1e293b;
             --c-border: #2d3b55;
-            --c-primary: #06b6d4; /* Cyan Neon */
-            --c-primary-dim: rgba(6, 182, 212, 0.1);
-            --c-primary-glow: rgba(6, 182, 212, 0.5);
+            --c-primary: #a855f7; /* Electric Purple */
+            --c-primary-dim: rgba(168, 85, 247, 0.1);
+            --c-primary-glow: rgba(168, 85, 247, 0.5);
             --c-text-main: #f1f5f9;
             --c-text-muted: #94a3b8;
             --c-text-dim: #64748b;
@@ -27,27 +28,67 @@
             
             /* Neon Effects */
             --shadow-glow: 0 0 15px var(--c-primary-dim), 0 0 2px var(--c-primary);
-            --text-glow: 0 0 8px rgba(6, 182, 212, 0.4);
-            --border-glow: 0 0 8px rgba(6, 182, 212, 0.3);
-            --icon-glow: drop-shadow(0 0 5px rgba(6, 182, 212, 0.6));
+            --text-glow: 0 0 8px rgba(168, 85, 247, 0.4);
+            --border-glow: 0 0 8px rgba(168, 85, 247, 0.3);
+            --icon-glow: drop-shadow(0 0 5px rgba(168, 85, 247, 0.6));
+            
+            --bg-gradient: radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08), transparent 25%),
+                           radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+        }
+
+        /* --- LIGHT THEME --- */
+        [data-theme="light"] {
+            --c-bg: #f8fafc;
+            --c-surface: #ffffff;
+            --c-surface-hover: #f1f5f9;
+            --c-border: #e2e8f0;
+            --c-primary: #2563eb; /* Professional Blue */
+            --c-primary-dim: rgba(37, 99, 235, 0.1);
+            --c-primary-glow: rgba(37, 99, 235, 0.2);
+            --c-text-main: #0f172a;
+            --c-text-muted: #475569;
+            --c-text-dim: #94a3b8;
+            --shadow-glow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --text-glow: none;
+            --border-glow: none;
+            --icon-glow: none;
+            --bg-gradient: none;
+        }
+
+        /* --- DARK THEME (Standard) --- */
+        [data-theme="dark"] {
+            --c-bg: #0f172a;
+            --c-surface: #1e293b;
+            --c-surface-hover: #334155;
+            --c-border: #334155;
+            --c-primary: #38bdf8; /* Sky Blue */
+            --c-primary-dim: rgba(56, 189, 248, 0.1);
+            --c-primary-glow: rgba(56, 189, 248, 0.2);
+            --c-text-main: #f8fafc;
+            --c-text-muted: #cbd5e1;
+            --c-text-dim: #64748b;
+            --shadow-glow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --text-glow: none;
+            --border-glow: none;
+            --icon-glow: none;
+            --bg-gradient: none;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: var(--c-bg);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.05), transparent 30%),
-                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 30%);
+            background-image: var(--bg-gradient);
             color: var(--c-text-main);
             font-family: var(--font-main);
             height: 100vh;
             width: 100vw;
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* --- ICONS (SVG Styling) --- */
+        /* --- ICONS --- */
         .icon {
             width: 16px;
             height: 16px;
@@ -72,7 +113,8 @@
 
         /* --- HEADER --- */
         .header {
-            background: rgba(11, 17, 33, 0.85);
+            background: var(--c-surface); /* Fallback */
+            background: color-mix(in srgb, var(--c-surface), transparent 15%);
             backdrop-filter: blur(var(--blur));
             border-bottom: 1px solid var(--c-border);
             display: flex;
@@ -80,7 +122,7 @@
             justify-content: space-between;
             padding: 0 24px;
             z-index: 50;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
         .brand {
@@ -97,7 +139,7 @@
         .brand-logo-gfx {
             width: 32px;
             height: 32px;
-            background: rgba(6, 182, 212, 0.1);
+            background: var(--c-primary-dim);
             border: 1px solid var(--c-primary);
             color: var(--c-primary);
             display: grid;
@@ -126,7 +168,7 @@
 
         /* --- SIDEBAR --- */
         .sidebar {
-            background: rgba(11, 17, 33, 0.7);
+            background: color-mix(in srgb, var(--c-bg), transparent 10%);
             border-right: 1px solid var(--c-border);
             display: flex;
             flex-direction: column;
@@ -159,7 +201,7 @@
 
         .search-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--c-border);
             color: var(--c-text-main);
             padding: 10px 12px 10px 36px;
@@ -172,7 +214,7 @@
         .search-input:focus {
             outline: none;
             border-color: var(--c-primary);
-            box-shadow: 0 0 0 1px var(--c-primary), inset 0 0 10px rgba(6, 182, 212, 0.1);
+            box-shadow: 0 0 0 1px var(--c-primary), inset 0 0 10px var(--c-primary-dim);
         }
 
         .catalog-tree {
@@ -203,8 +245,8 @@
         .tree-header:hover {
             background: var(--c-surface-hover);
             color: var(--c-text-main);
-            border-color: rgba(6, 182, 212, 0.1);
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.05);
+            border-color: var(--c-primary-dim);
+            box-shadow: 0 0 10px var(--c-primary-dim);
         }
         
         .tree-header:hover .tree-icon {
@@ -213,8 +255,8 @@
         }
         
         /* Hierarchy indentation */
-        .indent-1 { padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.05); margin-left: 10px; }
-        .indent-2 { padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.05); margin-left: 10px; }
+        .indent-1 { padding-left: 16px; border-left: 1px solid var(--c-border); margin-left: 10px; }
+        .indent-2 { padding-left: 16px; border-left: 1px solid var(--c-border); margin-left: 10px; }
 
         .tree-arrow {
             margin-right: 10px;
@@ -248,8 +290,8 @@
         
         .expanded > .tree-header {
             color: var(--c-text-main);
-            background: rgba(6, 182, 212, 0.05);
-            border-color: rgba(6, 182, 212, 0.2);
+            background: var(--c-primary-dim);
+            border-color: rgba(168, 85, 247, 0.2);
         }
 
         .expanded > .tree-header .tree-icon {
@@ -287,8 +329,8 @@
 
         .file-item:hover {
             color: var(--c-text-main);
-            background: rgba(255,255,255,0.03);
-            border-color: rgba(255,255,255,0.05);
+            background: var(--c-surface-hover);
+            border-color: var(--c-border);
         }
         
         .file-item:hover .icon {
@@ -298,9 +340,9 @@
 
         .file-item.active {
             color: #fff;
-            background: linear-gradient(90deg, rgba(6, 182, 212, 0.15), transparent);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            box-shadow: inset 2px 0 0 var(--c-primary), 0 0 15px rgba(6, 182, 212, 0.1);
+            background: linear-gradient(90deg, var(--c-primary-dim), transparent);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: inset 2px 0 0 var(--c-primary), 0 0 15px var(--c-primary-dim);
         }
         
         .file-item.active .icon {
@@ -311,13 +353,12 @@
         /* --- VIEWER --- */
         .viewer-area {
             position: relative;
-            background: radial-gradient(circle at center, #111a2e 0%, #050914 100%);
+            background: var(--c-bg);
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
 
-        /* Essential for Three.js to render correctly */
         #viewer-container {
             width: 100%;
             height: 100%;
@@ -340,7 +381,7 @@
             font-size: 28px;
             font-weight: 200;
             color: var(--c-text-main);
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: var(--text-glow);
             margin-bottom: 6px;
             letter-spacing: -0.02em;
         }
@@ -351,10 +392,10 @@
             color: var(--c-primary);
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            background: rgba(11, 17, 33, 0.8);
+            background: var(--c-surface);
             padding: 6px 10px;
             border-radius: 4px;
-            border: 1px solid rgba(6, 182, 212, 0.3);
+            border: 1px solid var(--c-primary-dim);
             display: inline-block;
             backdrop-filter: blur(4px);
             box-shadow: var(--shadow-glow);
@@ -366,13 +407,14 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 16px;
-            background: rgba(15, 23, 42, 0.85);
+            align-items: center;
+            gap: 12px;
+            background: color-mix(in srgb, var(--c-surface), transparent 15%);
             padding: 10px 16px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--c-border);
             backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             z-index: 10;
         }
 
@@ -391,14 +433,61 @@
         }
 
         .btn-icon:hover {
-            background: rgba(6, 182, 212, 0.1);
+            background: var(--c-primary-dim);
             color: var(--c-text-main);
-            border-color: rgba(6, 182, 212, 0.3);
+            border-color: var(--c-border);
             box-shadow: var(--shadow-glow);
         }
         
         .btn-icon:hover svg {
             filter: var(--icon-glow);
+        }
+
+        /* Material Buttons */
+        .material-group {
+            display: flex;
+            gap: 12px;
+            padding-right: 12px;
+            margin-right: 12px;
+            border-right: 1px solid var(--c-border);
+        }
+
+        .mat-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .mat-btn:hover {
+            transform: scale(1.15);
+            border-color: var(--c-primary);
+        }
+        
+        .mat-btn.active {
+            border-color: var(--c-primary);
+            box-shadow: 0 0 12px var(--c-primary-dim), 0 0 4px var(--c-primary);
+        }
+
+        /* Tooltip for materials */
+        .mat-btn:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--c-surface);
+            color: var(--c-text-main);
+            padding: 4px 8px;
+            font-size: 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            border: 1px solid var(--c-border);
+            pointer-events: none;
         }
 
         /* --- LOADING & EMPTY STATES --- */
@@ -427,8 +516,8 @@
         /* Scrollbars */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--c-text-dim); }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -456,6 +545,11 @@
             </div>
             
             <div class="header-controls">
+                <!-- THEME TOGGLE -->
+                <button class="btn-icon" onclick="cycleTheme()" title="Switch Theme">
+                    <svg class="icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 3v1"></path><path d="M12 20v1"></path><path d="M3 12h1"></path><path d="M20 12h1"></path><path d="m18.364 5.636-.707.707"></path><path d="m6.343 17.657-.707.707"></path><path d="m5.636 5.636.707.707"></path><path d="m17.657 17.657.707.707"></path></svg>
+                </button>
+                
                 <button class="btn-icon mobile-toggle" onclick="toggleSidebar()">
                     <svg class="icon-lg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
@@ -508,9 +602,14 @@
 
                 <!-- Floating Controls -->
                 <div class="viewer-controls">
-                    <button class="btn-icon" onclick="setMaterial('zinc')" title="Zinc Finish"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg></button>
-                    <button class="btn-icon" onclick="setMaterial('black')" title="Black Oxide Finish"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"></circle></svg></button>
-                    <div style="width:1px; background:rgba(255,255,255,0.1); margin:0 4px;"></div>
+                    <!-- MATERIALS -->
+                    <div class="material-group">
+                        <div class="mat-btn active" onclick="setMaterial('stainless')" data-title="Stainless Steel" style="background:linear-gradient(135deg, #e2e8f0, #94a3b8);"></div>
+                        <div class="mat-btn" onclick="setMaterial('steel')" data-title="Carbon Steel" style="background:linear-gradient(135deg, #525252, #262626);"></div>
+                        <div class="mat-btn" onclick="setMaterial('brass')" data-title="Brass" style="background:linear-gradient(135deg, #facc15, #854d0e);"></div>
+                        <div class="mat-btn" onclick="setMaterial('black')" data-title="Black Oxide" style="background:linear-gradient(135deg, #171717, #000000);"></div>
+                    </div>
+                    
                     <button class="btn-icon" onclick="setCamera('iso')" title="Reset View"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg></button>
                 </div>
             </section>
@@ -530,7 +629,16 @@
         let catalog = {};
         let scene, camera, renderer, currentMesh, modelGroup;
         let isDragging = false, prevMouse = {x:0, y:0};
-        let activeLoadUrl = ""; // Track active load to prevent race conditions
+        let activeLoadUrl = ""; 
+        
+        // Material Definitions
+        const materials = {
+            stainless: { color: 0xd4d4d8, metalness: 0.8, roughness: 0.2 },
+            steel: { color: 0x525252, metalness: 0.5, roughness: 0.7 },
+            brass: { color: 0xfacc15, metalness: 0.9, roughness: 0.3 },
+            black: { color: 0x171717, metalness: 0.3, roughness: 0.8 },
+        };
+        let activeMaterial = 'stainless';
 
         // --- INIT ---
         window.addEventListener('load', async () => {
@@ -539,14 +647,14 @@
                 const res = await fetch('catalog.json');
                 if(!res.ok) throw new Error("Catalog fetch failed");
                 catalog = await res.json();
-                renderTree(catalog); // Initial Render
+                renderTree(catalog); 
             } catch (err) {
                 document.getElementById('catalog-tree').innerHTML = 
                     `<div class="state-msg" style="color:#ef4444"><p>Error loading catalog.json</p><small>${err.message}</small></div>`;
             }
         });
 
-        // --- SEARCH ENGINE (DEEP FILTER) ---
+        // --- SEARCH ENGINE ---
         document.getElementById('search-input').addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
             renderTree(catalog, query);
@@ -555,7 +663,6 @@
         function renderTree(data, query = "") {
             const container = document.getElementById('catalog-tree');
             container.innerHTML = "";
-            
             for (const [catName, types] of Object.entries(data)) {
                 const catNode = createCategoryNode(catName, types, query);
                 if (catNode) container.appendChild(catNode);
@@ -728,12 +835,10 @@
             }
 
             scene = new THREE.Scene();
-            
-            // Model Container Group (Fix for overlapping models)
             modelGroup = new THREE.Group();
             scene.add(modelGroup);
             
-            // Cinematic Lighting
+            // Lighting
             const ambient = new THREE.AmbientLight(0xffffff, 0.5);
             const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
             dirLight.position.set(15, 20, 15);
@@ -741,7 +846,6 @@
             rimLight.position.set(-10, 5, -20);
             const fillLight = new THREE.DirectionalLight(0xa5f3fc, 0.4);
             fillLight.position.set(-20, -10, 10);
-            
             scene.add(ambient, dirLight, rimLight, fillLight);
 
             // Camera
@@ -759,7 +863,7 @@
             container.innerHTML = '';
             container.appendChild(renderer.domElement);
 
-            // CAD Style Controls (Orbit Camera instead of Rotate Mesh)
+            // Orbit Controls
             container.addEventListener('mousedown', e => { 
                 isDragging = true; 
                 prevMouse = {x:e.clientX, y:e.clientY}; 
@@ -770,34 +874,25 @@
                     const dx = e.clientX - prevMouse.x;
                     const dy = e.clientY - prevMouse.y;
                     
-                    // Orbit Logic using Spherical Coordinates
-                    // This creates the "CAD" feel where you move around the object
                     const spherical = new THREE.Spherical().setFromVector3(camera.position);
                     spherical.theta -= dx * 0.005;
                     spherical.phi -= dy * 0.005;
-                    
-                    // Clamp phi to avoid flipping
                     spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi));
-                    
                     spherical.makeSafe();
                     camera.position.setFromSpherical(spherical);
                     camera.lookAt(0, 0, 0);
-                    
                     prevMouse = {x:e.clientX, y:e.clientY};
                 }
             });
             container.addEventListener('wheel', e => {
                 e.preventDefault();
-                // Zoom
                 const spherical = new THREE.Spherical().setFromVector3(camera.position);
                 spherical.radius *= (1 + e.deltaY * 0.001);
-                // Limit zoom
                 spherical.radius = Math.max(2, Math.min(100, spherical.radius));
                 camera.position.setFromSpherical(spherical);
                 camera.lookAt(0,0,0);
             });
 
-            // Loop
             function animate() {
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
@@ -817,34 +912,29 @@
         function loadSTL(url) {
             document.getElementById('empty-state').classList.add('hidden');
             document.getElementById('loading-state').classList.remove('hidden');
-            
-            // Set active URL to prevent race conditions
             activeLoadUrl = url;
             
-            // Clear immediately for better responsiveness
-            if(modelGroup) {
-                modelGroup.clear();
-            }
+            if(modelGroup) modelGroup.clear();
 
             fetch(url)
             .then(res => res.arrayBuffer())
             .then(buffer => {
-                // Check race condition
                 if(url !== activeLoadUrl) return;
 
                 const geometry = parseSTL(buffer);
                 geometry.center();
                 
-                // Fit to view
                 geometry.computeBoundingBox();
                 const size = geometry.boundingBox.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
                 const scale = 18 / maxDim;
                 
+                // Use currently selected material
+                const matProps = materials[activeMaterial];
                 const material = new THREE.MeshStandardMaterial({
-                    color: 0xd4d4d8, 
-                    metalness: 0.7, 
-                    roughness: 0.2,
+                    color: matProps.color, 
+                    metalness: matProps.metalness, 
+                    roughness: matProps.roughness,
                     envMapIntensity: 1.0
                 });
                 
@@ -854,10 +944,7 @@
                 currentMesh.castShadow = true;
                 currentMesh.receiveShadow = true;
                 
-                // Add to Group
                 modelGroup.add(currentMesh);
-                
-                // Reset View
                 setCamera('iso');
                 
                 document.getElementById('loading-state').classList.add('hidden');
@@ -867,7 +954,6 @@
             });
         }
 
-        // Robust STL Parser
         function parseSTL(buffer) {
             const view = new DataView(buffer);
             const isAscii = buffer.byteLength < 80 || new TextDecoder().decode(buffer.slice(0, 5)) === 'solid';
@@ -900,26 +986,25 @@
             return geom;
         }
 
-        // --- VIEWER ACTIONS ---
+        // --- UI ACTIONS ---
         function setMaterial(type) {
+            activeMaterial = type;
+            
+            // Update UI Active State
+            document.querySelectorAll('.mat-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.mat-btn[onclick="setMaterial('${type}')"]`).classList.add('active');
+
             if(!currentMesh) return;
-            if(type === 'zinc') {
-                currentMesh.material.color.setHex(0xd4d4d8);
-                currentMesh.material.metalness = 0.7;
-                currentMesh.material.roughness = 0.2;
-            } else if(type === 'black') {
-                currentMesh.material.color.setHex(0x27272a);
-                currentMesh.material.metalness = 0.3;
-                currentMesh.material.roughness = 0.6;
-            }
+            
+            const props = materials[type];
+            currentMesh.material.color.setHex(props.color);
+            currentMesh.material.metalness = props.metalness;
+            currentMesh.material.roughness = props.roughness;
         }
         
         function setCamera(type) {
             if(!camera) return;
-            
-            const dist = 35; // Standard distance
-            
-            // Actually handle the different views now
+            const dist = 35;
             switch(type) {
                 case 'front': camera.position.set(0, 0, dist); break;
                 case 'back': camera.position.set(0, 0, -dist); break;
@@ -928,11 +1013,17 @@
                 case 'left': camera.position.set(-dist, 0, 0); break;
                 case 'right': camera.position.set(dist, 0, 0); break;
                 case 'iso': 
-                default:
-                    camera.position.set(25, 20, 25); 
-                    break;
+                default: camera.position.set(25, 20, 25); break;
             }
             camera.lookAt(0, 0, 0);
+        }
+        
+        const themes = ['neon', 'light', 'dark'];
+        let themeIdx = 0;
+        
+        function cycleTheme() {
+            themeIdx = (themeIdx + 1) % themes.length;
+            document.documentElement.setAttribute('data-theme', themes[themeIdx]);
         }
         
         function toggleSidebar() {
