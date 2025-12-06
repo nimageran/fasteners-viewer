@@ -528,8 +528,9 @@
         };
 
         let catalog = {};
-        let scene, camera, renderer, currentMesh;
+        let scene, camera, renderer, currentMesh, modelGroup;
         let isDragging = false, prevMouse = {x:0, y:0};
+        let activeLoadUrl = ""; // Track active load to prevent race conditions
 
         // --- INIT ---
         window.addEventListener('load', async () => {
@@ -721,7 +722,6 @@
         function initThreeJS() {
             const container = document.getElementById('viewer-container');
             
-            // Fix: Ensure container has explicit dimensions before init
             if (!container.clientWidth || !container.clientHeight) {
                 setTimeout(initThreeJS, 100);
                 return;
@@ -729,18 +729,16 @@
 
             scene = new THREE.Scene();
             
+            // Model Container Group (Fix for overlapping models)
+            modelGroup = new THREE.Group();
+            scene.add(modelGroup);
+            
             // Cinematic Lighting
             const ambient = new THREE.AmbientLight(0xffffff, 0.5);
-            
-            // Key Light
             const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
             dirLight.position.set(15, 20, 15);
-            
-            // Rim Light (Cyan)
             const rimLight = new THREE.DirectionalLight(0x06b6d4, 0.8);
             rimLight.position.set(-10, 5, -20);
-            
-            // Fill Light (Warm)
             const fillLight = new THREE.DirectionalLight(0xa5f3fc, 0.4);
             fillLight.position.set(-20, -10, 10);
             
@@ -749,45 +747,63 @@
             // Camera
             camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
             camera.position.set(30, 25, 30);
+            camera.lookAt(0,0,0);
             
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
-            // Tone mapping for realistic lighting
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.0;
             
-            container.innerHTML = ''; // Clear previous if any
+            container.innerHTML = '';
             container.appendChild(renderer.domElement);
 
-            // Controls
-            container.addEventListener('mousedown', e => { isDragging = true; prevMouse = {x:e.clientX, y:e.clientY}; });
+            // CAD Style Controls (Orbit Camera instead of Rotate Mesh)
+            container.addEventListener('mousedown', e => { 
+                isDragging = true; 
+                prevMouse = {x:e.clientX, y:e.clientY}; 
+            });
             window.addEventListener('mouseup', () => isDragging = false);
             container.addEventListener('mousemove', e => {
-                if(isDragging && currentMesh) {
+                if(isDragging) {
                     const dx = e.clientX - prevMouse.x;
                     const dy = e.clientY - prevMouse.y;
-                    currentMesh.rotation.y += dx * 0.005;
-                    currentMesh.rotation.x += dy * 0.005;
+                    
+                    // Orbit Logic using Spherical Coordinates
+                    // This creates the "CAD" feel where you move around the object
+                    const spherical = new THREE.Spherical().setFromVector3(camera.position);
+                    spherical.theta -= dx * 0.005;
+                    spherical.phi -= dy * 0.005;
+                    
+                    // Clamp phi to avoid flipping
+                    spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi));
+                    
+                    spherical.makeSafe();
+                    camera.position.setFromSpherical(spherical);
+                    camera.lookAt(0, 0, 0);
+                    
                     prevMouse = {x:e.clientX, y:e.clientY};
                 }
             });
             container.addEventListener('wheel', e => {
                 e.preventDefault();
-                camera.position.multiplyScalar(1 + e.deltaY * 0.001);
+                // Zoom
+                const spherical = new THREE.Spherical().setFromVector3(camera.position);
+                spherical.radius *= (1 + e.deltaY * 0.001);
+                // Limit zoom
+                spherical.radius = Math.max(2, Math.min(100, spherical.radius));
+                camera.position.setFromSpherical(spherical);
+                camera.lookAt(0,0,0);
             });
 
             // Loop
             function animate() {
                 requestAnimationFrame(animate);
-                // Subtle auto-rotate
-                if(currentMesh && !isDragging) currentMesh.rotation.y += 0.0015;
                 renderer.render(scene, camera);
             }
             animate();
             
-            // Responsive Resize
             window.addEventListener('resize', () => {
                 if (!container) return;
                 const width = container.clientWidth;
@@ -802,15 +818,20 @@
             document.getElementById('empty-state').classList.add('hidden');
             document.getElementById('loading-state').classList.remove('hidden');
             
-            if(currentMesh) {
-                scene.remove(currentMesh);
-                currentMesh.geometry.dispose();
-                currentMesh.material.dispose();
+            // Set active URL to prevent race conditions
+            activeLoadUrl = url;
+            
+            // Clear immediately for better responsiveness
+            if(modelGroup) {
+                modelGroup.clear();
             }
 
             fetch(url)
             .then(res => res.arrayBuffer())
             .then(buffer => {
+                // Check race condition
+                if(url !== activeLoadUrl) return;
+
                 const geometry = parseSTL(buffer);
                 geometry.center();
                 
@@ -818,7 +839,7 @@
                 geometry.computeBoundingBox();
                 const size = geometry.boundingBox.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
-                const scale = 18 / maxDim; // Adjusted scale for better view
+                const scale = 18 / maxDim;
                 
                 const material = new THREE.MeshStandardMaterial({
                     color: 0xd4d4d8, 
@@ -833,14 +854,17 @@
                 currentMesh.castShadow = true;
                 currentMesh.receiveShadow = true;
                 
-                scene.add(currentMesh);
+                // Add to Group
+                modelGroup.add(currentMesh);
                 
-                // --- FIX: Force Camera Reset Immediately ---
+                // Reset View
                 setCamera('iso');
                 
                 document.getElementById('loading-state').classList.add('hidden');
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                if(url === activeLoadUrl) console.error(err);
+            });
         }
 
         // Robust STL Parser
